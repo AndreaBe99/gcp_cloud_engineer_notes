@@ -1,10 +1,13 @@
-## Basic Commands
+# Basic Commands
+
 #### Ping (mynetwork-allow-icmp)
+
 Ping stands for ```Packet Internet Groper```. It uses the ```ICMP``` (Internet Control Message Protocol) to send an echo request message. If the listening server can answer it sends an echo message back, displaying information to the user.
 </br>
 Ping timeout ```ping -c 3 google.com```
 
 #### SSH (mynetwork-allow-ssh)
+
 The Secure Shell Protocol is a cryptographic network protocol for operating network services securely over an unsecured network. ```tcp:22```
 
 #### Cloud shell provides the following:
@@ -22,6 +25,7 @@ The Secure Shell Protocol is a cryptographic network protocol for operating netw
 - Built-in authorization for access to resources and instances
 
 ## Getting started
+
 Get going with the gcloud CLI.
 - [gcloud init](https://cloud.google.com/sdk/gcloud/reference/init): Initialize, authorize, and configure the gcloud CLI.
 - [gcloud version](https://cloud.google.com/sdk/gcloud/reference/version): Display version and installed components.
@@ -31,6 +35,7 @@ Get going with the gcloud CLI.
 - [gcloud info](https://cloud.google.com/sdk/gcloud/reference/info): Display current gcloud CLI environment details.
 
 ### Help
+
 gcloud CLI is happy to help.
 
 - [gcloud help](https://cloud.google.com/sdk/gcloud/reference/help): Search the gcloud CLI reference documents for specific terms.
@@ -38,6 +43,7 @@ gcloud CLI is happy to help.
 - [gcloud topic](https://cloud.google.com/sdk/gcloud/reference/topic): Supplementary help material for non-command topics like accessibility, filtering, and formatting.
 
 ### Personalization
+
 Make the gcloud CLI your own; personalize your configuration with properties.
 
 - [gcloud config set](https://cloud.google.com/sdk/gcloud/reference/config/set): Define a property (like compute/zone) for the current configuration.
@@ -48,6 +54,7 @@ Make the gcloud CLI your own; personalize your configuration with properties.
 - [gcloud config configurations activate](https://cloud.google.com/sdk/gcloud/reference/config/configurations/activate): Switch to an existing named configuration.
 
 ### Authorization and Credentials
+
 Grant and revoke authorization to the gcloud CLI and manage credentials.
 
 - [gcloud auth login](https://cloud.google.com/sdk/gcloud/reference/auth/login): Authorize Google Cloud access for the gcloud CLI with Google Cloud user credentials and set the current account as active.
@@ -58,13 +65,15 @@ Grant and revoke authorization to the gcloud CLI and manage credentials.
 - [gcloud auth revoke](https://cloud.google.com/sdk/gcloud/reference/auth/revoke): Remove access credentials for an account.
 
 ### Projects
+
 Manage project access policies.
 
 - [gcloud projects describe](https://cloud.google.com/sdk/gcloud/reference/projects/describe): Display metadata for a project (including its ID).
 - [gcloud projects add-iam-policy-binding](https://cloud.google.com/sdk/gcloud/reference/projects/add-iam-policy-binding): Add an IAM policy binding to a specified project.
 
 ## GCLOUD BASICS
-```
+
+```bash
 # Init of the tool
 gcloud init
 
@@ -139,7 +148,7 @@ gcloud container images describe gcr.io/myproject/myimage:tag
 
 ```
 
-    
+
 | **Name**                 | **Summary**                                                          |
 |:------------------------:|:--------------------------------------------------------------------:|
 | Check version & settings | ```gcloud version```, ```gcloud info```, ```gcloud components list```                  |
@@ -163,7 +172,8 @@ gcloud container images describe gcr.io/myproject/myimage:tag
 | Caculate file sha1sum      | ```gsha1sum syslog-migration-10.0.2.tgz, shasum syslog-migration-10.0.2.tgz``` |
 | Gsutil help                | ```gsutil help```, gsutil help cp, gsutil help options                         |
 
-### GCP PROJECT   
+### GCP PROJECT
+
 | **Name**          | **Summary**                                    |
 |:-----------------:|:----------------------------------------------:|
 | List projects     | ```gcloud config list```, ```gcloud config list project``` |
@@ -171,8 +181,9 @@ gcloud container images describe gcr.io/myproject/myimage:tag
 | Switch project    | ```gcloud config set project <project-id>```         |
 | List service available | ```gcloud services list --available```       |
 | Enable services | ```gcloud services enable container.googleapis.com``` |
-    
-### GKE    
+
+### GKE
+
 | **Name**                                | **Summary**                                              |
 |:---------------------------------------:|:--------------------------------------------------------:|
 | Display a list of credentialed accounts | ```gcloud auth list```                                         |
@@ -181,8 +192,9 @@ gcloud container images describe gcr.io/myproject/myimage:tag
 | Change region                           | ```gcloud config set compute/region us-west```                 |
 | Change zone                             | ```gcloud config set compute/zone us-west1-b```                |
 | List all container clusters             | ```gcloud container clusters list```                           |
-    
+
 ### IAM
+
 | **Name**                                | **Summary**                                                     |
 |:---------------------------------------:|:---------------------------------------------------------------:|
 | Authenticate client                     | ```gcloud auth activate-service-account --key-file <key-file>```      |
@@ -194,6 +206,7 @@ gcloud container images describe gcr.io/myproject/myimage:tag
 | Revoke previous generated credential    | ```gcloud auth <application-default> revoke```                        |
 
 ### BUCKET SECURITY
+
 | **Name**                | **Summary**                                                                         |
 |:-----------------------:|:-----------------------------------------------------------------------------------:|
 | Make all files readable | ```gsutil -m acl set -R -a public-read gs://<bucket-name>/```                             |
@@ -202,6 +215,7 @@ gcloud container images describe gcr.io/myproject/myimage:tag
 | Remove bucket access    | ```gsutil iam ch -d user:denny@gmail.com:objectCreator,objectViewer gs://<bucket-name>``` |
 
 ### VM
+
 | **Name**           | **Summary**                                                                                             |
 |:------------------:|:-------------------------------------------------------------------------------------------------------:|
 | List all instances | ```gcloud compute instances list, gcloud compute instance-templates list```                                   |
@@ -214,6 +228,7 @@ gcloud container images describe gcr.io/myproject/myimage:tag
 | Upload files       | ```gcloud compute copy-files ~/LOCAL-FILE-1 example-instance:~/REMOTE-DIR --zone us-central1-a```             |
 
 ### DISKS & VOLUMES
+
 | **Name**            | **Summary**                                                                  |
 |:-------------------:|:----------------------------------------------------------------------------:|
 | List all disks      | ```gcloud compute disks list```                                                    |
@@ -221,7 +236,8 @@ gcloud container images describe gcr.io/myproject/myimage:tag
 | List all snapshots  | ```gcloud compute snapshots list```                                                |
 | Create snapshot     | ```gcloud compute disks snapshot <diskname> --snapshotname <name1> --zone $zone``` |
 
-### NETWORK    
+### NETWORK
+
 | **Name**              | **Summary**                                                                       |
 |:---------------------:|:---------------------------------------------------------------------------------:|
 | List all networks     | ```gcloud compute networks list```                                                      |
@@ -236,12 +252,14 @@ gcloud container images describe gcr.io/myproject/myimage:tag
 | Windows RDP reset windows password| ```gcloud compute reset-windows-password instance --user=jdoe```            |
 
 ### DNS
+
 | **Name**                          | **Summary**                                           |
 |:---------------------------------:|:-----------------------------------------------------:|
 | List of all record-sets in myzone | ```gcloud dns record-sets list --zone my_zone```            |
 | List first 10 DNS records         | ```gcloud dns record-sets list --zone my_zone --limit=10``` |
-    
+
 ### FIREWALL
+
 | **Name**                   | **Summary**                                                                              |
 |:--------------------------:|:----------------------------------------------------------------------------------------:|
 | List all firewall rules    | ```gcloud compute firewall-rules list```                                                       |
@@ -250,27 +268,31 @@ gcloud container images describe gcr.io/myproject/myimage:tag
 | Create one firewall rule   | ```gcloud compute firewall-rules create my-rule --network default --allow tcp:9200 tcp:3306``` |
 | Update one firewall rule   | ```gcloud compute firewall-rules update default --network default --allow tcp:9200 tcp:9300``` |
 
-### IMAGES & CONTAINERS    
+### IMAGES & CONTAINERS
+
 | **Name**                    | **Summary**                                              |
 |:---------------------------:|:--------------------------------------------------------:|
 | List all images             | ```gcloud compute images list```                               |
 | List all container clusters | ```gcloud container clusters list```                           |
 | Set kubectl context         | ```gcloud container clusters get-credentials <cluster-name>``` |
 
-### RDS    
+### RDS
+
 | **Name**                    | **Summary**                                              |
 |:---------------------------:|:--------------------------------------------------------:|
 | List all sql instances      | ```gcloud sql instances list```                                |    
-    
-### SERVICES    
+
+### SERVICES
+
 | **Name**                           | **Summary**                            |
 |:----------------------------------:|:--------------------------------------:|
 | List my backend services           | ```gcloud compute backend-services list```   |
 | List all my health check endpoints | ```gcloud compute http-health-checks list``` |
 | List all URL maps                  | ```gcloud compute url-maps list```           |
-    
+
 We can impersonate service account from a user or another service account, a short-lived token is used instead of service account key.
-```
+
+```bash
 # serviceAccount:ansible  impersonate as a svc account terraform@${PROJECT_ID}.iam.gserviceaccount.com
 # ${SA_PROJECT_ID} is the global project storing all the service accounts
 TF_SA_EMAIL=terraform@${SA_PROJECT_ID}.iam.gserviceaccount.com
@@ -282,7 +304,8 @@ gcloud iam service-accounts add-iam-policy-binding ${TF_SA_EMAIL} \
 # create a gcp project $A_PROJECT_ID under $A_FOLDER_ID
 gcloud projects --impersonate-service-account=$TF_SA_EMAIL create $A_PROJECT_ID --name=$A_PROJECT_NAME --folder=$A_FOLDER_ID
 ```
-```
+
+```bash
 # user:pythonrocks@gmail.com impersonate as a svc account terraform@${PROJECT_ID}.iam.gserviceaccount.com
 TF_SA_EMAIL=terraform@your-service-account-project.iam.gserviceaccount.com
 gcloud iam service-accounts add-iam-policy-binding  $TF_SA_EMAIL --member=user:pythonrocks@gmail.com \
@@ -292,7 +315,8 @@ gcloud container clusters list --impersonate-service-account=terraform@${PROJECT
 ```    
 
 ### Cloud Build
-```
+
+```bash
 # user defined
 gcloud builds submit --config=cloudbuild.yaml --substitutions=_BRANCH_NAME=foo,_BUILD_NUMBER=1 .
 
@@ -312,15 +336,18 @@ docker push ${GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}/${IMAGE_NAME
 # build / push image to artifact registry (using local Dockerfile)
 gcloud builds submit --tag ${GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}/${IMAGE_NAME}:${TAG}
 ```    
-    
+
 ### Private Service Access
+
 Useful for services like Cloud SQL and Redis, peering between a custom VPC to a managed VPC by google.
-```
+
+```bash
 gcloud services vpc-peerings list --network=my-vpc
 ```
 
 ### Shared vpc
-```
+
+```bash
 # Enable shared-vpc in '${NETWORK_PROJECT_ID}'
 gcloud services enable --project ${NETWORK_PROJECT_ID} compute.googleapis.com
 gcloud compute shared-vpc enable ${NETWORK_PROJECT_ID}
@@ -336,13 +363,15 @@ gcloud compute shared-vpc associated-projects remove ${PLATFORM_PROJECT_ID} --ho
 ```
 
 ### Interconnect
-```
+
+```bash
 # list Google Compute Engine interconnect locations
 gcloud compute interconnects locations list    
 ```    
 
 ### Cloud Run
-```
+
+```bash
 # deploy a service on Cloud Run in us-central1 and allow unauthenticated user
 gcloud run deploy --image gcr.io/${PROJECT-ID}/helloworld --platform managed --region us-central1 --allow-unauthenticated
 
@@ -398,7 +427,8 @@ curl -X GET $SVC_URL
 ```
 
 ### Artifact registry
-```
+
+```bash
 export REPO_NAME=team1
 export GCP_REGION="us-east1" 
 
