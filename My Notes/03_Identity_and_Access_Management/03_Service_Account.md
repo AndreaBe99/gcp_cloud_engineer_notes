@@ -86,3 +86,131 @@ The other way to use a Service Account is directly impersonate the Service Accou
 - Grant the Service Account only the **minimum set of permissions** required to achieve their goals.
 - **Create Service Account for each service** with only the permissions required for that service.
 - Take advantage of the IAM Service Account API to **implement key rotation**.
+
+
+## Demo
+
+A video demo on Service Account can be found [here](https://youtu.be/jpno8FSqpc8?si=_yqfo_iY08qZLyCr&t=19008).
+
+1. Go to the **IAM & Admin** page in the Google Cloud Console.
+2. If we go to the **Service Accounts** page, we can see the list of service accounts in the project.
+
+For examplem, to create a new service account:
+
+1. Go to the **Compute Engine** page in the Google Cloud Console.
+2. Enable the **Compute Engine API**, and this will automatically create a default service account.
+3. Now if we go back to the **Service Accounts** page, we can see the new service account that was created: `<service-116718093042@compute-system.iam.gserviceaccount.com>`.
+
+![Service Account Use](images/03_Service_Account_04.png)
+
+4. Go back to the **Compute Engine** page, and create a new VM instance (from the page **VM Instances**).
+   1. Scroll down in the configuration page, and in the **Identity and API access** section.
+   2. In the **Service account** dropdown, we can see the Compute Engine default service account was automatically selected.
+   3. Then, we have the **Access scopes** section, where we can see the default access scopes that were automatically selected. If we click on **Set access for each API**, we can see the list of APIs and the access scopes that are enabled for each API. For example we can enable the `Read Only` permission for the `Cloud Storage` API.
+    
+    ![Service Account VM](images/03_Service_Account_05.png)
+   
+   4. Finally click on the **Create** button to create the VM instance.
+
+5. To see the new permission, go to the **Cloud Storage** page in the Google Cloud Console.
+   1. Suppose to have a bucket, click on the bucket name.
+   2. We can see al the files in the bucket.
+    
+    ![Service Account Bucket](images/03_Service_Account_06.png)
+
+6. Enter with SSH in the VM instance.
+   1. Run the following command view who is the current user:
+    ```bash
+    gcloud config list
+
+    # Output
+    [core]
+    account = 116718093042@compute-system.iam.gserviceaccount.com>
+    disable_usage_reporting = True
+    project = catnowtiesfall2021
+
+    Your active configuration is: [default]
+    ```
+
+   2. List the content of the bucket using the `gsutil` command.
+    
+    ```bash
+    gsutil ls gs://<bucket-name>
+    ```
+
+    3. We can't create a new file in the bucket, because we have only the `Read Only` permission, so if we run the following command, we will get an error:
+    
+    ```bash
+    touch file1
+    gsutil cp file1 gs://<bucket-name>
+
+    # Output
+    AccessDeniedException: 403 Insufficient Permission
+    ```
+
+7. To create another Service Account, go to the **IAM & Admin** page in the Google Cloud Console.
+   1. Click on the **Service Accounts** page.
+   2. Click on the **Create Service Account** button.
+   3. Enter the name of the service account, and click on the **Create** button.
+   4. In the **Service Account Permissions** page, we can grant the service account some roles. For example, we can grant the `Storage Object Viewer`, and the `Storage Object Creator` roles.
+   5. Click on the **Continue** button.
+   6. In the **Grant users access to this service account** page, we can grant some users the **Service Account User** role.
+   7. Click on the **Done** button.
+
+8. We can create custom keys for the service account, in case we are hosting our code on premise or on another cloud. 
+   1. Click on the three dots on the right of the service account, and then click on the **Create Key** button.
+   2. Select the key type, and click on the **Create** button.
+   3. The key will be downloaded as a JSON file.
+
+9. To apply the new Service Account to the VM instance, we need to go back to the **Compute Engine** page in the Google Cloud Console.
+   1. Go to the **VM Instances** page.
+   2. *Stop* the VM instance, because **we can't change the service account of a running instance.**
+   3. Click on the VM instance name.
+   4. Click on the **Edit** button.
+   5. Scroll down to the **Service account** section, and select the new service account from the dropdown menu.
+   6. Restart the VM instance.
+
+**NOTE:** Stopping and restarting the VM instance will change the external IP address of the instance.
+
+10. Enter with SSH in the VM instance.
+    1. Run the following command to view the list of files in the bucket:
+    ```bash
+    gsutil ls gs://<bucket-name>
+    ```
+
+    2. Run the following command to create a new file in the bucket:
+    ```bash
+    touch file2
+    gsutil cp file2 gs://<bucket-name>
+    ```
+    3. We can see that the file was created in the bucket.
+
+### Command Line
+
+To view the Service Accounts using the command line, we can run the following command:
+
+```bash
+gcloud iam service-accounts list
+```
+
+To create a new Service Account using the command line, we can run the following command:
+
+```bash
+gcloud iam service-accounts create <service-account-name> --description "Service Account for the project" --display-name "Service Account"
+```
+
+To assign new permissions to the Service Account using the command line, we can run the following command:
+
+```bash
+gcloud projects add-iam-policy-binding <project-id> --member 'serviceAccount:<service-account-email>' --role 'roles/storage.objectViewer'
+```
+
+Now, as before, to assign the new Service Account to the VM instance, we need to stop the instance, and then assign the new Service Account to the instance, and finally restart the instance.
+
+```bash
+gcloud compute instances stop <instance-name> --zone <zone>
+
+gcloud compute instances set-service-account <instance-name> --zone <zone> --service-account <service-account-email>
+
+gcloud compute instances start <instance-name> --zone <zone>
+```
