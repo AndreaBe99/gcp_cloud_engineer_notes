@@ -81,3 +81,164 @@ When it comes to object life cycle management:
 - Lifecycle rules can take up to *24 hours* to take effect. 
 
 - Test lifecycle rules in *development first*, before rolling them out into production.
+
+## Demo
+
+A video demo of the following lab is available [here](https://youtu.be/jpno8FSqpc8?si=nPTYdL_844LQ3PO_&t=66770).
+
+Before doing this lab, do the lesson [03_Managing_Cloud_Storage_Access](03_Managing_Cloud_Storage_Access.md), to have all the necessary files in the bucket.
+
+First turn on object versioning in the bucket, using the following command.
+
+1. To see if versioning is enabled, run the following command:
+
+    ```bash
+    gsutil versioning get gs://bowtieinc-2021
+    ```
+
+    If it returns `gs://bowtieinc-2021: Suspended`, then versioning is not enabled.
+
+2. To enable versioning, run the following command:
+
+    ```bash
+    gsutil versioning set on gs://bowtieinc-2021
+    ```
+
+    If we run the `gsutil versioning get gs://bowtieinc-2021` command again, it should return `gs://bowtieinc-2021: Enabled`.
+
+Now we want to delete a file from the bucket.
+
+1. Go to the **Storage** section in the console.
+2. Go to the **Browser** tab.
+3. Click on the bucket.
+4. Select the file that you want to delete and click on the **Delete** button.
+
+Technically, the file is not deleted, but a new version is created with a deletion marker.
+
+To check the versions of the file, run the following command:
+
+```bash
+gsutil ls -a gs://bowtieinc-2021
+
+# Output
+# gs://bowtieinc-2021/fileofbowties.txt#1618320000000000
+# gs://bowtieinc-2021/pinkelephant-bowtiw.jpg#1618320000000000
+# gs://bowtieinc-2021/plaid-bowtie.jpg#1618320000000000
+```
+
+As you can see, the file is still there, and the number after the `#` is the **generation number**, that determines the version of the object's data.
+
+To bring back the file, run the following command:
+
+```bash
+gsutil mv gs://bowtieinc-2021/fileofbowties.txt#1618320000000000 gs://bowtieinc-2021/fileofbowties.txt
+```
+
+### Versioning
+
+Now we want to enter into the instance to do some versioning.
+
+1. Run the following command to enter into the instance:
+
+	```bash
+	gcloud compute ssh bowtie-instance --zone=us-east1-b
+	```
+
+	Enter the password when prompted.
+
+2. Create a new file:
+
+	```bash
+	sudo nano fileofbowties.txt
+	```
+
+	We should have the text `Learning to tie a bowtie takes time.` in the file.
+	Append `V2` to the text and save the file.
+
+3. Copy the file to the bucket:
+
+	```bash
+	gsutil cp fileofbowties.txt gs://bowtieinc-2021
+	```
+
+4. To check the version of the file in the bucket run:
+
+	```bash
+	gsutil ls -a gs://bowtieinc-2021
+
+	# Output
+	# gs://bowtieinc-2021/fileofbowties.txt#1618320000000001
+	# gs://bowtieinc-2021/fileofbowties.txt#1618320000000000
+	# gs://bowtieinc-2021/pinkelephant-bowtiw.jpg#1618320000000000
+	# gs://bowtieinc-2021/plaid-bowtie.jpg#1618320000000000
+	```
+
+	Ast you can see, there are two versions of the file.
+
+5. To promote the non-current version to the current version (i.e. make `V2` the non-current version), run the following command:
+
+	```bash
+	# Get the old generation number
+	gsutil cp gs://bowtieinc-2021/fileofbowties.txt#1618320000000000 gs://bowtieinc-2021/fileofbowties.txt
+	```
+
+6. If we click on the link of the file in the console, we can see that there isn't the `V2` text.
+
+### Add Lifecycle Policy to the Bucket
+
+1. Go to the **Storage** section in the console.
+2. Go to the **Browser** tab.
+3. Click on the bucket.
+4. Click on the **Lifecycle** tab.
+
+	![Lifecycle](images/02_Object_Lifecycle_Management_and_Versioning_03.png)
+
+5. CLick on the **Add rule** button and fill in the following information:
+
+	- **Select an action**: `Delete object`
+        - Click on the **Continue** button.
+  	- **Select object conditions**
+        - **Days since becoming non-current**: `7`
+        - Click on the **Continue** button.
+	- Click on the **Create** button.
+
+6. As we can see the rule is applied.
+
+	![Rule](images/02_Object_Lifecycle_Management_and_Versioning_04.png)
+
+Now, we want to create another rule to change the storage class of the objects.
+
+1. Click on the **Add rule** button and fill in the following information:
+
+	- **Select an action**: `Set storage class to Coldline`
+		- Click on the **Continue** button.
+  	- **Select object conditions**
+		- **Age**: `90`
+		- Click on the **Continue** button.
+   - Click on the **Create** button.
+
+2. As we can see the rule is applied.
+
+	![Rule](images/02_Object_Lifecycle_Management_and_Versioning_05.png)
+
+To edit the Lifecycle Policy, we can also do it from editing the JSON file.
+
+1. Save the lifecycle policy to a file:
+
+	```bash
+	gsutil lifecycle get gs://bowtieinc-2021 > lifecycle.json
+	```
+
+2. Open the file and edit it modifying the `age` to `120`.
+
+	```bash
+	sudo nano lifecycle.json
+	```
+	
+	Modify the string `"condition": {"age": 90}` to `"condition": {"age": 120}`, save and exit.
+
+3. To set the lifecycle policy from the file, run the following command:
+
+	```bash
+	gsutil lifecycle set lifecycle.json gs://bowtieinc-2021
+	```
