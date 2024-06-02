@@ -173,8 +173,6 @@ And finally, when it comes to **pricing**, Dataflow jobs are *billed in per seco
 
 **Dataproc** is a fast and easy way to run Spark, Hadoop, Hive or Pig on Google Cloud.
 
-
-
 - In an on premises environment, it takes 5 to 30 minutes to create Spark and Hadoop clusters.
 
 - Data crop clusters take 90 seconds or less on average to be built in Google Cloud.
