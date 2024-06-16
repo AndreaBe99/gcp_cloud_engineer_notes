@@ -1,6 +1,6 @@
 # DNS Record Types
 
-I record delle risorse DNS sono gli elementi di informazione di base del Sistema di Nomi di Dominio (DNS). Sono voci nel database DNS che forniscono informazioni su un host specifico e sono fisicamente memorizzati in un file di zona sul server dei nomi.
+I **DNS Resource Records** sono gli elementi di informazione di base del Sistema di Nomi di Dominio (DNS). Sono voci nel database DNS che forniscono informazioni su un host specifico e sono fisicamente memorizzati in un file di zona sul server dei nomi.
 
 I tipi più comuni di record DNS sono:
 
@@ -16,7 +16,7 @@ I tipi più comuni di record DNS sono:
 
 I record NS identificano quale server DNS contiene il record corrente per il dominio.
 
-Questi server sono di solito trovati presso un registrar o un provider di hosting. Vengono creati per identificare il server di nomi utilizzato per ciascun nome di dominio all'interno di una determinata zona.
+Questi server sono di solito trovati presso un registro o un provider di hosting. Vengono creati per identificare il server di nomi utilizzato per ciascun nome di dominio all'interno di una determinata zona.
 
 Nell'esempio seguente abbiamo la zona `.co` che avrà più record di server di nomi per `bowtieinc.co`.
 Questi record di server di nomi sono come avviene la delega della zona `.co` per `bowtieinc.co`, e puntano a server che ospitano la zona `bowtieinc.co`, gestita da `bowtieinc`.

@@ -34,9 +34,7 @@ Quindi ci sono due livelli separati di autorizzazioni che possono essere applica
 
 ### First Use Case - Shared VPC
 
-Il codice selezionato modificato con ``` è:
-
-La seguente diagramma mostra il primo scenario di utilizzo:
+Il seguente diagramma mostra il primo scenario di utilizzo:
 
 ![Shared VPC](../images/09_Shared_VPC_01.png)
 

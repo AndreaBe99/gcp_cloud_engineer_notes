@@ -12,7 +12,7 @@ Quando si abilita VPC Flow Logs, si abilita per tutte le VM nella subnet, quindi
 
 I Flow Logs vengono aggregati per connessione dalle VM di Compute Engine e vengono esportati in tempo reale. Questi log possono essere esportati in Cloud Logging per 30 giorni. Se i log sono necessari per un periodo più lungo di 30 giorni, è possibile esportarli in Cloud Storage.
 
-Google Cloud campiona i pacchetti di esempio che lasciano e entrano in una VM per generare i Flow Logs, ma non tutti i pacchetti vengono catturati in un proprio record di log, circa 1 su 10 pacchetti viene catturato, ma questo tasso di campionamento potrebbe essere inferiore a seconda del carico della VM e **non è possibile modificare il tasso di campionamento**.
+Google Cloud campiona i pacchetti di esempio che lasciano e entrano in una VM per generare i Flow Logs, ma non tutti i pacchetti vengono catturati in un proprio record di log, *circa 1 su 10 pacchetti viene catturato*, ma questo tasso di campionamento potrebbe essere inferiore a seconda del carico della VM e **non è possibile modificare il tasso di campionamento**.
 
 Pertanto, per questo motivo, si compensa la mancanza di pacchetti interpolando dai pacchetti catturati.
 

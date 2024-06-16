@@ -9,7 +9,7 @@
 - Una VPC è una ***Risorsa Globale***.
   - Non è limitata a una singola regione, è una risorsa globale che può coprire più regioni.
   - Questo include le sue rotte associate e le regole del firewall.
-- Incapsula **all'interno di un Progetto**.
+- Incapsulata **all'interno di un Progetto**.
   - I progetti sono il contenitore logico dove vive la tua VPC.
 - Le VPC **non hanno alcun intervallo di indirizzi IP** associato a loro.
   - Sono semplicemente una costruzione di tutti gli indirizzi IP individuali e servizi all'interno di quella rete.

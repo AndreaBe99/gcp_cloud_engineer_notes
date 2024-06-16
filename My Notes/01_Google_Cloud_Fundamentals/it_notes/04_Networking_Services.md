@@ -32,7 +32,7 @@ Il **HTTP(S) Load Balancing** è il tipo di bilanciamento del carico che copre i
 
 Distribuisce il traffico tra le regioni per garantire che le richieste vengano instradate alla regione più vicina o, in caso di guasto o sovraccarico, alle istanze funzionanti nella regione successiva più vicina.
 
-Un'altra caratteristica del bilanciamento del carico HTTP(S) è che distribuisce il traffico in base al tipo di contenuto della richiesta, quindi può instradare il traffico verso diverse istanze in base al contenuto della richiesta.
+Un'altra caratteristica del bilanciamento del carico HTTP(S) è che **distribuisce il traffico in base al tipo di contenuto** della richiesta, quindi può instradare il traffico verso diverse istanze in base al contenuto della richiesta.
 
 ### Load Balancing Network
 

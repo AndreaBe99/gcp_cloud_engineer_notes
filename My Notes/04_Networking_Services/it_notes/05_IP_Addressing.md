@@ -13,24 +13,25 @@ Una volta determinato il tipo di comunicazione desiderata, è possibile decidere
 
 Gli indirizzi IP interni non vengono pubblicizzati pubblicamente, vengono utilizzati solo all'interno della rete VPC.
 
-Ogni rete VPC o rete in locale ha almeno un intervallo di indirizzi IP interni. Le risorse all'interno degli indirizzi IP interni comunicano con altre risorse come se fossero tutte nella stessa rete privata.
+Ogni rete VPC o rete in locale ha almeno un intervallo di indirizzi IP interni. *Le risorse all'interno degli indirizzi IP interni comunicano con altre risorse come se fossero tutte nella stessa rete privata.*
 
 Ogni istanza VM può avere un indirizzo IP interno primario, univoco per la rete VPC, e è possibile assegnare un indirizzo IP interno specifico quando si crea un'istanza VM o è possibile riservare un indirizzo IP interno statico per il progetto e assegnare tale indirizzo alle risorse.
-
 Se non si specifica un indirizzo, ne verrà assegnato automaticamente uno alla VM, in entrambi i casi l'indirizzo deve appartenere all'intervallo IP del sottoinsieme.
-Se la rete è una rete VPC in modalità automatica, l'indirizzo proviene dal sottoinsieme della regione.
-Se la rete è una rete VPC in modalità personalizzata, è necessario specificare da quale sottoinsieme proviene l'indirizzo IP.
+
+Se la rete è una rete VPC in **modalità automatica**, *l'indirizzo proviene dal sottoinsieme della regione*.
+Se la rete è una rete VPC in **modalità personalizzata**, *è necessario specificare da quale sottoinsieme proviene l'indirizzo IP*.
 
 ![Alias IP](../images/05_IP_Addressing_03.png)
 
-Tutti i sottoinsiemi hanno un intervallo primario che è l'intervallo degli indirizzi IP interni che definisce i sottoinsiemi. Ogni istanza VM ottiene il proprio indirizzo IP primario da questo intervallo.
+*Tutti i sottoinsiemi delle regioni, hanno un intervallo primario che è l'intervallo degli indirizzi IP interni che definisce i sottoinsiemi.*
+Ogni istanza VM ottiene il proprio indirizzo IP primario da questo intervallo.
+
+**Gli intervalli IP alias di Google Cloud consentono di assegnare intervalli di indirizzi IP interni come alias alle interfacce di rete di una macchina virtuale (VM). È utile se hai più servizi in esecuzione su una VM e vuoi assegnare a ogni servizio un indirizzo IP diverso.**
 
 È anche possibile allocare intervalli di alias IP da tale intervallo primario o è possibile aggiungere un intervallo secondario al sottoinsieme e allocare intervalli di alias IP da tale intervallo secondario.
 
 L'uso degli intervalli di alias IP non richiede intervalli secondari di sottoinsiemi, questi intervalli secondari di sottoinsiemi forniscono semplicemente uno strumento organizzativo.
-
 Quando si utilizza l'alias IP, è possibile configurare più indirizzi IP interni che rappresentano contenitori o applicazioni ospitati in una VM, senza definire un'interfaccia di rete separata.
-
 È possibile assegnare intervalli di alias IP VM sia dall'intervallo primario che da quello secondario del sottoinsieme. Quando vengono configurati intervalli di alias IP, Google Cloud installa automaticamente le route di rete VPC per gli intervalli IP primari e di alias per il sottoinsieme dell'interfaccia di rete primaria.
 
 Il tuo orchestratore di container o GKE non deve specificare la connettività di rete VPC per queste route, semplificando così il routing del traffico e la gestione dei container.
@@ -95,7 +96,7 @@ Con la prenotazione di indirizzi IP esterni, è possibile ottenere un indirizzo 
 
 Nel caso della prenotazione di indirizzi IP esterni, è possibile prenotare due diversi tipi di indirizzi IP:
 
-- Indirizzi IP esterni **regionali**, utilizzati da istanze VM con una o più interfacce di rete, o da bilanciatori di carico di rete. Questi indirizzi IP possono essere creati sia nella console che attraverso la linea di comando con la limitazione che sarai solo autorizzato a creare indirizzi IP IPv$.
+- Indirizzi IP esterni **regionali**, utilizzati da istanze VM con una o più interfacce di rete, o da bilanciatori di carico di rete. Questi indirizzi IP possono essere creati sia nella console che attraverso la linea di comando con la limitazione che sarai solo autorizzato a creare indirizzi IP IPv4.
 
 
     ```

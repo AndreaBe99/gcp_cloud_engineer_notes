@@ -25,14 +25,14 @@ Il VPC Network Peering presenta alcune caratteristiche:
 
 Il **VPC Network Peering** presenta alcune restrizioni:
 
-- È necessario tenere presente che il campo di indirizzi CIDR di una subnet in una rete VPC collegata non può sovrapporsi a una route statica in un'altra rete VPC collegata.
+- È necessario tenere presente che il campo di indirizzi CIDR di una subnet in una rete VPC collegata **non può sovrapporsi** a una route statica in un'altra rete VPC collegata.
   - Questa regola si applica sia alle route delle subnet che alle route statiche.
   - Quando viene creata una subnet VPC o viene espansa la gamma di indirizzi IP di una subnet, Google Cloud effettua un controllo per verificare che la nuova gamma di indirizzi IP della subnet non si sovrapponga a nessuna route statica in nessuna rete VPC collegata. Se ciò accade, l'operazione non riesce.
 - Quando si crea una nuova subnet in una rete VPC collegata, il VPC Network Peering non fornisce controlli di route granulari per filtrare quali intervalli CIDR sono raggiungibili tramite la connessione di peering.
-- Per consentire il traffico in ingresso dalle istanze VM in una rete peer, è necessario creare regole del firewall per consentire l'ingresso. Per impostazione predefinita, il traffico in ingresso verso le VM è bloccato dalla ***regola di negazione implicita in ingresso***.
-- Il peering transitivo non è supportato e solo le reti direttamente collegate possono comunicare tra loro.
+- Per consentire il traffico in ingresso dalle istanze VM in una rete peer, è necessario creare regole del firewall per consentire l'ingresso. Per impostazione predefinita, il **traffico in ingresso verso le VM è bloccato** dalla *regola di negazione implicita in ingresso*.
+- **Il peering transitivo non è supportato** e solo le reti direttamente collegate possono comunicare tra loro.
 - Non è possibile utilizzare un tag o un service account da una rete peer nell'altra rete peer.
-- Il DNS interno non è accessibile per le istanze di Compute Engine nelle reti collegate tramite peering, in quanto devono utilizzare un indirizzo IP per comunicare.
+- *Il DNS interno non è accessibile per le istanze di Compute Engine nelle reti collegate tramite peering*, in quanto devono utilizzare un indirizzo IP per comunicare.
 
 ![VPC Network Peering](../images/08_VPC_Network_Peering_01.png)
 

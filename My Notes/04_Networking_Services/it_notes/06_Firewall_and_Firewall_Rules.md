@@ -4,9 +4,9 @@
 
 **VPC Firewall Rules** è un servizio utilizzato per filtrare il traffico in ingresso e in uscita, basato su un insieme di regole definite dall'utente. Viene utilizzato per proteggere la rete VPC dall'accesso non autorizzato.
 
-- Le regole del firewall VPC si applicano a un determinato progetto e rete, ed è anche possibile applicarle a livello di organizzazione.
+- Le regole del firewall VPC *si applicano a un determinato progetto e rete*, ed è anche possibile applicarle a livello di organizzazione.
 
-- Le regole del firewall VPC ti consentono di consentire o negare le connessioni da o verso le tue istanze VM in base a una configurazione che specifici.
+- Le regole del firewall VPC permettono di consentire o negare le connessioni da o verso le tue istanze VM in base a una configurazione che specifici.
   - Queste regole vengono applicate solo alle connessioni in ingresso o in uscita, ma ***mai entrambe contemporaneamente***.
   - Le regole del firewall VPC abilitate vengono sempre applicate, indipendentemente dalla loro configurazione e dal sistema operativo, anche se non sono ancora avviate.
 
@@ -14,7 +14,7 @@
   - Quando le regole del firewall vengono definite a livello di rete, le connessioni vengono consentite o negate su base per-istanza.
   - Quindi, è possibile pensare alle regole del firewall VPC come esistenti non solo tra le tue istanze e altre reti, ma anche tra singole istanze all'interno della stessa rete.
 
-- Quando crei una nuova regola del firewall VPC, specifici una rete VPC e un insieme di componenti che definiscono la regola.
+- Quando crei una nuova **regola del firewall VPC**, specifici una rete VPC e un insieme di componenti che definiscono la regola.
   - I componenti ti consentono di indirizzare determinati tipi di traffico, in base a:
     - protocolli e porte del traffico,
     - sorgenti e
@@ -39,7 +39,7 @@ Google Cloud consente sempre la comunicazione tra un'istanza VM e il **metadata 
   - Metadati dell'istanza e
   - Servizi NTP (Network Time Protocol).
 
-**NOTA:** Ogni rete ha due regole implicite del firewall che consentono le connessioni in uscita e bloccano le connessioni in ingresso. Le regole del firewall che crei possono annullare queste regole implicite.
+Ogni rete ha **due regole implicite** del firewall che consentono le connessioni in uscita e bloccano le connessioni in ingresso. Le regole del firewall che crei possono annullare queste regole implicite.
 
 - **Regola di consenti egresso**, consente a qualsiasi istanza nella rete di inviare traffico a qualsiasi destinazione, ad eccezione del traffico bloccato da Google Cloud.
    - **Azione:** consenti

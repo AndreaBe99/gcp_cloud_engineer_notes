@@ -12,9 +12,9 @@ NAT è un modo per mappare più indirizzi IP privati locali a un indirizzo IP pu
 
 Ci sono diversi tipi di NAT:
 
-- Static NAT: Mappa un singolo indirizzo IP privato a un singolo indirizzo IP pubblico su base uno a uno.
-- Dynamic NAT: Mappa un singolo indirizzo IP privato a un singolo indirizzo IP pubblico da un pool di indirizzi IP pubblici.
-- PAT (Port Address Translation): Mappa più indirizzi IP privati a un singolo indirizzo IP pubblico utilizzando porte diverse.
+- **Static NAT**: Mappa un singolo indirizzo IP privato a un singolo indirizzo IP pubblico su base uno a uno.
+- **Dynamic NAT**: Mappa un singolo indirizzo IP privato a un singolo indirizzo IP pubblico da un pool di indirizzi IP pubblici.
+- **PAT** (Port Address Translation): Mappa più indirizzi IP privati a un singolo indirizzo IP pubblico utilizzando porte diverse.
 
 ## Static NAT
 

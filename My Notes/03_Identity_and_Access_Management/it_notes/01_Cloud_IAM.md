@@ -18,15 +18,15 @@ Include anche organizzazione, cartella e progetto.
 
 Nelle autorizzazioni IAM, l'accesso alle risorse non viene concesso direttamente agli utenti, ma **le autorizzazioni vengono raggruppate in ruoli** e i ruoli vengono concessi ai membri autenticati.
 
-Le politiche IAM definiscono e applicano i ruoli concessi ai membri e queste politiche sono collegate a una risorsa.
+**Le policy IAM definiscono e applicano i ruoli concessi ai membri e queste politiche sono collegate a una risorsa.**
 
 Quindi, quando un membro autenticato cerca di accedere a una risorsa, IAM controlla le politiche collegate alla risorsa per determinare se il membro ha le autorizzazioni necessarie.
 
-## Architettura delle politiche
+## Architettura delle Policy
 
 ![Architettura delle politiche](../images/01_Cloud_IAM_03.png)
 
-Una **politica** è una collezione di **binding**, **configurazione di audit** e altri **metadati** che descrivono quali **ruoli** vengono concessi a quali membri.
+Una **policy** è una collezione di **binding**, **configurazione di audit** e altri **metadati** che descrivono quali **ruoli** vengono concessi a quali membri.
 
 - I **binding** specificano come deve essere concesso l'accesso alle risorse e collegano uno o più membri a un singolo ruolo e a eventuali condizioni specifiche del contatto che modificano come e quando viene concesso il ruolo.
 - I **metadati** includono informazioni aggiuntive sulla politica, come ad esempio un etag, che è un identificatore univoco per la politica, e un numero di versione, per facilitare la gestione delle politiche.
@@ -48,9 +48,9 @@ Un **membro** è un'**identità** che può accedere a una risorsa. Quindi, l'ide
 
 **NOTA:**
 
-- **Tutti gli utenti autenticati**: È un identificatore speciale che rappresenta qualsiasi utente autenticato con un account Google.
+- **All Authenticated Users**: È un identificatore speciale che rappresenta qualsiasi utente autenticato con un account Google.
 
-- **Tutti gli utenti**: È un identificatore speciale che rappresenta qualsiasi utente, inclusi gli utenti non autenticati.
+- **All Users**: È un identificatore speciale che rappresenta qualsiasi utente, inclusi gli utenti non autenticati.
 
 ### Ruoli
 

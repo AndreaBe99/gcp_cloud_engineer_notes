@@ -1,18 +1,18 @@
-# Politiche e Condizioni
+# Policy e Condizioni
 
 Ricorda:
 
 ![Architettura delle politiche](../images/01_Cloud_IAM_03.png)
 
-- Le **Politiche** sono una raccolta di dichiarazioni che definiscono chi ha quale tipo di accesso alle tue risorse.
+- Le **Policy** sono una raccolta di dichiarazioni che definiscono chi ha quale tipo di accesso alle tue risorse.
   - Una politica è collegata a una risorsa e viene utilizzata per far rispettare il controllo degli accessi ogni volta che quella risorsa viene acceduta.
 - I **Bindings** legano uno o più membri con un singolo ruolo e qualsiasi condizione specifica del contesto.
 
 Quindi un binding è una tupla di (membri, ruolo, condizione), e aggiungendo metadati e configurazione di audit otteniamo una politica.
 
-## Dichiarazioni di Politica
+## Dichiarazioni di Policy
 
-Un esempio di una **Dichiarazione di Politica**:
+Un esempio di una **Dichiarazione di Policy**:
 
 ```json
 {

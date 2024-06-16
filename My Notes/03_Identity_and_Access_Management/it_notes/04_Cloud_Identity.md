@@ -1,4 +1,4 @@
-# Identità Cloud
+# Cloud Identity
 
 **Cloud Identity** è una soluzione **Identity as a Service (IDaaS)** che consente di gestire utenti e gruppi e utilizzarli per accedere alle risorse di Google Cloud.
 

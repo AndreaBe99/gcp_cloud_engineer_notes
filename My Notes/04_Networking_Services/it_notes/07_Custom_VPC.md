@@ -77,19 +77,21 @@ So now, we are at the following situation:
 2. Clicca su **Crea istanza**, e compila i dettagli.
   
   1. Prima crea l'istanza `public-instance`, con
-    - etichetta `env:public`
-    - regione `us-east1`
-    - tipo di macchina `e2-micro`
-    - account di servizio `Compute Engine default service account`
-    - ambiti di accesso `Imposta l'accesso per ogni API`
-      - abilita `Cloud Storage` `Lettura/Scrittura`
-      - abilita `Compute Engine` `Lettura/Scrittura`
-    - seleziona la scheda **Networking** nella sezione **Gestione, sicurezza, dischi, networking, tenuta esclusiva**
-      - seleziona `public` sotto **Tag di rete**
-      - seleziona `custom` sotto **Interfacce di rete**, e `Ephemeral` sotto **IP esterno**
+
+       - etichetta `env:public`
+       - regione `us-east1`
+       - tipo di macchina `e2-micro`
+       - account di servizio `Compute Engine default service account`
+       - ambiti di accesso `Imposta l'accesso per ogni API`
+         - abilita `Cloud Storage` `Lettura/Scrittura`
+         - abilita `Compute Engine` `Lettura/Scrittura`
+       - seleziona la scheda **Networking** nella sezione **Gestione, sicurezza, dischi, networking, tenuta esclusiva**
+         - seleziona `public` sotto **Tag di rete**
+         - seleziona `custom` sotto **Interfacce di rete**, e `Ephemeral` sotto **IP esterno**
 
 3. Clicca su **Crea istanza**, e compila i dettagli.
    1. Poi crea l'istanza `private-instance`, con
+      
       - etichetta `env:private`
       - regione `us-east4`
       - tipo di macchina `e2-micro`
