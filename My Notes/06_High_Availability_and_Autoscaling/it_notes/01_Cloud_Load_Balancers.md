@@ -51,13 +51,13 @@ Ci sono tre tipi di bilanciatori di carico in Google Cloud:
 
 ## Backend Services
 
-Definisci come Cloud Load Balancing distribuisce il traffico a un insieme di back-end.
+Definisce come Cloud Load Balancing distribuisce il traffico a un insieme di back-end.
 
 La configurazione del servizio di back-end contiene un insieme di valori come il protocollo utilizzato per connettersi ai back-end, varie impostazioni di distribuzione delle sessioni e la configurazione del controllo di salute.
 
 Queste impostazioni forniscono un controllo dettagliato su come si comporta il tuo bilanciatore.
 
-Il back-end di un servizio di back-end può essere un gruppo di istanze o gruppi di endpoint di rete, noti anche come NEG (Network Endpoint Groups), ma non una combinazione di entrambi.
+Il back-end di un servizio di back-end può essere un gruppo di istanze o gruppi di endpoint di rete, noti anche come **NEG** (Network Endpoint Groups), ma non una combinazione di entrambi.
 
 ![Backend Services](../images/01_Cloud_Load_Balancers_03.png)
 

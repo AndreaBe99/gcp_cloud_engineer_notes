@@ -1,7 +1,5 @@
 # Deployment Manager
 
-# Deployment Manager
-
 Deployment Manager è un servizio di distribuzione dell'infrastruttura che automatizza la creazione e la gestione delle risorse di Google Cloud. Consente di creare, distribuire e gestire ambienti Cloud complessi utilizzando semplici modelli (YAML, Jinja, Python, ecc.).
 
 ## Configuration

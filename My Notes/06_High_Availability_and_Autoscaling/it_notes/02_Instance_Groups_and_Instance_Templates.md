@@ -1,7 +1,5 @@
 # Instance Groups and Instance Templates
 
-# Gruppi di istanze e modelli di istanze
-
 I gruppi di istanze sono una collezione di istanze di macchine virtuali (VM) che è possibile gestire come un'entità singola.
 
 Compute Engine offre due tipi di gruppi di istanze:
@@ -76,7 +74,7 @@ I modelli di istanze gestiscono le proprietà delle istanze per distribuire grup
 - È possibile utilizzare un modello di istanza per creare un MIG o un'istanza di VM.
   - È una risorsa globale, non legata a una zona o a una regione specifica, ma è possibile limitare un modello a una zona specifica specificando risorse zonali specifiche.
 
-
+    ```vash
     gcloud instance-templates create
     ```
 
