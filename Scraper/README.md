@@ -35,5 +35,5 @@ Example:
 - This will generate PDF files from question #1 to question #31 the exam AWS-SCS:
 
     ```bash
-    python3 main.py --start 1 --end 31 --exam aws-scs
+    python3 main.py --start 151 --end 266 --exam gcp-ace
     ```
