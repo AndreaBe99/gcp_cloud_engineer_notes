@@ -7,10 +7,10 @@ from typing import List, Tuple
 
 # Modify the path to the markdown file containing the questions and answers
 LINUX_PATH = "/home/andrea/Documenti"
-WINDOWS_PATH = "C:/Users/an.bernini/WORKAREA"
+WINDOWS_PATH = "C:/Users/an.bernini/WORKAREA/Certificazione GCP"
 ANDROID_PATH = "/storage/emulated/0/Documents"
 # Choose platform
-ABS_PATH = [LINUX_PATH, WINDOWS_PATH, ANDROID_PATH][0]
+ABS_PATH = [LINUX_PATH, WINDOWS_PATH, ANDROID_PATH][1]
 
 PATH = f"{ABS_PATH}/gcp_cloud_engineer_notes/Quizzes/exam_topics.md"
 
@@ -49,6 +49,8 @@ def extract_questions(num_questions=50) -> List[Tuple[str, str]]:
         r"#### Question \d+\n\n(.*?)\n\n\*\*Answer: (.*?)\*\*", content, re.DOTALL
     )
 
+    print(f"Questions extracted: {questions}")
+
     # Select a random sample of questions
     selected_questions = random.sample(questions, min(num_questions, len(questions)))
 
@@ -60,20 +62,22 @@ def simulate_exam() -> None:
     # Extract the questions and answers
     selected_questions = extract_questions()
 
+    # Print the instructions
+    print(
+        f"{Color.BOLD.value}Welcome to the Exam Simulator!{Color.END.value}\n"
+        "You will be presented with a series of multiple-choice questions.\n"
+        "Please select the letter(s) corresponding to the correct answer(s).\n"
+        f"{Color.YELLOW.value}If the question has multiple correct answers, you need to write the letters separated by a '-'.{Color.END.value}\n"
+        "Let's get started!\n"
+    )
+
     correct_answers = 0
     # Show each question and ask the user for an answer
     for i, (question, answer) in enumerate(selected_questions, 1):
-
-        # Split the question and the choices
-        quest, choices = question.split("\n\n")
-        print(f"{Color.BOLD.value}Question {i}:\n{quest}{Color.END.value}", end="\n\n")
-        print(choices, end="\n\n")
-
+        print(f"{Color.BOLD.value}Question {i}:\n{question}{Color.END.value}", end="\n\n")
         user_answer = input("Your answer: ").strip().upper()
-
         # Get only the most voted answer
         answer = answer.split(" ")[0].upper()
-
         # Check if the answer is correct and provide feedback
         if user_answer in answer:
             print(f"{Color.GREEN.value}Correct!{Color.END.value}", end="\n\n")
