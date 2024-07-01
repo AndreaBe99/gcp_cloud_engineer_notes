@@ -210,7 +210,7 @@ D. Export your bill to a BigQuery dataset, and then write time window-based SQL 
 
 You need to set up a policy so that videos stored in a specific Cloud Storage Regional bucket are moved to Coldline after 90 days, and then deleted after one year from their creation. How should you set up the policy?
 
-A. Use Cloud Storage Object Lifecycle Management using Age conditions with SetStorageClass and Delete actions. Set the SetStorageClass action to 90 days and the Delete action to 275 days (365 ג€" 90)
+A. Use Cloud Storage Object Lifecycle Management using Age conditions with SetStorageClass and Delete actions. Set the SetStorageClass action to 90 days and the Delete action to 275 days (365 `" 90)
 B. Use Cloud Storage Object Lifecycle Management using Age conditions with SetStorageClass and Delete actions. Set the SetStorageClass action to 90 days and the Delete action to 365 days.
 C. Use gsutil rewrite and set the Delete action to 275 days (365-90).
 D. Use gsutil rewrite and set the Delete action to 365 days.
@@ -261,7 +261,7 @@ You significantly changed a complex Deployment Manager template and want to conf
 A. Use granular logging statements within a Deployment Manager template authored in Python.
 B. Monitor activity of the Deployment Manager execution on the Stackdriver Logging page of the GCP Console.
 C. Execute the Deployment Manager template against a separate project with the same configuration, and monitor for failures.
-D. Execute the Deployment Manager template using the ג€"-preview option in the same project, and observe the state of interdependent resources.
+D. Execute the Deployment Manager template using the `"-preview option in the same project, and observe the state of interdependent resources.
 
 **Answer: D**
 
@@ -457,7 +457,7 @@ You create a new Google Kubernetes Engine (GKE) cluster and want to make sure th
 A. Enable the Node Auto-Repair feature for your GKE cluster.
 B. Enable the Node Auto-Upgrades feature for your GKE cluster.
 C. Select the latest available cluster version for your GKE cluster.
-D. Select ג€Container-Optimized OS (cos)ג€ as a node image for your GKE cluster.
+D. Select `Container-Optimized OS (cos)` as a node image for your GKE cluster.
 
 **Answer: B**
 
@@ -628,10 +628,10 @@ Each tier has a service account that is associated with all instances within it.
 - Instances in tier #2 must communicate with tier #3.
 What should you do?
 
-A. 1. Create an ingress firewall rule with the following settings: ג€¢ Targets: all instances ג€¢ Source filter: IP ranges (with the range set to 10.0.2.0/24) ג€¢ Protocols: allow all 2. Create an ingress firewall rule with the following settings: ג€¢ Targets: all instances ג€¢ Source filter: IP ranges (with the range set to 10.0.1.0/24) ג€¢ Protocols: allow all
-B. 1. Create an ingress firewall rule with the following settings: ג€¢ Targets: all instances with tier #2 service account ג€¢ Source filter: all instances with tier #1 service account ג€¢ Protocols: allow TCP:8080 2. Create an ingress firewall rule with the following settings: ג€¢ Targets: all instances with tier #3 service account ג€¢ Source filter: all instances with tier #2 service account ג€¢ Protocols: allow TCP: 8080
-C. 1. Create an ingress firewall rule with the following settings: ג€¢ Targets: all instances with tier #2 service account ג€¢ Source filter: all instances with tier #1 service account ג€¢ Protocols: allow all 2. Create an ingress firewall rule with the following settings: ג€¢ Targets: all instances with tier #3 service account ג€¢ Source filter: all instances with tier #2 service account ג€¢ Protocols: allow all
-D. 1. Create an egress firewall rule with the following settings: ג€¢ Targets: all instances ג€¢ Source filter: IP ranges (with the range set to 10.0.2.0/24) ג€¢ Protocols: allow TCP: 8080 2. Create an egress firewall rule with the following settings: ג€¢ Targets: all instances ג€¢ Source filter: IP ranges (with the range set to 10.0.1.0/24) ג€¢ Protocols: allow TCP: 8080
+A. 1. Create an ingress firewall rule with the following settings: `¢ Targets: all instances `¢ Source filter: IP ranges (with the range set to 10.0.2.0/24) `¢ Protocols: allow all 2. Create an ingress firewall rule with the following settings: `¢ Targets: all instances `¢ Source filter: IP ranges (with the range set to 10.0.1.0/24) `¢ Protocols: allow all
+B. 1. Create an ingress firewall rule with the following settings: `¢ Targets: all instances with tier #2 service account `¢ Source filter: all instances with tier #1 service account `¢ Protocols: allow TCP:8080 2. Create an ingress firewall rule with the following settings: `¢ Targets: all instances with tier #3 service account `¢ Source filter: all instances with tier #2 service account `¢ Protocols: allow TCP: 8080
+C. 1. Create an ingress firewall rule with the following settings: `¢ Targets: all instances with tier #2 service account `¢ Source filter: all instances with tier #1 service account `¢ Protocols: allow all 2. Create an ingress firewall rule with the following settings: `¢ Targets: all instances with tier #3 service account `¢ Source filter: all instances with tier #2 service account `¢ Protocols: allow all
+D. 1. Create an egress firewall rule with the following settings: `¢ Targets: all instances `¢ Source filter: IP ranges (with the range set to 10.0.2.0/24) `¢ Protocols: allow TCP: 8080 2. Create an egress firewall rule with the following settings: `¢ Targets: all instances `¢ Source filter: IP ranges (with the range set to 10.0.1.0/24) `¢ Protocols: allow TCP: 8080
 
 **Answer: B**
 
@@ -952,10 +952,9 @@ D. Select the built-in IAM service Viewer role. Add the user's account to this r
 
 #### Question 81
 
-You are operating a Google Kubernetes Engine (GKE) cluster for your company where different teams can run non-production workloads. Your Machine Learning
-(ML) team needs access to Nvidia Tesla P100 GPUs to train their models. You want to minimize effort and cost. What should you do?
+You are operating a Google Kubernetes Engine (GKE) cluster for your company where different teams can run non-production workloads. Your Machine Learning (ML) team needs access to Nvidia Tesla P100 GPUs to train their models. You want to minimize effort and cost. What should you do?
 
-A. Ask your ML team to add the ג€accelerator: gpuג€ annotation to their pod specification.
+A. Ask your ML team to add the `accelerator: gpu` annotation to their pod specification.
 B. Recreate all the nodes of the GKE cluster to enable GPUs on all of them.
 C. Create your own Kubernetes cluster on top of Compute Engine with nodes that have GPUs. Dedicate this cluster to your ML team.
 D. Add a new, GPU-enabled, node pool to the GKE cluster. Ask your ML team to add the cloud.google.com/gke -accelerator: nvidia-tesla-p100 nodeSelector to their pod specification.
@@ -1361,9 +1360,9 @@ D. 1. Verify that you are assigned the Organizational Administrators IAM role fo
 
 You are configuring service accounts for an application that spans multiple projects. Virtual machines (VMs) running in the web-applications project need access to BigQuery datasets in crm-databases-proj. You want to follow Google-recommended practices to give access to the service account in the web-applications project. What should you do?
 
-A. Give ג€project ownerג€ for web-applications appropriate roles to crm-databases-proj.
-B. Give ג€project ownerג€ role to crm-databases-proj and the web-applications project.
-C. Give ג€project ownerג€ role to crm-databases-proj and bigquery.dataViewer role to web-applications.
+A. Give `project owner` for web-applications appropriate roles to crm-databases-proj.
+B. Give `project owner` role to crm-databases-proj and the web-applications project.
+C. Give `project owner` role to crm-databases-proj and bigquery.dataViewer role to web-applications.
 D. Give bigquery.dataViewer role to crm-databases-proj and appropriate roles to web-applications.
 
 **Answer: D (C)**
@@ -1469,8 +1468,8 @@ D. Create a Cloud Monitoring alerting policy to send an alert to webhook when Cl
 Your company publishes large files on an Apache web server that runs on a Compute Engine instance. The Apache web server is not the only application running in the project. You want to receive an email when the egress network costs for the server exceed 100 dollars for the current month as measured by Google Cloud.
 What should you do?
 
-A. Set up a budget alert on the project with an amount of 100 dollars, a threshold of 100%, and notification type of ג€email.ג€
-B. Set up a budget alert on the billing account with an amount of 100 dollars, a threshold of 100%, and notification type of ג€email.ג€
+A. Set up a budget alert on the project with an amount of 100 dollars, a threshold of 100%, and notification type of `email.`
+B. Set up a budget alert on the billing account with an amount of 100 dollars, a threshold of 100%, and notification type of `email.`
 C. Export the billing data to BigQuery. Create a Cloud Function that uses BigQuery to sum the egress network costs of the exported billing data for the Apache web server for the current month and sends an email if it is over 100 dollars. Schedule the Cloud Function using Cloud Scheduler to run hourly.
 D. Use the Cloud Logging Agent to export the Apache web server logs to Cloud Logging. Create a Cloud Function that uses BigQuery to parse the HTTP response log data in Cloud Logging for the current month and sends an email if the size of all HTTP responses, multiplied by current Google Cloud egress prices, totals over 100 dollars. Schedule the Cloud Function using Cloud Scheduler to run hourly.
 
@@ -1635,9 +1634,9 @@ You have downloaded and installed the gcloud command line interface (CLI) and ha
 What should you do?
 
 A. Set the europe-west1-d zone as the default zone using the gcloud config subcommand.
-B. In the Settings page for Compute Engine under Default location, set the zone to europeג€"west1-d.
-C. In the CLI installation directory, create a file called default.conf containing zone=europeג€"west1ג€"d.
-D. Create a Metadata entry on the Compute Engine page with key compute/zone and value europeג€"west1ג€"d.
+B. In the Settings page for Compute Engine under Default location, set the zone to europe`"west1-d.
+C. In the CLI installation directory, create a file called default.conf containing zone=europe`"west1`"d.
+D. Create a Metadata entry on the Compute Engine page with key compute/zone and value europe`"west1`"d.
 
 **Answer: A (C)**
 
@@ -1711,8 +1710,8 @@ D. Apply the changes in a development environment, run gcloud compute instances 
 
 You have a Compute Engine instance hosting an application used between 9 AM and 6 PM on weekdays. You want to back up this instance daily for disaster recovery purposes. You want to keep the backups for 30 days. You want the Google-recommended solution with the least management overhead and the least number of services. What should you do?
 
-A. 1. Update your instances' metadata to add the following value: snapshotג€"schedule: 0 1 * * * 2. Update your instances' metadata to add the following value: snapshotג€"retention: 30
-B. 1. In the Cloud Console, go to the Compute Engine Disks page and select your instance's disk. 2. In the Snapshot Schedule section, select Create Schedule and configure the following parameters: - Schedule frequency: Daily - Start time: 1:00 AM ג€" 2:00 AM - Autodelete snapshots after: 30 days
+A. 1. Update your instances' metadata to add the following value: snapshot`"schedule: 0 1 * * * 2. Update your instances' metadata to add the following value: snapshot`"retention: 30
+B. 1. In the Cloud Console, go to the Compute Engine Disks page and select your instance's disk. 2. In the Snapshot Schedule section, select Create Schedule and configure the following parameters: - Schedule frequency: Daily - Start time: 1:00 AM `" 2:00 AM - Autodelete snapshots after: 30 days
 C. 1. Create a Cloud Function that creates a snapshot of your instance's disk. 2. Create a Cloud Function that deletes snapshots that are older than 30 days. 3. Use Cloud Scheduler to trigger both Cloud Functions daily at 1:00 AM.
 D. 1. Create a bash script in the instance that copies the content of the disk to Cloud Storage. 2. Create a bash script in the instance that deletes data older than 30 days in the backup Cloud Storage bucket. 3. Configure the instance's crontab to execute these scripts daily at 1:00 AM.
 
@@ -1723,9 +1722,9 @@ D. 1. Create a bash script in the instance that copies the content of the disk t
 Your existing application running in Google Kubernetes Engine (GKE) consists of multiple pods running on four GKE n1`"standard`"2 nodes. You need to deploy additional pods requiring n2`"highmem`"16 nodes without any downtime. What should you do?
 
 A. Use gcloud container clusters upgrade. Deploy the new services.
-B. Create a new Node Pool and specify machine type n2ג€"highmemג€"16. Deploy the new pods.
-C. Create a new cluster with n2ג€"highmemג€"16 nodes. Redeploy the pods and delete the old cluster.
-D. Create a new cluster with both n1ג€"standardג€"2 and n2ג€"highmemג€"16 nodes. Redeploy the pods and delete the old cluster.
+B. Create a new Node Pool and specify machine type n2`"highmem`"16. Deploy the new pods.
+C. Create a new cluster with n2`"highmem`"16 nodes. Redeploy the pods and delete the old cluster.
+D. Create a new cluster with both n1`"standard`"2 and n2`"highmem`"16 nodes. Redeploy the pods and delete the old cluster.
 
 **Answer: B**
 
@@ -1746,10 +1745,10 @@ D. Create two separate BigQuery external tables on Cloud Storage and Cloud Bigta
 You are hosting an application from Compute Engine virtual machines (VMs) in us`"central1`"a. You want to adjust your design to support the failure of a single
 Compute Engine zone, eliminate downtime, and minimize cost. What should you do?
 
-A. ג€" Create Compute Engine resources in usג€"central1ג€"b. ג€" Balance the load across both usג€"central1ג€"a and usג€"central1ג€"b.
-B. ג€" Create a Managed Instance Group and specify usג€"central1ג€"a as the zone. ג€" Configure the Health Check with a short Health Interval.
-C. ג€" Create an HTTP(S) Load Balancer. ג€" Create one or more global forwarding rules to direct traffic to your VMs.
-D. ג€" Perform regular backups of your application. ג€" Create a Cloud Monitoring Alert and be notified if your application becomes unavailable. ג€" Restore from backups when notified.
+A. `" Create Compute Engine resources in us`"central1`"b. `" Balance the load across both us`"central1`"a and us`"central1`"b.
+B. `" Create a Managed Instance Group and specify us`"central1`"a as the zone. `" Configure the Health Check with a short Health Interval.
+C. `" Create an HTTP(S) Load Balancer. `" Create one or more global forwarding rules to direct traffic to your VMs.
+D. `" Perform regular backups of your application. `" Create a Cloud Monitoring Alert and be notified if your application becomes unavailable. `" Restore from backups when notified.
 
 **Answer: A**
 
@@ -1761,7 +1760,7 @@ Owner role. What should you do?
 A. In the console, validate which SSH keys have been stored as project-wide keys.
 B. Navigate to Identity-Aware Proxy and check the permissions for these resources.
 C. Enable Audit Logs on the IAM & admin page for all resources, and validate the results.
-D. Use the command gcloud projects getג€"iamג€"policy to view the current role assignments.
+D. Use the command gcloud projects get`"iam`"policy to view the current role assignments.
 
 **Answer: D (A)**
 
@@ -1863,7 +1862,7 @@ D. Create a single billing account for all sandbox projects and enable BigQuery 
 
 You are deploying a production application on Compute Engine. You want to prevent anyone from accidentally destroying the instance by clicking the wrong button. What should you do?
 
-A. Disable the flag ג€Delete boot disk when instance is deleted.ג€
+A. Disable the flag `Delete boot disk when instance is deleted.`
 B. Enable delete protection on the instance.
 C. Disable Automatic restart on the instance.
 D. Enable Preemptibility on the instance.
@@ -1949,7 +1948,7 @@ D. Deploy the container on App Engine flexible environment with manual scaling, 
 
 You have experimented with Google Cloud using your own credit card and expensed the costs to your company. Your company wants to streamline the billing process and charge the costs of your projects to their monthly invoice. What should you do?
 
-A. Grant the financial team the IAM role of ג€Billing Account Userג€ on the billing account linked to your credit card.
+A. Grant the financial team the IAM role of `Billing Account User` on the billing account linked to your credit card.
 B. Set up BigQuery billing export and grant your financial department IAM access to query the data.
 C. Create a ticket with Google Billing Support to ask them to send the invoice to your company.
 D. Change the billing account of your projects to the billing account of your company.
@@ -1994,7 +1993,7 @@ D. Configure an External Network load balancer in front of the application serve
 You are working for a hospital that stores its medical images in an on-premises data room. The hospital wants to use Cloud Storage for archival storage of these images. The hospital wants an automated process to upload any new medical images to Cloud Storage. You need to design and implement a solution. What should you do?
 
 A. Create a Pub/Sub topic, and enable a Cloud Storage trigger for the Pub/Sub topic. Create an application that sends all medical images to the Pub/Sub topic.
-B. Deploy a Dataflow job from the batch template, ג€Datastore to Cloud Storage.ג€ Schedule the batch job on the desired interval.
+B. Deploy a Dataflow job from the batch template, `Datastore to Cloud Storage.` Schedule the batch job on the desired interval.
 C. Create a script that uses the gsutil command line interface to synchronize the on-premises storage with Cloud Storage. Schedule the script as a cron job.
 D. In the Cloud Console, go to Cloud Storage. Upload the relevant images to the appropriate bucket.
 
@@ -2017,8 +2016,8 @@ You received a JSON file that contained a private key of a Service Account in or
 
 A. Use the command gcloud auth login and point it to the private key.
 B. Use the command gcloud auth activate-service-account and point it to the private key.
-C. Place the private key file in the installation directory of the Cloud SDK and rename it to ג€credentials.jsonג€.
-D. Place the private key file in your home directory and rename it to ג€GOOGLE_APPLICATION_CREDENTIALSג€.
+C. Place the private key file in the installation directory of the Cloud SDK and rename it to `credentials.json`.
+D. Place the private key file in your home directory and rename it to `GOOGLE_APPLICATION_CREDENTIALS`.
 
 **Answer: B**
 

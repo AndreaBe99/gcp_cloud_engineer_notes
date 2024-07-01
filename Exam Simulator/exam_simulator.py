@@ -30,7 +30,7 @@ class Color(Enum):
     END = "\033[0m"
 
 
-def extract_questions(num_questions=50) -> List[Tuple[str, str]]:
+def extract_questions(num_questions=50) -> List[Tuple[str, str, str, str, str, str]]:
     """
     Extract the questions and answers from a markdown file.
 
@@ -38,21 +38,19 @@ def extract_questions(num_questions=50) -> List[Tuple[str, str]]:
         num_questions (int): The number of questions to extract.
 
     Returns:
-        List[Tuple[str, str]]: A list of tuples containing the questions and answers.
+        List[Tuple[str, str, str, str, str, str]]: A list of tuples containing the
+            index, question, the four choices, and the correct answer.
     """
     # Read the content of the markdown file
     with open(PATH, "r", encoding="utf-8") as file:
         content = file.read()
 
-    # Extract the questions and answers from the content
-    questions = re.findall(
-        r"#### Question \d+\n\n(.*?)\n\n\*\*Answer: (.*?)\*\*", content, re.DOTALL
-    )
-
-    print(f"Questions extracted: {questions}")
+    # Extract the questions and answers using a regular expression
+    pattern = r"#### Question (\d+)(.*?)\n\n(A\..*?)(B\..*?)(C\..*?)(D\..*?)\n\n\*\*Answer: (.*?)\*\*"
+    matches = re.findall(pattern, content, re.DOTALL)
 
     # Select a random sample of questions
-    selected_questions = random.sample(questions, min(num_questions, len(questions)))
+    selected_questions = random.sample(matches, min(num_questions, len(matches)))
 
     return selected_questions
 
@@ -73,8 +71,19 @@ def simulate_exam() -> None:
 
     correct_answers = 0
     # Show each question and ask the user for an answer
-    for i, (question, answer) in enumerate(selected_questions, 1):
-        print(f"{Color.BOLD.value}Question {i}:\n{question}{Color.END.value}", end="\n\n")
+    for i, question in enumerate(selected_questions, 1):
+        index, text, choices_A, choices_B, choices_C, choices_D, answer = question
+
+        # Delete " \n\n" at the start of the question
+        text = text.replace("\n\n", "")
+
+        print(f"{Color.BOLD.value}Question {i} (n° {index}):{Color.END.value}")
+        print(f"{Color.BOLD.value}{text}{Color.END.value}", end="\n\n")
+        print(f"{Color.GREEN.value}{choices_A[0]}{Color.END.value}{choices_A[1:]}", end="")
+        print(f"{Color.RED.value}{choices_B[0]}{Color.END.value}{choices_B[1:]}", end="")
+        print(f"{Color.YELLOW.value}{choices_C[0]}{Color.END.value}{choices_C[1:]}", end="")
+        print(f"{Color.BLUE.value}{choices_D[0]}{Color.END.value}{choices_D[1:]}", end="\n\n")
+
         user_answer = input("Your answer: ").strip().upper()
         # Get only the most voted answer
         answer = answer.split(" ")[0].upper()
