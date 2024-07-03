@@ -1067,8 +1067,7 @@ Reference: https://cloud.google.com/storage/docs/managing-lifecycles
 
 #### Question 91
 
-Your company's infrastructure is on-premises, but all machines are running at maximum capacity. You want to burst to Google Cloud. The workloads on Google
-Cloud must be able to directly communicate to the workloads on-premises using a private IP range. What should you do?
+Your company's infrastructure is on-premises, but all machines are running at maximum capacity. You want to burst to Google Cloud. The workloads on Google Cloud must be able to directly communicate to the workloads on-premises using a private IP range. What should you do?
 
 A. In Google Cloud, configure the VPC as a host for Shared VPC.
 B. In Google Cloud, configure the VPC for VPC Network Peering.
@@ -1090,8 +1089,7 @@ D. Select Regional Storage. Add a bucket lifecycle rule that archives data after
 
 #### Question 93
 
-Your company uses BigQuery for data warehousing. Over time, many different business units in your company have created 1000+ datasets across hundreds of projects. Your CIO wants you to examine all datasets to find tables that contain an employee_ssn column. You want to minimize effort in performing this task.
-What should you do?
+Your company uses BigQuery for data warehousing. Over time, many different business units in your company have created 1000+ datasets across hundreds of projects. Your CIO wants you to examine all datasets to find tables that contain an employee_ssn column. You want to minimize effort in performing this task. What should you do?
 
 A. Go to Data Catalog and search for employee_ssn in the search box.
 B. Write a shell script that uses the bq command line tool to loop through all the projects in your organization.
@@ -1298,8 +1296,7 @@ D. Ask the security team to grant you the Project Editor role in an existing pro
 
 #### Question 111
 
-Your management has asked an external auditor to review all the resources in a specific project. The security team has enabled the Organization Policy called
-Domain Restricted Sharing on the organization node by specifying only your Cloud Identity domain. You want the auditor to only be able to view, but not modify, the resources in that project. What should you do?
+Your management has asked an external auditor to review all the resources in a specific project. The security team has enabled the Organization Policy called Domain Restricted Sharing on the organization node by specifying only your Cloud Identity domain. You want the auditor to only be able to view, but not modify, the resources in that project. What should you do?
 
 A. Ask the auditor for their Google account, and give them the Viewer role on the project.
 B. Ask the auditor for their Google account, and give them the Security Reviewer role on the project.
@@ -1321,8 +1318,7 @@ D. Create a Cloud Task to create an image and export it to Cloud Storage.
 
 #### Question 113
 
-You need to assign a Cloud Identity and Access Management (Cloud IAM) role to an external auditor. The auditor needs to have permissions to review your
-Google Cloud Platform (GCP) Audit Logs and also to review your Data Access logs. What should you do?
+You need to assign a Cloud Identity and Access Management (Cloud IAM) role to an external auditor. The auditor needs to have permissions to review your Google Cloud Platform (GCP) Audit Logs and also to review your Data Access logs. What should you do?
 
 A. Assign the auditor the IAM role roles/logging.privateLogViewer. Perform the export of logs to Cloud Storage.
 B. Assign the auditor the IAM role roles/logging.privateLogViewer. Direct the auditor to also review the logs for changes to Cloud IAM policy.
@@ -1346,8 +1342,7 @@ Reference: https://cloud.google.com/blog/products/gcp/best-practices-for-working
 
 #### Question 115
 
-You need to reduce GCP service costs for a division of your company using the fewest possible steps. You need to turn off all configured services in an existing
-GCP project. What should you do?
+You need to reduce GCP service costs for a division of your company using the fewest possible steps. You need to turn off all configured services in an existing GCP project. What should you do?
 
 A. 1. Verify that you are assigned the Project Owners IAM role for this project. 2. Locate the project in the GCP console, click Shut down and then enter the project ID.
 B. 1. Verify that you are assigned the Project Owners IAM role for this project. 2. Switch to the project in the GCP console, locate the resources and delete them.
@@ -1465,8 +1460,7 @@ D. Create a Cloud Monitoring alerting policy to send an alert to webhook when Cl
 
 #### Question 125
 
-Your company publishes large files on an Apache web server that runs on a Compute Engine instance. The Apache web server is not the only application running in the project. You want to receive an email when the egress network costs for the server exceed 100 dollars for the current month as measured by Google Cloud.
-What should you do?
+Your company publishes large files on an Apache web server that runs on a Compute Engine instance. The Apache web server is not the only application running in the project. You want to receive an email when the egress network costs for the server exceed 100 dollars for the current month as measured by Google Cloud. What should you do?
 
 A. Set up a budget alert on the project with an amount of 100 dollars, a threshold of 100%, and notification type of `email.`
 B. Set up a budget alert on the billing account with an amount of 100 dollars, a threshold of 100%, and notification type of `email.`
@@ -1501,8 +1495,8 @@ Reference: https://cloud.google.com/load-balancing/docs/ssl
 
 #### Question 128
 
-You have an application on a general-purpose Compute Engine instance that is experiencing excessive disk read throttling on its Zonal SSD Persistent Disk. The application primarily reads large files from disk. The disk size is currently 350 GB. You want to provide the maximum amount of throughput while minimizing costs.
-What should you do?
+You have an application on a general-purpose Compute Engine instance that is experiencing excessive disk read throttling on its Zonal SSD Persistent Disk. The application primarily reads large files from disk. The disk size is currently 350 GB. You want to provide the maximum amount of throughput while minimizing costs. What should you do?
+
 A. Increase the size of the disk to 1 TB.
 B. Increase the allocated CPU to the instance.
 C. Migrate to use a Local SSD on the instance.
@@ -1526,8 +1520,7 @@ D. Create a new VPC network for the VMs with a subnet of 172.32.0.0/16. Enable V
 
 #### Question 130
 
-You manage an App Engine Service that aggregates and visualizes data from BigQuery. The application is deployed with the default App Engine Service account.
-The data that needs to be visualized resides in a different project managed by another team. You do not have access to this project, but you want your application to be able to read data from the BigQuery dataset. What should you do?
+You manage an App Engine Service that aggregates and visualizes data from BigQuery. The application is deployed with the default App Engine Service account. The data that needs to be visualized resides in a different project managed by another team. You do not have access to this project, but you want your application to be able to read data from the BigQuery dataset. What should you do?
 
 A. Ask the other team to grant your default App Engine Service account the role of BigQuery Job User.
 B. Ask the other team to grant your default App Engine Service account the role of BigQuery Data Viewer.
@@ -1536,15 +1529,12 @@ D. In Cloud IAM of your project, grant a newly created service account from the 
 
 **Answer: B**
 
-The Owner, Editor, and Viewer primitive roles include the BigQuery Admin (roles/bigquery.dataOwner), BigQuery Data Editor (roles/bigquery.dataEditor), and
-BigQuery Data Viewer (roles/bigquery.dataViewer) roles, respectively. This means the Owner, Editor, and Viewer primitive roles have BigQuery access as defined for the respective BigQuery roles.
-
+The Owner, Editor, and Viewer primitive roles include the BigQuery Admin (roles/bigquery.dataOwner), BigQuery Data Editor (roles/bigquery.dataEditor), and BigQuery Data Viewer (roles/bigquery.dataViewer) roles, respectively. This means the Owner, Editor, and Viewer primitive roles have BigQuery access as defined for the respective BigQuery roles.
 Reference: https://cloud.google.com/bigquery/docs/access-control
 
 #### Question 131
 
-You need to create a copy of a custom Compute Engine virtual machine (VM) to facilitate an expected increase in application traffic due to a business acquisition.
-What should you do?
+You need to create a copy of a custom Compute Engine virtual machine (VM) to facilitate an expected increase in application traffic due to a business acquisition. What should you do?
 
 A. Create a Compute Engine snapshot of your base VM. Create your images from that snapshot.
 B. Create a Compute Engine snapshot of your base VM. Create your instances from that snapshot.
@@ -1630,8 +1620,7 @@ Reference: https://cloud.google.com/solutions/jenkins-on-kubernetes-engine
 
 #### Question 138
 
-You have downloaded and installed the gcloud command line interface (CLI) and have authenticated with your Google Account. Most of your Compute Engine instances in your project run in the europe-west1-d zone. You want to avoid having to specify this zone with each CLI command when managing these instances.
-What should you do?
+You have downloaded and installed the gcloud command line interface (CLI) and have authenticated with your Google Account. Most of your Compute Engine instances in your project run in the europe-west1-d zone. You want to avoid having to specify this zone with each CLI command when managing these instances. What should you do?
 
 A. Set the europe-west1-d zone as the default zone using the gcloud config subcommand.
 B. In the Settings page for Compute Engine under Default location, set the zone to europe`"west1-d.
@@ -1681,8 +1670,7 @@ Reference: https://cloud.google.com/billing/docs/how-to/visualize-data
 
 #### Question 142
 
-Your company has workloads running on Compute Engine and on-premises. The Google Cloud Virtual Private Cloud (VPC) is connected to your WAN over a
-Virtual Private Network (VPN). You need to deploy a new Compute Engine instance and ensure that no public Internet traffic can be routed to it. What should you do?
+Your company has workloads running on Compute Engine and on-premises. The Google Cloud Virtual Private Cloud (VPC) is connected to your WAN over a Virtual Private Network (VPN). You need to deploy a new Compute Engine instance and ensure that no public Internet traffic can be routed to it. What should you do?
 
 A. Create the instance without a public IP address.
 B. Create the instance with Private Google Access enabled.
@@ -1730,8 +1718,7 @@ D. Create a new cluster with both n1`"standard`"2 and n2`"highmem`"16 nodes. Red
 
 #### Question 146
 
-You have an application that uses Cloud Spanner as a database backend to keep current state information about users. Cloud Bigtable logs all events triggered by users. You export Cloud Spanner data to Cloud Storage during daily backups. One of your analysts asks you to join data from Cloud Spanner and Cloud
-Bigtable for specific users. You want to complete this ad hoc request as efficiently as possible. What should you do?
+You have an application that uses Cloud Spanner as a database backend to keep current state information about users. Cloud Bigtable logs all events triggered by users. You export Cloud Spanner data to Cloud Storage during daily backups. One of your analysts asks you to join data from Cloud Spanner and Cloud Bigtable for specific users. You want to complete this ad hoc request as efficiently as possible. What should you do?
 
 A. Create a dataflow job that copies data from Cloud Bigtable and Cloud Storage for specific users.
 B. Create a dataflow job that copies data from Cloud Bigtable and Cloud Spanner for specific users.
@@ -1742,8 +1729,7 @@ D. Create two separate BigQuery external tables on Cloud Storage and Cloud Bigta
 
 #### Question 147
 
-You are hosting an application from Compute Engine virtual machines (VMs) in us`"central1`"a. You want to adjust your design to support the failure of a single
-Compute Engine zone, eliminate downtime, and minimize cost. What should you do?
+You are hosting an application from Compute Engine virtual machines (VMs) in us`"central1`"a. You want to adjust your design to support the failure of a single Compute Engine zone, eliminate downtime, and minimize cost. What should you do?
 
 A. `" Create Compute Engine resources in us`"central1`"b. `" Balance the load across both us`"central1`"a and us`"central1`"b.
 B. `" Create a Managed Instance Group and specify us`"central1`"a as the zone. `" Configure the Health Check with a short Health Interval.
@@ -1754,8 +1740,7 @@ D. `" Perform regular backups of your application. `" Create a Cloud Monitoring 
 
 #### Question 148
 
-A colleague handed over a Google Cloud Platform project for you to maintain. As part of a security checkup, you want to review who has been granted the Project
-Owner role. What should you do?
+A colleague handed over a Google Cloud Platform project for you to maintain. As part of a security checkup, you want to review who has been granted the Project Owner role. What should you do?
 
 A. In the console, validate which SSH keys have been stored as project-wide keys.
 B. Navigate to Identity-Aware Proxy and check the permissions for these resources.
@@ -1801,8 +1786,7 @@ D. Set up a high-priority (1000) rule to allow the appropriate ports.
 
 #### Question 152
 
-Your company runs its Linux workloads on Compute Engine instances. Your company will be working with a new operations partner that does not use Google
-Accounts. You need to grant access to the instances to your operations partner so they can maintain the installed tooling. What should you do?
+Your company runs its Linux workloads on Compute Engine instances. Your company will be working with a new operations partner that does not use Google Accounts. You need to grant access to the instances to your operations partner so they can maintain the installed tooling. What should you do?
 
 A. Enable Cloud IAP for the Compute Engine instances, and add the operations partner as a Cloud IAP Tunnel User.
 B. Tag all the instances with the same network tag. Create a firewall rule in the VPC to grant TCP access on port 22 for traffic from the operations partner to instances with the network tag.
@@ -1826,8 +1810,7 @@ D. Use Dataflow as a batch job, and configure the bucket as a data source.
 
 #### Question 154
 
-You have been asked to set up Object Lifecycle Management for objects stored in storage buckets. The objects are written once and accessed frequently for 30 days. After 30 days, the objects are not read again unless there is a special need. The objects should be kept for three years, and you need to minimize cost.
-What should you do?
+You have been asked to set up Object Lifecycle Management for objects stored in storage buckets. The objects are written once and accessed frequently for 30 days. After 30 days, the objects are not read again unless there is a special need. The objects should be kept for three years, and you need to minimize cost. What should you do?
 
 A. Set up a policy that uses Nearline storage for 30 days and then moves to Archive storage for three years.
 B. Set up a policy that uses Standard storage for 30 days and then moves to Archive storage for three years.
@@ -1871,8 +1854,7 @@ D. Enable Preemptibility on the instance.
 
 #### Question 158
 
-Your company uses a large number of Google Cloud services centralized in a single project. All teams have specific projects for testing and development. The
-DevOps team needs access to all of the production services in order to perform their job. You want to prevent Google Cloud product changes from broadening their permissions in the future. You want to follow Google-recommended practices. What should you do?
+Your company uses a large number of Google Cloud services centralized in a single project. All teams have specific projects for testing and development. The DevOps team needs access to all of the production services in order to perform their job. You want to prevent Google Cloud product changes from broadening their permissions in the future. You want to follow Google-recommended practices. What should you do?
 
 A. Grant all members of the DevOps team the role of Project Editor on the organization level.
 B. Grant all members of the DevOps team the role of Project Editor on the production project.
@@ -1911,8 +1893,7 @@ D. Create a bash script that contains all requirement steps as gcloud commands.
 
 #### Question 161
 
-You are performing a monthly security check of your Google Cloud environment and want to know who has access to view data stored in your Google Cloud
-Project. What should you do?
+You are performing a monthly security check of your Google Cloud environment and want to know who has access to view data stored in your Google Cloud Project. What should you do?
 
 A. Enable Audit Logs for all APIs that are related to data storage.
 B. Review the IAM permissions for any role that allows for data access.
@@ -1923,8 +1904,7 @@ D. Create a Data Loss Prevention job.
 
 #### Question 162
 
-Your company has embraced a hybrid cloud strategy where some of the applications are deployed on Google Cloud. A Virtual Private Network (VPN) tunnel connects your Virtual Private Cloud (VPC) in Google Cloud with your company's on-premises network. Multiple applications in Google Cloud need to connect to an on-premises database server, and you want to avoid having to change the IP configuration in all of your applications when the IP of the database changes.
-What should you do?
+Your company has embraced a hybrid cloud strategy where some of the applications are deployed on Google Cloud. A Virtual Private Network (VPN) tunnel connects your Virtual Private Cloud (VPC) in Google Cloud with your company's on-premises network. Multiple applications in Google Cloud need to connect to an on-premises database server, and you want to avoid having to change the IP configuration in all of your applications when the IP of the database changes. What should you do?
 
 A. Configure Cloud NAT for all subnets of your VPC to be used when egressing from the VM instances.
 B. Create a private zone on Cloud DNS, and configure the applications with the DNS name.
@@ -2023,8 +2003,7 @@ D. Place the private key file in your home directory and rename it to `GOOGLE_AP
 
 #### Question 171
 
-You are working with a Cloud SQL MySQL database at your company. You need to retain a month-end copy of the database for three years for audit purposes.
-What should you do?
+You are working with a Cloud SQL MySQL database at your company. You need to retain a month-end copy of the database for three years for audit purposes. What should you do?
 
 A. Set up an export job for the first of the month. Write the export file to an Archive class Cloud Storage bucket.
 B. Save the automatic first-of-the-month backup for three years. Store the backup file in an Archive class Cloud Storage bucket.
@@ -2113,8 +2092,7 @@ D. Assign the IAM role of BigQuery User to a Google Group that contains the memb
 
 #### Question 179
 
-Your company is moving its entire workload to Compute Engine. Some servers should be accessible through the Internet, and other servers should only be accessible over the internal network. All servers need to be able to talk to each other over specific ports and protocols. The current on-premises network relies on a demilitarized zone (DMZ) for the public servers and a Local Area Network (LAN) for the private servers. You need to design the networking infrastructure on
-Google Cloud to match these requirements. What should you do?
+Your company is moving its entire workload to Compute Engine. Some servers should be accessible through the Internet, and other servers should only be accessible over the internal network. All servers need to be able to talk to each other over specific ports and protocols. The current on-premises network relies on a demilitarized zone (DMZ) for the public servers and a Local Area Network (LAN) for the private servers. You need to design the networking infrastructure on Google Cloud to match these requirements. What should you do?
 
 A. 1. Create a single VPC with a subnet for the DMZ and a subnet for the LAN. 2. Set up firewall rules to open up relevant traffic between the DMZ and the LAN subnets, and another firewall rule to allow public ingress traffic for the DMZ.
 B. 1. Create a single VPC with a subnet for the DMZ and a subnet for the LAN. 2. Set up firewall rules to open up relevant traffic between the DMZ and the LAN subnets, and another firewall rule to allow public egress traffic for the DMZ.
@@ -2136,8 +2114,7 @@ D. Grant yourself the IAM role of Cloud Spanner Admin.
 
 #### Question 181
 
-You have created a new project in Google Cloud through the gcloud command line interface (CLI) and linked a billing account. You need to create a new Compute
-Engine instance using the CLI. You need to perform the prerequisite steps. What should you do?
+You have created a new project in Google Cloud through the gcloud command line interface (CLI) and linked a billing account. You need to create a new Compute Engine instance using the CLI. You need to perform the prerequisite steps. What should you do?
 
 A. Create a Cloud Monitoring Workspace.
 B. Create a VPC network in the project.
@@ -2247,8 +2224,7 @@ D. Create a new project named Marketing Data Digest and use the ID acme-data-dig
 
 #### Question 191
 
-You have deployed multiple Linux instances on Compute Engine. You plan on adding more instances in the coming weeks. You want to be able to access all of these instances through your SSH client over the internet without having to configure specific access on the existing and new instances. You do not want the
-Compute Engine instances to have a public IP. What should you do?
+You have deployed multiple Linux instances on Compute Engine. You plan on adding more instances in the coming weeks. You want to be able to access all of these instances through your SSH client over the internet without having to configure specific access on the existing and new instances. You do not want the Compute Engine instances to have a public IP. What should you do?
 
 A. Configure Cloud Identity-Aware Proxy for HTTPS resources.
 B. Configure Cloud Identity-Aware Proxy for SSH and TCP resources
@@ -2270,8 +2246,7 @@ D. Upload the image to Container Registry and create a Kubernetes Deployment ref
 
 #### Question 193
 
-You are using Data Studio to visualize a table from your data warehouse that is built on top of BigQuery. Data is appended to the data warehouse during the day.
-At night, the daily summary is recalculated by overwriting the table. You just noticed that the charts in Data Studio are broken, and you want to analyze the problem. What should you do?
+You are using Data Studio to visualize a table from your data warehouse that is built on top of BigQuery. Data is appended to the data warehouse during the day. At night, the daily summary is recalculated by overwriting the table. You just noticed that the charts in Data Studio are broken, and you want to analyze the problem. What should you do?
 
 A. Review the Error Reporting page in the Cloud Console to find any errors.
 B. Use the BigQuery interface to review the nightly job and look for any errors.
