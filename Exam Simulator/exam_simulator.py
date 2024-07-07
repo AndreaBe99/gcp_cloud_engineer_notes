@@ -72,21 +72,37 @@ def simulate_exam() -> None:
     correct_answers = 0
     # Show each question and ask the user for an answer
     for i, question in enumerate(selected_questions, 1):
-        index, text, choices_A, choices_B, choices_C, choices_D, answer = question
-
+        index, text, *choices, answer = question
         # Delete " \n\n" at the start of the question
         text = text.replace("\n\n", "")
-
-        print(f"{Color.BOLD.value}Question {i} (n° {index}):{Color.END.value}")
-        print(f"{Color.BOLD.value}{text}{Color.END.value}", end="\n\n")
-        print(f"{Color.GREEN.value}{choices_A[0]}{Color.END.value}{choices_A[1:]}", end="")
-        print(f"{Color.RED.value}{choices_B[0]}{Color.END.value}{choices_B[1:]}", end="")
-        print(f"{Color.YELLOW.value}{choices_C[0]}{Color.END.value}{choices_C[1:]}", end="")
-        print(f"{Color.BLUE.value}{choices_D[0]}{Color.END.value}{choices_D[1:]}", end="\n\n")
-
-        user_answer = input("Your answer: ").strip().upper()
         # Get only the most voted answer
         answer = answer.split(" ")[0].upper()
+        
+        # Replace newlines in the choices
+        choices = [choice.replace("\n", " ") for choice in choices]
+        # Split the choices into the letter and the text
+        try:
+            choices_A, choices_B, choices_C, choices_D, choices_E = choices
+        except ValueError:
+            choices_A, choices_B, choices_C, choices_D = choices    
+            choices_E = None
+
+        # Print the question
+        print(f"{Color.BOLD.value}Question {i} (n° {index}):{Color.END.value}")
+        print(f"{Color.BOLD.value}{text}{Color.END.value}", end="\n\n")
+        
+        # Print the choices
+        print(f"{Color.GREEN.value}{choices_A[0]}{Color.END.value}{choices_A[1:]}")
+        print(f"{Color.RED.value}{choices_B[0]}{Color.END.value}{choices_B[1:]}")
+        print(f"{Color.YELLOW.value}{choices_C[0]}{Color.END.value}{choices_C[1:]}")
+        if choices_E:
+            print(f"{Color.BLUE.value}{choices_D[0]}{Color.END.value}{choices_D[1:]}")
+            print(f"{Color.PURPLE.value}{choices_E[0]}{Color.END.value}{choices_E[1:]}", end="\n\n")
+        else:
+            print(f"{Color.BLUE.value}{choices_D[0]}{Color.END.value}{choices_D[1:]}", end="\n\n")
+        
+        # Ask the user for an answer
+        user_answer = input("Your answer: ").strip().upper()
         # Check if the answer is correct and provide feedback
         if user_answer in answer:
             print(f"{Color.GREEN.value}Correct!{Color.END.value}", end="\n\n")

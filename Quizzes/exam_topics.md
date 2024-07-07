@@ -258,6 +258,7 @@ D. Activate two configurations using gcloud configurations activate [NAME]. Run 
 #### Question 22
 
 You significantly changed a complex Deployment Manager template and want to confirm that the dependencies of all defined resources are properly met before committing it to the project. You want the most rapid feedback on your changes. What should you do?
+
 A. Use granular logging statements within a Deployment Manager template authored in Python.
 B. Monitor activity of the Deployment Manager execution on the Stackdriver Logging page of the GCP Console.
 C. Execute the Deployment Manager template against a separate project with the same configuration, and monitor for failures.
