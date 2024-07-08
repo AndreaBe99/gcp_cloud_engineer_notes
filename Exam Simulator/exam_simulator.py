@@ -46,7 +46,7 @@ def extract_questions(num_questions=50) -> List[Tuple[str, str, str, str, str, s
         content = file.read()
 
     # Extract the questions and answers using a regular expression
-    pattern = r"#### Question (\d+)(.*?)\n\n(A\..*?)(B\..*?)(C\..*?)(D\..*?)\n\n\*\*Answer: (.*?)\*\*"
+    pattern = r"#### Question (\d+)(.*?)\n\n(A\..*?)\n(B\..*?)\n(C\..*?)(D\..*?)\n\n\*\*Answer: (.*?)\*\*"
     matches = re.findall(pattern, content, re.DOTALL)
 
     # Select a random sample of questions
@@ -77,30 +77,29 @@ def simulate_exam() -> None:
         text = text.replace("\n\n", "")
         # Get only the most voted answer
         answer = answer.split(" ")[0].upper()
-        
         # Replace newlines in the choices
         choices = [choice.replace("\n", " ") for choice in choices]
-        # Split the choices into the letter and the text
-        try:
-            choices_A, choices_B, choices_C, choices_D, choices_E = choices
-        except ValueError:
-            choices_A, choices_B, choices_C, choices_D = choices    
-            choices_E = None
 
         # Print the question
         print(f"{Color.BOLD.value}Question {i} (n° {index}):{Color.END.value}")
         print(f"{Color.BOLD.value}{text}{Color.END.value}", end="\n\n")
-        
         # Print the choices
-        print(f"{Color.GREEN.value}{choices_A[0]}{Color.END.value}{choices_A[1:]}")
-        print(f"{Color.RED.value}{choices_B[0]}{Color.END.value}{choices_B[1:]}")
-        print(f"{Color.YELLOW.value}{choices_C[0]}{Color.END.value}{choices_C[1:]}")
-        if choices_E:
-            print(f"{Color.BLUE.value}{choices_D[0]}{Color.END.value}{choices_D[1:]}")
-            print(f"{Color.PURPLE.value}{choices_E[0]}{Color.END.value}{choices_E[1:]}", end="\n\n")
-        else:
-            print(f"{Color.BLUE.value}{choices_D[0]}{Color.END.value}{choices_D[1:]}", end="\n\n")
-        
+        for choice in choices:
+            color = (
+                Color.GREEN
+                if choice.startswith("A")
+                else Color.RED
+                if choice.startswith("B")
+                else Color.YELLOW
+                if choice.startswith("C")
+                else Color.BLUE
+                if choice.startswith("D")
+                else Color.PURPLE
+            )
+            print(f"{color.value}{choice[0]}{Color.END.value}{choice[1:]}", end="\n")
+        # Print a newline
+        print(" ")
+
         # Ask the user for an answer
         user_answer = input("Your answer: ").strip().upper()
         # Check if the answer is correct and provide feedback
