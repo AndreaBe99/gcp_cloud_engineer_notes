@@ -3134,3 +3134,147 @@ C. Use Storage Transfer Service for the video files, BigQuery Data Transfer Serv
 D. Use Cloud Data Fusion for the video files, Dataflow for the data warehouse data, and Storage Transfer Service for the PNG files.
 
 **Answer: B (A)**
+
+#### Question 267
+
+You want to deploy a new containerized application into Google Cloud by using a Kubernetes manifest. You want to have full control over the Kubernetes deployment, and at the same time, you want to minimize configuring infrastructure. What should you do?
+
+A. Deploy the application on GKE Autopilot.
+B. Deploy the application on Cloud Run.
+C. Deploy the application on GKE Standard.
+D. Deploy the application on Cloud Functions.
+
+**Answer: A (C)**
+
+#### Question 268
+
+Your team is building a website that handles votes from a large user population. The incoming votes will arrive at various rates. You want to optimize the storage and processing of the votes. What should you do?
+
+A. Save the incoming votes to Firestore. Use Cloud Scheduler to trigger a Cloud Functions instance to periodically process the votes.
+B. Use a dedicated instance to process the incoming votes. Send the votes directly to this instance.
+C. Save the incoming votes to a JSON file on Cloud Storage. Process the votes in a batch at the end of the day.
+D. Save the incoming votes to Pub/Sub. Use the Pub/Sub topic to trigger a Cloud Functions instance to process the votes.
+
+**Answer: D**
+
+#### Question 269
+
+You are deploying an application on Google Cloud that requires a relational database for storage. To satisfy your company’s security policies, your application must connect to your database through an encrypted and authenticated connection that requires minimal management and integrates with Identity and Access Management (IAM). What should you do?
+
+A. Deploy a Cloud SQL database with the SSL mode set to encrypted only, configure SSL/TLS client certificates, and configure a database user and password.
+B. Deploy a Cloud SQL database with the SSL mode set to encrypted only, configure SSL/TLS client certificates, and configure IAM database authentication.
+C. Deploy a Cloud SQL database and configure IAM database authentication. Access the database through the Cloud SQL Auth Proxy.
+D. Deploy a Cloud SQL database and configure a database user and password. Access the database through the Cloud SQL Auth Proxy.
+
+**Answer: C**
+
+#### Question 270
+
+You have two Google Cloud projects: project-a with VPC vpc-a (10.0.0.0/16) and project-b with VPC vpc-b (10.8.0.0/16). Your frontend application resides in vpc-a and the backend API services are deployed in vpc-b. You need to efficiently and cost-effectively enable communication between these Google Cloud projects. You also want to follow Google-recommended practices. What should you do?
+
+A. Create an OpenVPN connection between vpc-a and vpc-b.
+B. Create VPC Network Peering between vpc-a and vpc-b.
+C. Configure a Cloud Router in vpc-a and another Cloud Router in vpc-b.
+D. Configure a Cloud Interconnect connection between vpc-a and vpc-b.
+
+**Answer: B**
+
+#### Question 271
+
+Your company is running a critical workload on a single Compute Engine VM instance. Your company's disaster recovery policies require you to back up the entire instance’s disk data every day. The backups must be retained for 7 days. You must configure a backup solution that complies with your company’s security policies and requires minimal setup and configuration. What should you do?
+
+A. Configure the instance to use persistent disk asynchronous replication.
+B. Configure daily scheduled persistent disk snapshots with a retention period of 7 days.
+C. Configure Cloud Scheduler to trigger a Cloud Function each day that creates a new machine image and deletes machine images that are older than 7 days.
+D. Configure a bash script using gsutil to run daily through a cron job. Copy the disk’s files to a Cloud Storage bucket with archive storage class and an object lifecycle rule to delete the objects after 7 days.
+
+**Answer: B**
+
+#### Question 272
+
+Your company requires that Google Cloud products are created with a specific configuration to comply with your company’s security policies. You need to implement a mechanism that will allow software engineers at your company to deploy and update Google Cloud products in a preconfigured and approved manner. What should you do?
+
+A. Create Java packages that utilize the Google Cloud Client Libraries for Java to configure Google Cloud products. Store and share the packages in a source code repository.
+B. Create bash scripts that utilize the Google Cloud CLI to configure Google Cloud products. Store and share the bash scripts in a source code repository.
+C. Use the Google Cloud APIs by using curl to configure Google Cloud products. Store and share the curl commands in a source code repository.
+D. Create Terraform modules that utilize the Google Cloud Terraform Provider to configure Google Cloud products. Store and share the modules in a source code repository.
+
+**Answer: D**
+
+#### Question 273
+
+You are a Google Cloud organization administrator. You need to configure organization policies and log sinks on Google Cloud projects that cannot be removed by project users to comply with your company's security policies. The security policies are different for each company department. Each company department has a user with the Project Owner role assigned to their projects. What should you do?
+
+A. Use a standard naming convention for projects that includes the department name. Configure organization policies on the organization and log sinks on the projects.
+B. Use a standard naming convention for projects that includes the department name. Configure both organization policies and log sinks on the projects.
+C. Organize projects under folders for each department. Configure both organization policies and log sinks on the folders.
+D. Organize projects under folders for each department. Configure organization policies on the organization and log sinks on the folders.
+
+**Answer: C**
+
+#### Question 274
+
+You are deploying a web application using Compute Engine. You created a managed instance group (MIG) to host the application. You want to follow Google-recommended practices to implement a secure and highly available solution. What should you do?
+
+A. Use SSL proxy load balancing for the MIG and an A record in your DNS private zone with the load balancer's IP address.
+B. Use SSL proxy load balancing for the MIG and a CNAME record in your DNS public zone with the load balancer’s IP address.
+C. Use HTTP(S) load balancing for the MIG and a CNAME record in your DNS private zone with the load balancer’s IP address.
+D. Use HTTP(S) load balancing for the MIG and an A record in your DNS public zone with the load balancer’s IP address.
+
+**Answer: D**
+
+#### Question 275
+
+You have several hundred microservice applications running in a Google Kubernetes Engine (GKE) cluster. Each microservice is a deployment with resource limits configured for each container in the deployment. You've observed that the resource limits for memory and CPU are not appropriately set for many of the microservices. You want to ensure that each microservice has right sized limits for memory and CPU. What should you do?
+
+A. Configure a Vertical Pod Autoscaler for each microservice.
+B. Modify the cluster's node pool machine type and choose a machine type with more memory and CPU.
+C. Configure a Horizontal Pod Autoscaler for each microservice.
+D. Configure GKE cluster autoscaling.
+
+**Answer: A**
+
+#### Question 276
+
+Your company uses BigQuery to store and analyze data. Upon submitting your query in BigQuery, the query fails with a quotaExceeded error. You need to diagnose the issue causing the error. What should you do? (Choose two.)
+
+A. Use BigQuery BI Engine to analyze the issue.
+B. Use the INFORMATION_SCHEMA views to analyze the underlying issue.
+C. Configure Cloud Trace to analyze the issue.
+D. Search errors in Cloud Audit Logs to analyze the issue.
+E. View errors in Cloud Monitoring to analyze the issue.
+
+**Answer: B-D**
+
+#### Question 277
+
+Your team has developed a stateless application which requires it to be run directly on virtual machines. The application is expected to receive a fluctuating amount of traffic and needs to scale automatically. You need to deploy the application. What should you do?
+
+A. Deploy the application on a managed instance group and configure autoscaling.
+B. Deploy the application on a Kubernetes Engine cluster and configure node pool autoscaling.
+C. Deploy the application on Cloud Functions and configure the maximum number instances.
+D. Deploy the application on Cloud Run and configure autoscaling.
+
+**Answer: A**
+
+#### Question 278
+
+Your web application is hosted on Cloud Run and needs to query a Cloud SQL database. Every morning during a traffic spike, you notice API quota errors in Cloud SQL logs. The project has already reached the maximum API quota. You want to make a configuration change to mitigate the issue. What should you do?
+
+A. Modify the minimum number of Cloud Run instances.
+B. Use traffic splitting.
+C. Modify the maximum number of Cloud Run instances.
+D. Set a minimum concurrent requests environment variable for the application.
+
+**Answer: A**
+
+#### Question 279
+
+You need to deploy a single stateless web application with a web interface and multiple endpoints. For security reasons, the web application must be reachable from an internal IP address from your company's private VPC and on-premises network. You also need to update the web application multiple times per day with minimal effort and want to manage a minimal amount of cloud infrastructure. What should you do?
+
+A. Deploy the web application on Google Kubernetes Engine standard edition with an internal ingress.
+B. Deploy the web application on Cloud Run with Private Google Access configured.
+C. Deploy the web application on Cloud Run with Private Service Connect configured.
+D. Deploy the web application to GKE Autopilot with Private Google Access configured.
+
+**Answer: C (B)**
