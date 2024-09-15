@@ -16,8 +16,6 @@
 <p align="center">
 Associate Cloud Engineers deploy applications, monitor operations, and manage enterprise solutions. They use Google Cloud Console and the command-line interface to perform common platform-based tasks to maintain one or more deployed solutions that leverage Google-managed or self-managed services on Google Cloud.
 <br />  
-My ACE <a href = "https://www.credential.net/41bc5a7f-4c35-4f98-8b60-c5ae4156edbd">Certification</a> | <a href = "https://www.cloudskillsboost.google/public_profiles/096e04ea-cbfa-4dc2-8da6-ac9b2ded8ee2">cloudskillboost</a> profile
-</p>
 
 **The Associate Cloud Engineer exam assesses your ability to:**
 
@@ -27,13 +25,13 @@ My ACE <a href = "https://www.credential.net/41bc5a7f-4c35-4f98-8b60-c5ae4156edb
 - Ensure successful operation of a cloud solution
 - Configure access and security
 
-<div align="center">
+**EXAM SIMULATOR**
 
-| **ABOUT THIS CERTIFICATION EXAM** | **CERTIFICATION** |
-|:----:|:----:|
-|   <table> <tr> <td>Level</td> <td>Challenge</td> </tr> <tr><td>Length</td> <td>2 hours</td> </tr> <tr> <td>Registration fee</td> <td>$88.50 ≈ ₹7000</td> </tr> <tr> <td>Exam Format</td> <td>Multiple choice and multiple select</td> </tr> <tr> <td>Mode</td> <td>Remote or Exam center</td> </tr> <tr> <td>Prerequisites</td> <td>None</td> </tr> <tr> <td>Experience</td> <td>6+ months recommended</td> </tr> <tr> <td>Renewal</td> <td>[3 years from OCT 2022](https://www.googlecloudcommunity.com/gc/Cloud-Certified-Group/Good-news-for-Associate-Cloud-Engineer-certification-holders/m-p/471693)</td> </tr> <tr> <td>Register</td> <td>[Link](https://www.webassessor.com/googlecloud/) for Exam registration</td> </tr> </table>   |   <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/65397360"  align="center">   |
+Inside the `Exam Simulator` folder, you can find the `Associate Cloud Engineer` exam simulator, the first version `exam_simulator.py` extracts the questions from the markdown files containing all the questions and answers. The second version `exam_simulator_choices_shuflle.py` extracts the questions from the JSON file and it shuffle also the choices. 
 
-</div>
+**DUMPS**
+
+Inside the `Quizzes` folder, you can find the `Associate Cloud Engineer` exam dumps, inside the markdown file `exam_topics.md`, with the questions and answers. There is also a JSON file with the questions and answers, built for the exam simulator.
 
 **LEARNING PLAN:**
 

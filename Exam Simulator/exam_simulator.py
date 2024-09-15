@@ -39,14 +39,15 @@ def extract_questions(num_questions=50) -> List[Tuple[str, str, str, str, str, s
 
     Returns:
         List[Tuple[str, str, str, str, str, str]]: A list of tuples containing the
-            index, question, the four choices, and the correct answer.
+            index, question, the four choices (if there are more than four choices,
+            the additional choices are grouped together), and the correct answer(s).
     """
     # Read the content of the markdown file
     with open(PATH, "r", encoding="utf-8") as file:
         content = file.read()
 
     # Extract the questions and answers using a regular expression
-    pattern = r"#### Question (\d+)(.*?)\n\n(A\..*?)\n(B\..*?)\n(C\..*?)(D\..*?)\n\n\*\*Answer: (.*?)\*\*"
+    pattern = r"#### Question (\d+)(.*?)\n\n(A\..*?)\n(B\..*?)\n(C\..*?)\n(D\..*?)\n\n\*\*Answer: (.*?)\*\*"
     matches = re.findall(pattern, content, re.DOTALL)
 
     # Select a random sample of questions
