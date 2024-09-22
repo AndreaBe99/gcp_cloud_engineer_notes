@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 # Usage
 ```
-usage: main.py [-h] [--start START] [--end END] [--pages PAGES [PAGES ...]] [--exam {gcp-ace,aws-scs}]
+usage: app.py [-h] [--start START] [--end END] [--pages PAGES [PAGES ...]] [--exam {gcp-ace,aws-scs}]
 
 Generate PDFs for GCP ACE exam questions
 
@@ -32,8 +32,8 @@ optional arguments:
 
 Example:
 
-- This will generate PDF files from question #1 to question #31 the exam AWS-SCS:
+- This will generate PDF files from question #1 to question #31 the exam GCP ACE:
 
     ```bash
-    python3 main.py --start 151 --end 266 --exam gcp-ace
+    python3 app.py --start 151 --end 266 --exam gcp-ace
     ```

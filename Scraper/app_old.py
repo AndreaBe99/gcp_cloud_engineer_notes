@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
-from parser import prepare_parser
+from Scraper.src.parser import prepare_parser
 from googlesearch import search
 from typing import Union
 
@@ -52,7 +52,12 @@ def get_question_text(soup: BeautifulSoup) -> str:
 
     # Get question text
     question_text = (
-        question_body.find_all("p", class_="card-text")[0].get_text().strip()
+        question_body.find_all(
+            "p",
+            class_="card-text",
+        )[0]
+        .get_text()
+        .strip()
     )
 
     # Find the container for the question choices
@@ -137,7 +142,7 @@ def write_markdown_file(
     answer_text: str,
     most_voted_answer: str,
     index: int,
-)-> None:
+) -> None:
     """
     Write the question and answer to a markdown file.
 
