@@ -110,7 +110,7 @@ Reference: https://cloud.google.com/appengine/docs/standard/python/how-instances
 
 You have a development project with appropriate IAM roles defined. You are creating a production project and want to have the same IAM roles on the new project, using the fewest possible steps. What should you do?
 
-A. Use gcloud iam roles copy and specify the production project as the destination project. Most Voted
+A. Use gcloud iam roles copy and specify the production project as the destination project.
 B. Use gcloud iam roles copy and specify your organization as the destination organization.
 C. In the Google Cloud Platform Console, use the 'create role from role' functionality.
 D. In the Google Cloud Platform Console, use the 'create role' functionality and select all applicable permissions.
@@ -136,8 +136,8 @@ Reference: https://cloud.google.com/compute/docs/instances/
 
 You have a Dockerfile that you need to deploy on Kubernetes Engine. What should you do?
 
-A. Use kubectl app deploy <dockerfilename>.
-B. Use gcloud app deploy <dockerfilename>.
+A. Use kubectl app deploy [dockerfilename].
+B. Use gcloud app deploy [dockerfilename].
 C. Create a docker image from the Dockerfile and upload it to Container Registry. Create a Deployment YAML file to point to that image. Use kubectl to create the deployment with that file.
 D. Create a docker image from the Dockerfile and upload it to Cloud Storage. Create a Deployment YAML file to point to that image. Use kubectl to create the deployment with that file.
 
@@ -210,7 +210,7 @@ D. Export your bill to a BigQuery dataset, and then write time window-based SQL 
 
 You need to set up a policy so that videos stored in a specific Cloud Storage Regional bucket are moved to Coldline after 90 days, and then deleted after one year from their creation. How should you set up the policy?
 
-A. Use Cloud Storage Object Lifecycle Management using Age conditions with SetStorageClass and Delete actions. Set the SetStorageClass action to 90 days and the Delete action to 275 days (365 `" 90)
+A. Use Cloud Storage Object Lifecycle Management using Age conditions with SetStorageClass and Delete actions. Set the SetStorageClass action to 90 days and the Delete action to 275 days (365-90)
 B. Use Cloud Storage Object Lifecycle Management using Age conditions with SetStorageClass and Delete actions. Set the SetStorageClass action to 90 days and the Delete action to 365 days.
 C. Use gsutil rewrite and set the Delete action to 275 days (365-90).
 D. Use gsutil rewrite and set the Delete action to 365 days.
@@ -829,6 +829,8 @@ D. Go to the IAM & admin console, grant a user account permissions similar to th
 
 **Answer: B**
 
+#### Question 71
+
 You are using Container Registry to centrally store your company's container images in a separate project. In another project, you want to create a Google
 Kubernetes Engine (GKE) cluster. You want to ensure that Kubernetes can download images from Container Registry. What should you do?
 
@@ -910,7 +912,7 @@ B. Fill in local SSD. Add estimated cost for cluster management.
 C. Select Add GPUs. Fill in persistent disk storage and snapshot storage.
 D. Select Add GPUs. Add estimated cost for cluster management.
 
-**Answer: C**
+**Answer: A**
 
 Reference: https://cloud.google.com/products/calculator#tab=container
 
@@ -2392,22 +2394,10 @@ D. Create one A record to point mydomain.com to the load balancer, and create tw
 
 You have two subnets (subnet-a and subnet-b) in the default VPC. Your database servers are running in subnet-a. Your application servers and web servers are running in subnet-b. You want to configure a firewall rule that only allows database traffic from the application servers to the database servers. What should you do?
 
-A.
-    - Create service accounts sa-app and sa-db.
-    - Associate service account sa-app with the application servers and the service account sa-db with the database servers.
-    - Create an ingress firewall rule to allow network traffic from source service account sa-app to target service account sa-db.
-B. 
-    - Create network tags app-server and db-server.
-    - Add the app-server tag to the application servers and the db-server tag to the database servers.
-    - Create an egress firewall rule to allow network traffic from source network tag app-server to target network tag db-server.
-C.
-    - Create a service account sa-app and a network tag db-server.
-    - Associate the service account sa-app with the application servers and the network tag db-server with the database servers.
-    - Create an ingress firewall rule to allow network traffic from source VPC IP addresses and target the subnet-a IP addresses.
-D. 
-    - Create a network tag app-server and service account sa-db.
-    - Add the tag to the application servers and associate the service account with the database servers.
-    - Create an egress firewall rule to allow network traffic from source network tag app-server to target service account sa-db.
+A. 1) Create service accounts sa-app and sa-db. 2) Associate service account sa-app with the application servers and the service account sa-db with the database servers. 3) Create an ingress firewall rule to allow network traffic from source service account sa-app to target service account sa-db.
+B. 1) Create network tags app-server and db-server. 2) Add the app-server tag to the application servers and the db-server tag to the database servers. 3) Create an egress firewall rule to allow network traffic from source network tag app-server to target network tag db-server.
+C. 1) Create a service account sa-app and a network tag db-server. 2) Associate the service account sa-app with the application servers and the network tag db-server with the database servers. 3) Create an ingress firewall rule to allow network traffic from source VPC IP addresses and target the subnet-a IP addresses.
+D. 1) Create a network tag app-server and service account sa-db. 2) Add the tag to the application servers and associate the service account with the database servers. 3) Create an egress firewall rule to allow network traffic from source network tag app-server to target service account sa-db.
 
 **Answer: A (B)**
 
