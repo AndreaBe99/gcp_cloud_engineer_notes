@@ -262,7 +262,7 @@ You significantly changed a complex Deployment Manager template and want to conf
 A. Use granular logging statements within a Deployment Manager template authored in Python.
 B. Monitor activity of the Deployment Manager execution on the Stackdriver Logging page of the GCP Console.
 C. Execute the Deployment Manager template against a separate project with the same configuration, and monitor for failures.
-D. Execute the Deployment Manager template using the `"-preview option in the same project, and observe the state of interdependent resources.
+D. Execute the Deployment Manager template using the --preview option in the same project, and observe the state of interdependent resources.
 
 **Answer: D**
 
@@ -1112,7 +1112,7 @@ B. Too many Pods are already running in the cluster, and there are not enough re
 C. The node pool is configured with a service account that does not have permission to pull the container image used by the pending Pod.
 D. The pending Pod was originally scheduled on a node that has been preempted between the creation of the Deployment and your verification of the Pods' status. It is currently being rescheduled on a new node.
 
-**Answer: B(D)**
+**Answer: D**
 
 #### Question 95
 
@@ -1433,7 +1433,7 @@ Reference: https://cloud.google.com/compute/docs/instance-groups/creating-groups
 Your company is moving from an on-premises environment to Google Cloud. You have multiple development teams that use Cassandra environments as backend databases. They all need a development environment that is isolated from other Cassandra instances. You want to move to Google Cloud quickly and with minimal support effort. What should you do?
 
 A. 1. Build an instruction guide to install Cassandra on Google Cloud. 2. Make the instruction guide accessible to your developers.
-B. 1. Advise your developers to go to Cloud Marketplace. 2. Ask the developers to launch a Cassandra image for their development work. Most Voted
+B. 1. Advise your developers to go to Cloud Marketplace. 2. Ask the developers to launch a Cassandra image for their development work.
 C. 1. Build a Cassandra Compute Engine instance and take a snapshot of it. 2. Use the snapshot to create instances for your developers.
 D. 1. Build a Cassandra Compute Engine instance and take a snapshot of it. 2. Upload the snapshot to Cloud Storage and make it accessible to your developers. 3. Build instructions to create a Compute Engine instance from the snapshot so that developers can do it themselves.
 
@@ -1518,8 +1518,7 @@ B. Create a new Secondary IP Range in the VPC and configure the VMs to use that 
 C. Create a new VPC network for the VMs. Enable VPC Peering between the VMs' VPC network and the Dataproc cluster VPC network.
 D. Create a new VPC network for the VMs with a subnet of 172.32.0.0/16. Enable VPC network Peering between the Dataproc VPC network and the VMs VPC network. Configure a custom Route exchange.
 
-**Answer: C (A)**
-
+**Answer: A**
 
 #### Question 130
 
@@ -1626,9 +1625,9 @@ Reference: https://cloud.google.com/solutions/jenkins-on-kubernetes-engine
 You have downloaded and installed the gcloud command line interface (CLI) and have authenticated with your Google Account. Most of your Compute Engine instances in your project run in the europe-west1-d zone. You want to avoid having to specify this zone with each CLI command when managing these instances. What should you do?
 
 A. Set the europe-west1-d zone as the default zone using the gcloud config subcommand.
-B. In the Settings page for Compute Engine under Default location, set the zone to europe`"west1-d.
-C. In the CLI installation directory, create a file called default.conf containing zone=europe`"west1`"d.
-D. Create a Metadata entry on the Compute Engine page with key compute/zone and value europe`"west1`"d.
+B. In the Settings page for Compute Engine under Default location, set the zone to europe-west1-d.
+C. In the CLI installation directory, create a file called default.conf containing zone=europe-west1-d.
+D. Create a Metadata entry on the Compute Engine page with key compute/zone and value europe-west1-d.
 
 **Answer: A (C)**
 
@@ -1636,7 +1635,7 @@ Reference: https://cloud.google.com/compute/docs/gcloud-compute
 
 #### Question 139
 
-The core business of your company is to rent out construction equipment at large scale. All the equipment that is being rented out has been equipped with multiple sensors that send event information every few seconds. These signals can vary from engine status, distance traveled, fuel level, and more. Customers are billed based on the consumption monitored by these sensors. You expect high throughput `" up to thousands of events per hour per device `" and need to retrieve consistent data based on the time of the event. Storing and retrieving individual signals should be atomic. What should you do?
+The core business of your company is to rent out construction equipment at large scale. All the equipment that is being rented out has been equipped with multiple sensors that send event information every few seconds. These signals can vary from engine status, distance traveled, fuel level, and more. Customers are billed based on the consumption monitored by these sensors. You expect high throughput - up to thousands of events per hour per device - and need to retrieve consistent data based on the time of the event. Storing and retrieving individual signals should be atomic. What should you do?
 
 A. Create a file in Cloud Storage per device and append new data to that file.
 B. Create a file in Cloud Filestore per device and append new data to that file.
@@ -1701,8 +1700,8 @@ D. Apply the changes in a development environment, run gcloud compute instances 
 
 You have a Compute Engine instance hosting an application used between 9 AM and 6 PM on weekdays. You want to back up this instance daily for disaster recovery purposes. You want to keep the backups for 30 days. You want the Google-recommended solution with the least management overhead and the least number of services. What should you do?
 
-A. 1. Update your instances' metadata to add the following value: snapshot`"schedule: 0 1 * * * 2. Update your instances' metadata to add the following value: snapshot`"retention: 30
-B. 1. In the Cloud Console, go to the Compute Engine Disks page and select your instance's disk. 2. In the Snapshot Schedule section, select Create Schedule and configure the following parameters: - Schedule frequency: Daily - Start time: 1:00 AM `" 2:00 AM - Autodelete snapshots after: 30 days
+A. 1. Update your instances' metadata to add the following value: snapshot-schedule: 0 1 * * * 2. Update your instances' metadata to add the following value: snapshot-retention: 30
+B. 1. In the Cloud Console, go to the Compute Engine Disks page and select your instance's disk. 2. In the Snapshot Schedule section, select Create Schedule and configure the following parameters: - Schedule frequency: Daily - Start time: 1:00 AM - 2:00 AM - Autodelete snapshots after: 30 days
 C. 1. Create a Cloud Function that creates a snapshot of your instance's disk. 2. Create a Cloud Function that deletes snapshots that are older than 30 days. 3. Use Cloud Scheduler to trigger both Cloud Functions daily at 1:00 AM.
 D. 1. Create a bash script in the instance that copies the content of the disk to Cloud Storage. 2. Create a bash script in the instance that deletes data older than 30 days in the backup Cloud Storage bucket. 3. Configure the instance's crontab to execute these scripts daily at 1:00 AM.
 
@@ -1710,12 +1709,12 @@ D. 1. Create a bash script in the instance that copies the content of the disk t
 
 #### Question 145
 
-Your existing application running in Google Kubernetes Engine (GKE) consists of multiple pods running on four GKE n1`"standard`"2 nodes. You need to deploy additional pods requiring n2`"highmem`"16 nodes without any downtime. What should you do?
+Your existing application running in Google Kubernetes Engine (GKE) consists of multiple pods running on four GKE n1-standard-2 nodes. You need to deploy additional pods requiring n2-highmem-16 nodes without any downtime. What should you do?
 
 A. Use gcloud container clusters upgrade. Deploy the new services.
-B. Create a new Node Pool and specify machine type n2`"highmem`"16. Deploy the new pods.
-C. Create a new cluster with n2`"highmem`"16 nodes. Redeploy the pods and delete the old cluster.
-D. Create a new cluster with both n1`"standard`"2 and n2`"highmem`"16 nodes. Redeploy the pods and delete the old cluster.
+B. Create a new Node Pool and specify machine type n2-highmem-16. Deploy the new pods.
+C. Create a new cluster with n2-highmem-16 nodes. Redeploy the pods and delete the old cluster.
+D. Create a new cluster with both n1-standard-2 and n2-highmem-16 nodes. Redeploy the pods and delete the old cluster.
 
 **Answer: B**
 
@@ -1732,12 +1731,12 @@ D. Create two separate BigQuery external tables on Cloud Storage and Cloud Bigta
 
 #### Question 147
 
-You are hosting an application from Compute Engine virtual machines (VMs) in us`"central1`"a. You want to adjust your design to support the failure of a single Compute Engine zone, eliminate downtime, and minimize cost. What should you do?
+You are hosting an application from Compute Engine virtual machines (VMs) in us-central1-a. You want to adjust your design to support the failure of a single Compute Engine zone, eliminate downtime, and minimize cost. What should you do?
 
-A. `" Create Compute Engine resources in us`"central1`"b. `" Balance the load across both us`"central1`"a and us`"central1`"b.
-B. `" Create a Managed Instance Group and specify us`"central1`"a as the zone. `" Configure the Health Check with a short Health Interval.
-C. `" Create an HTTP(S) Load Balancer. `" Create one or more global forwarding rules to direct traffic to your VMs.
-D. `" Perform regular backups of your application. `" Create a Cloud Monitoring Alert and be notified if your application becomes unavailable. `" Restore from backups when notified.
+A. - Create Compute Engine resources in us-central1-b. - Balance the load across both us-central1-a and us-central1-b.
+B. - Create a Managed Instance Group and specify us-central1-a as the zone. - Configure the Health Check with a short Health Interval.
+C. - Create an HTTP(S) Load Balancer. - Create one or more global forwarding rules to direct traffic to your VMs.
+D. - Perform regular backups of your application. - Create a Cloud Monitoring Alert and be notified if your application becomes unavailable. - Restore from backups when notified.
 
 **Answer: A**
 
@@ -1748,7 +1747,7 @@ A colleague handed over a Google Cloud Platform project for you to maintain. As 
 A. In the console, validate which SSH keys have been stored as project-wide keys.
 B. Navigate to Identity-Aware Proxy and check the permissions for these resources.
 C. Enable Audit Logs on the IAM & admin page for all resources, and validate the results.
-D. Use the command gcloud projects get`"iam`"policy to view the current role assignments.
+D. Use the command gcloud projects get-iam-policy to view the current role assignments.
 
 **Answer: D (A)**
 
@@ -2493,20 +2492,10 @@ D. Convert the subnet IP range from IPv4 to IPv6.
 
 Your company requires all developers to have the same permissions, regardless of the Google Cloud project they are working on. Your company’s security policy also restricts developer permissions to Compute Engine, Cloud Functions, and Cloud SQL. You want to implement the security policy with minimal effort. What should you do?
 
-A.
-    - Create a custom role with Compute Engine, Cloud Functions, and Cloud SQL permissions in one project within the Google Cloud organization.
-    - Copy the role across all projects created within the organization with the gcloud iam roles copy command.
-    - Assign the role to developers in those projects.
-B.
-    - Add all developers to a Google group in Google Groups for Workspace.
-    - Assign the predefined role of Compute Admin to the Google group at the Google Cloud organization level.
-C. 
-    - Add all developers to a Google group in Cloud Identity.
-    - Assign predefined roles for Compute Engine, Cloud Functions, and Cloud SQL permissions to the Google group for each project in the Google Cloud organization.
-D.
-    - Add all developers to a Google group in Cloud Identity.
-    - Create a custom role with Compute Engine, Cloud Functions, and Cloud SQL permissions at the Google Cloud organization level.
-    - Assign the custom role to the Google group.
+A. 1.Create a custom role with Compute Engine, Cloud Functions, and Cloud SQL permissions in one project within the Google Cloud organization. 2.Copy the role across all projects created within the organization with the gcloud iam roles copy command. 3 Assign the role to developers in those projects.
+B. 1. Add all developers to a Google group in Google Groups for Workspace. 2. Assign the predefined role of Compute Admin to the Google group at the Google Cloud organization level.
+C. 1. Add all developers to a Google group in Cloud Identity. 2. Assign predefined roles for Compute Engine, Cloud Functions, and Cloud SQL permissions to the Google group for each project in the Google Cloud organization.
+D. 1. Add all developers to a Google group in Cloud Identity. 2. Create a custom role with Compute Engine, Cloud Functions, and Cloud SQL permissions at the Google Cloud organization level. 3. Assign the custom role to the Google group.
 
 **Answer: D**
 
@@ -3268,3 +3257,14 @@ C. Deploy the web application on Cloud Run with Private Service Connect configur
 D. Deploy the web application to GKE Autopilot with Private Google Access configured.
 
 **Answer: C (B)**
+
+#### Question 0173
+
+You are developing a financial trading application that will be used globally. Data is stored and queried using a relational structure, and clients from all over the world should get the exact identical state of the data. The application will be deployed in multiple regions to provide the lowest latency to end users. You need to select a storage option for the application data while minimizing latency. What should you do?
+
+A. Use Cloud Bigtable for data storage.
+B. Use Cloud SQL for data storage.
+C. Use Cloud Spanner for data storage.
+D. Use Firestore for data storage.
+
+**Answer: C**
