@@ -6,7 +6,7 @@ Every employee of your company has a Google account. Your operational team needs
 
 A. Generate a new SSH key pair. Give the private key to each member of your team. Configure the public key in the metadata of each instance. 
 B. Ask each member of the team to generate a new SSH key pair and to send you their public key. Use a configuration management tool to deploy those keys on each instance. 
-C. Ask each member of the team to generate a new SSH key pair and to add the public key to their Google account. Grant the  .role to the Google group corresponding to this team `compute.osAdminLogin`
+C. Ask each member of the team to generate a new SSH key pair and to add the public key to their Google account. Grant the `compute.osAdminLogin` role to the Google group corresponding to this team.
 D. Generate a new SSH key pair. Give the private key to each member of your team. Configure the public key as a project-wide public SSH key in your Cloud Platform project and allow project-wide public SSH keys on each instance.
 
 **Answer: C (D)**
@@ -49,10 +49,10 @@ D. Create a managed instance group. Verify that the autoscaling setting is on.
 
 You are using multiple configurations for gcloud. You want to review the configured Kubernetes Engine cluster of an inactive configuration using the fewest possible steps. What should you do?
 
-A. Use gcloud config configurations describe to review the output.
-B. Use gcloud config configurations activate and gcloud config list to review the output.
-C. Use kubectl config get-contexts to review the output.
-D. Use kubectl config use-context and kubectl config view to review the output.
+A. Use `gcloud config configurations describe` to review the output.
+B. Use `gcloud config configurations activate` and `gcloud config list` to review the output.
+C. Use `kubectl config get-contexts` to review the output.
+D. Use `kubectl config use-context` and `kubectl config view` to review the output.
 
 **Answer: D**
 
@@ -115,7 +115,7 @@ B. Use gcloud iam roles copy and specify your organization as the destination or
 C. In the Google Cloud Platform Console, use the 'create role from role' functionality.
 D. In the Google Cloud Platform Console, use the 'create role' functionality and select all applicable permissions.
 
-**Answer: A (B)**
+**Answer: A**
 
 Reference: https://cloud.google.com/sdk/gcloud/reference/iam/roles/copy
 
@@ -629,10 +629,10 @@ Each tier has a service account that is associated with all instances within it.
 - Instances in tier #2 must communicate with tier #3.
 What should you do?
 
-A. 1. Create an ingress firewall rule with the following settings: `¢ Targets: all instances `¢ Source filter: IP ranges (with the range set to 10.0.2.0/24) `¢ Protocols: allow all 2. Create an ingress firewall rule with the following settings: `¢ Targets: all instances `¢ Source filter: IP ranges (with the range set to 10.0.1.0/24) `¢ Protocols: allow all
-B. 1. Create an ingress firewall rule with the following settings: `¢ Targets: all instances with tier #2 service account `¢ Source filter: all instances with tier #1 service account `¢ Protocols: allow TCP:8080 2. Create an ingress firewall rule with the following settings: `¢ Targets: all instances with tier #3 service account `¢ Source filter: all instances with tier #2 service account `¢ Protocols: allow TCP: 8080
-C. 1. Create an ingress firewall rule with the following settings: `¢ Targets: all instances with tier #2 service account `¢ Source filter: all instances with tier #1 service account `¢ Protocols: allow all 2. Create an ingress firewall rule with the following settings: `¢ Targets: all instances with tier #3 service account `¢ Source filter: all instances with tier #2 service account `¢ Protocols: allow all
-D. 1. Create an egress firewall rule with the following settings: `¢ Targets: all instances `¢ Source filter: IP ranges (with the range set to 10.0.2.0/24) `¢ Protocols: allow TCP: 8080 2. Create an egress firewall rule with the following settings: `¢ Targets: all instances `¢ Source filter: IP ranges (with the range set to 10.0.1.0/24) `¢ Protocols: allow TCP: 8080
+A. 1. Create an ingress firewall rule with the following settings: `Targets: all instances`, `Source filter: IP ranges` (with the range set to 10.0.2.0/24), `Protocols: allow all` 2. Create an ingress firewall rule with the following settings: `Targets: all instances`,  `Source filter: IP ranges` (with the range set to 10.0.1.0/24), `Protocols: allow all`
+B. 1. Create an ingress firewall rule with the following settings: `Targets: all instances with tier #2 service account `, `Source filter: all instances with tier #1 service account`, `Protocols: allow TCP:8080` 2. Create an ingress firewall rule with the following settings: `Targets: all instances with tier #3 service account`, `Source filter: all instances with tier #2 service account`, `Protocols: allow TCP: 8080`
+C. 1. Create an ingress firewall rule with the following settings: `Targets: all instances with tier #2 service account`, `Source filter: all instances with tier #1 service account`, `Protocols: allow all` 2. Create an ingress firewall rule with the following settings: `Targets: all instances with tier #3 service account`, `Source filter: all instances with tier #2 service account`, `Protocols: allow all`
+D. 1. Create an egress firewall rule with the following settings: `Targets: all instances`, `Source filter: IP ranges` (with the range set to 10.0.2.0/24), `Protocols: allow TCP: 8080` 2. Create an egress firewall rule with the following settings: `Targets: all instances`, `Source filter: IP ranges` (with the range set to 10.0.1.0/24) `Protocols: allow TCP: 8080`
 
 **Answer: B**
 
