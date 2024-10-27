@@ -2508,7 +2508,7 @@ B. Turn off the external IP addresses on the Dataflow worker. Enable Cloud NAT i
 C. Add the external IP addresses of the Dataflow worker as authorized networks in the Cloud SQL instance.
 D. Set up VPC Network Peering between Project A and Project B. Create a Compute Engine instance without external IP address in Project B on the peered subnet to serve as a proxy server to the Cloud SQL database.
 
-**Answer: D (A)**
+**Answer: A**
 
 #### Question 217
 
