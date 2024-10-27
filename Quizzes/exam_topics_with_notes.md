@@ -4,8 +4,8 @@
 
 Every employee of your company has a Google account. Your operational team needs to manage a large number of instances on Compute Engine. Each member of this team needs only administrative access to the servers. Your security team wants to ensure that the deployment of credentials is operationally efficient and must be able to determine who accessed a given instance. What should you do?
 
-A. Generate a new SSH key pair. Give the private key to each member of your team. Configure the public key in the metadata of each instance. 
-B. Ask each member of the team to generate a new SSH key pair and to send you their public key. Use a configuration management tool to deploy those keys on each instance. 
+A. Generate a new SSH key pair. Give the private key to each member of your team. Configure the public key in the metadata of each instance.
+B. Ask each member of the team to generate a new SSH key pair and to send you their public key. Use a configuration management tool to deploy those keys on each instance.
 C. Ask each member of the team to generate a new SSH key pair and to add the public key to their Google account. Grant the `compute.osAdminLogin` role to the Google group corresponding to this team.
 D. Generate a new SSH key pair. Give the private key to each member of your team. Configure the public key as a project-wide public SSH key in your Cloud Platform project and allow project-wide public SSH keys on each instance.
 
@@ -162,10 +162,10 @@ Reference: https://cloud.google.com/solutions/using-jenkins-for-distributed-buil
 
 You need to update a deployment in Deployment Manager without any resource downtime in the deployment. Which command should you use?
 
-A. gcloud deployment-manager deployments create --config <deployment-config-path>
-B. gcloud deployment-manager deployments update --config <deployment-config-path>
-C. gcloud deployment-manager resources create --config <deployment-config-path>
-D. gcloud deployment-manager resources update --config <deployment-config-path>
+A. gcloud deployment-manager deployments create --config `<deployment-config-path>`
+B. gcloud deployment-manager deployments update --config `<deployment-config-path>`
+C. gcloud deployment-manager resources create --config `<deployment-config-path>`
+D. gcloud deployment-manager resources update --config `<deployment-config-path>`
 
 **Answer: B**
 
@@ -625,9 +625,10 @@ Reference: https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries
 Your company has a 3-tier solution running on Compute Engine. The configuration of the current infrastructure is shown below.
 ![image](images/exam_topics_53.png)
 Each tier has a service account that is associated with all instances within it. You need to enable communication on TCP port 8080 between tiers as follows:
+
 - Instances in tier #1 must communicate with tier #2.
 - Instances in tier #2 must communicate with tier #3.
-What should you do?
+  What should you do?
 
 A. 1. Create an ingress firewall rule with the following settings: `Targets: all instances`, `Source filter: IP ranges` (with the range set to 10.0.2.0/24), `Protocols: allow all` 2. Create an ingress firewall rule with the following settings: `Targets: all instances`,  `Source filter: IP ranges` (with the range set to 10.0.1.0/24), `Protocols: allow all`
 B. 1. Create an ingress firewall rule with the following settings: `Targets: all instances with tier #2 service account `, `Source filter: all instances with tier #1 service account`, `Protocols: allow TCP:8080` 2. Create an ingress firewall rule with the following settings: `Targets: all instances with tier #3 service account`, `Source filter: all instances with tier #2 service account`, `Protocols: allow TCP: 8080`
@@ -774,10 +775,10 @@ D. Deploy the container on GKE with cluster autoscaling and horizontal pod autos
 
 Your company has an existing GCP organization with hundreds of projects and a billing account. Your company recently acquired another company that also has hundreds of projects and its own billing account. You would like to consolidate all GCP costs of both GCP organizations onto a single invoice. You would like to consolidate all costs as of tomorrow. What should you do?
 
-A. Link the acquired company's projects to your company's billing account. 
-B. Configure the acquired company's billing account and your company's billing account to export the billing data into the same BigQuery dataset. 
-C. Migrate the acquired company's projects into your company's GCP organization. Link the migrated projects to your company's billing account. 
-D. Create a new GCP organization and a new billing account. Migrate the acquired company's projects and your company's projects into the new GCP organization and link the projects to the new billing account. 
+A. Link the acquired company's projects to your company's billing account.
+B. Configure the acquired company's billing account and your company's billing account to export the billing data into the same BigQuery dataset.
+C. Migrate the acquired company's projects into your company's GCP organization. Link the migrated projects to your company's billing account.
+D. Create a new GCP organization and a new billing account. Migrate the acquired company's projects and your company's projects into the new GCP organization and link the projects to the new billing account.
 
 **Answer: A (D)**
 
@@ -786,10 +787,10 @@ D. Create a new GCP organization and a new billing account. Migrate the acquired
 You built an application on Google Cloud that uses Cloud Spanner. Your support team needs to monitor the environment but should not have access to table data.
 You need a streamlined solution to grant the correct permissions to your support team, and you want to follow Google-recommended practices. What should you do?
 
-A. Add the support team group to the roles/monitoring.viewer role 
-B. Add the support team group to the roles/spanner.databaseUser role. 
-C. Add the support team group to the roles/spanner.databaseReader role. 
-D. Add the support team group to the roles/stackdriver.accounts.viewer role. 
+A. Add the support team group to the roles/monitoring.viewer role
+B. Add the support team group to the roles/spanner.databaseUser role.
+C. Add the support team group to the roles/spanner.databaseReader role.
+D. Add the support team group to the roles/stackdriver.accounts.viewer role.
 
 **Answer: A (B)**
 
@@ -798,8 +799,8 @@ D. Add the support team group to the roles/stackdriver.accounts.viewer role.
 For analysis purposes, you need to send all the logs from all of your Compute Engine instances to a BigQuery dataset called platform-logs. You have already installed the Cloud Logging agent on all the instances. You want to minimize cost. What should you do?
 
 A. 1. Give the BigQuery Data Editor role on the platform-logs dataset to the service accounts used by your instances. 2. Update your instances' metadata to add the following value: logs-destination: bq://platform-logs.
-B. 1. In Cloud Logging, create a logs export with a Cloud Pub/Sub topic called logs as a sink. 2. Create a Cloud Function that is triggered by messages in the logs topic. 3. Configure that Cloud Function to drop logs that are not from Compute Engine and to insert Compute Engine logs in the platform-logs dataset. 
-C. 1. In Cloud Logging, create a filter to view only Compute Engine logs. 2. Click Create Export. 3. Choose BigQuery as Sink Service, and the platform-logs dataset as Sink Destination. 
+B. 1. In Cloud Logging, create a logs export with a Cloud Pub/Sub topic called logs as a sink. 2. Create a Cloud Function that is triggered by messages in the logs topic. 3. Configure that Cloud Function to drop logs that are not from Compute Engine and to insert Compute Engine logs in the platform-logs dataset.
+C. 1. In Cloud Logging, create a filter to view only Compute Engine logs. 2. Click Create Export. 3. Choose BigQuery as Sink Service, and the platform-logs dataset as Sink Destination.
 D. 1. Create a Cloud Function that has the BigQuery User role on the platform-logs dataset. 2. Configure this Cloud Function to create a BigQuery Job that executes this query: INSERT INTO dataset.platform-logs (timestamp, log) SELECT timestamp, log FROM compute.logs WHERE timestamp > DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY) 3. Use Cloud Scheduler to trigger this Cloud Function once a day.
 
 **Answer: C**
@@ -885,10 +886,10 @@ D. Enable block project wide keys for the instance. Generate an SSH key and asso
 
 You need to produce a list of the enabled Google Cloud Platform APIs for a GCP project using the gcloud command line in the Cloud Shell. The project name is my-project. What should you do?
 
-A. Run gcloud projects list to get the project ID, and then run gcloud services list --project <project ID>.
+A. Run gcloud projects list to get the project ID, and then run gcloud services list --project `<project ID>`.
 B. Run gcloud init to set the current project to my-project, and then run gcloud services list --available.
-C. Run gcloud info to view the account value, and then run gcloud services list --account <Account>.
-D. Run gcloud projects describe <project ID> to verify the project value, and then run gcloud services list --available.
+C. Run gcloud info to view the account value, and then run gcloud services list --account `<Account>`.
+D. Run gcloud projects describe `<project ID>` to verify the project value, and then run gcloud services list --available.
 
 **Answer: A**
 
@@ -1428,6 +1429,14 @@ D. Delete the current instance template and replace it with a new instance templ
 
 Reference: https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances
 
+Spiegazione:
+
+A. This is the only option (I know that it can be temporary) that will work without Rolling update according to
+https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-migs
+B. will not solve our problem without Rolling update
+C. not correct, we cannot update existing template
+D. not correct, we cannot delete existing template when it is in use (just checked in GCP) (We need rolling update)
+
 #### Question 122
 
 Your company is moving from an on-premises environment to Google Cloud. You have multiple development teams that use Cassandra environments as backend databases. They all need a development environment that is isolated from other Cassandra instances. You want to move to Google Cloud quickly and with minimal support effort. What should you do?
@@ -1438,6 +1447,12 @@ C. 1. Build a Cassandra Compute Engine instance and take a snapshot of it. 2. Us
 D. 1. Build a Cassandra Compute Engine instance and take a snapshot of it. 2. Upload the snapshot to Cloud Storage and make it accessible to your developers. 3. Build instructions to create a Compute Engine instance from the snapshot so that developers can do it themselves.
 
 **Answer: B (D)**
+
+Spiegazione:
+A. Scrivere una guida richiede tempo e sforzo continuo per la manutenzione, il che non risponde all'esigenza di supporto minimo e rapido setup. Inoltre, i passaggi manuali aumentano il rischio di configurazioni non standard e quindi potenziali errori.
+B.L'opzione migliore per migrare rapidamente a Google Cloud con sforzo minimo è sfruttare il Cloud Marketplace.
+C. Anche se l’uso di uno snapshot può facilitare l'implementazione, richiede comunque che qualcuno clonare manualmente ogni volta l'istanza per ciascun sviluppatore. Ciò aumenta il carico di lavoro e non offre la stessa rapidità e praticità dell'uso delle immagini predefinite di Cloud Marketplace.
+D. Caricare lo snapshot su Cloud Storage e lasciare agli sviluppatori il compito di creare istanze è complesso e richiede una gestione non immediata, con procedure manuali che aumentano il rischio di errore e non rispondono alla richiesta di uno sforzo minimo.
 
 #### Question 123
 
@@ -1450,6 +1465,12 @@ D. 1. In Cloud Logging, create a logs-based metric to extract the CPU usage by u
 
 **Answer: B**
 
+Spiegazione:
+A. Questo approccio richiede la creazione di uno script di monitoraggio e l'utilizzo di un account Gmail per inviare email. È una soluzione manuale, non scalabile e non segue le best practice di sicurezza di Google.
+B. Cloud Monitoring, che è il servizio nativo di Google per monitorare risorse di Google Cloud, comprese le istanze di Compute Engine. Cloud Monitoring permette di creare policy di allarme basate su metriche predefinite, come l'uso della CPU, e di impostare notifiche email quando la soglia definita viene superata.
+C. Anche se questo metodo usa Cloud Monitoring, richiede la creazione di una metrica personalizzata tramite uno script. Questo aumenta la complessità e non è necessario, poiché Google offre già metriche standard per l'uso della CPU.
+D. La creazione di una metrica basata su log per monitorare l'uso della CPU non è il modo ideale, dato che esistono metriche già pronte in Cloud Monitoring che possono monitorare l'uso della CPU senza configurazioni aggiuntive. Utilizzare log per una metrica standard come la CPU è meno efficiente.
+
 #### Question 124
 
 You have an application that uses Cloud Spanner as a backend database. The application has a very predictable traffic pattern. You want to automatically scale up or down the number of Spanner nodes depending on traffic. What should you do?
@@ -1460,6 +1481,13 @@ C. Create a Cloud Monitoring alerting policy to send an alert to Google Cloud Su
 D. Create a Cloud Monitoring alerting policy to send an alert to webhook when Cloud Spanner CPU is over or under your threshold. Create a Cloud Function that listens to HTTP and resizes Spanner resources accordingly.
 
 **Answer: D**
+
+Speigazione:
+
+A. Anche se può funzionare, un cron job programmato introduce ritardi e potrebbe non reagire rapidamente ai cambiamenti nel traffico, compromettendo l'efficienza della scalabilità.
+B. Richiede un intervento manuale da parte degli SRE, che non garantisce una risposta rapida e aumenta il carico di lavoro per il team
+C. Google Cloud Support non gestisce automaticamente la scalabilità delle risorse in risposta a queste notifiche; quindi, non è un'opzione scalabile o automatizzata
+D. Offre un approccio automatico e scalabile per adattare le risorse di Cloud Spanner alle necessità dell'applicazione, riducendo al minimo l'intervento manuale. Usando una **policy di allarme di Cloud Monitoring** che invia notifiche a un webhook, si può attivare una **Cloud Function** che, in base alle metriche di CPU di Cloud Spanner, scala automaticamente il numero di nodi in su o in giù.
 
 #### Question 125
 
@@ -1472,6 +1500,12 @@ D. Use the Cloud Logging Agent to export the Apache web server logs to Cloud Log
 
 **Answer: C (A)**
 
+Spiegazione:
+A. Questa opzione monitorerebbe i costi di egress per l'intero progetto, non solo per il server Apache. Inoltre, potrebbe includere costi di egress di altre applicazioni nel progetto, rendendo difficile isolare i costi specifici del server Apache.
+B. Anche in questo caso, un budget a livello di account di fatturazione includerebbe tutti i progetti collegati all’account e non solo i costi di rete del server Apache, risultando in notifiche meno accurate e utili.
+C. Questa opzione consente di monitorare i costi di rete (egress) specificamente per il server Apache, senza monitorare altri costi nel progetto. Esportando i dati di fatturazione in BigQuery, è possibile creare una Cloud Function che calcola i costi di egress di rete per il server Apache e invia un'email quando tali costi superano la soglia di 100 dollari per il mese corrente. Cloud Scheduler può attivare la Cloud Function ogni ora, garantendo aggiornamenti periodici e tempestivi.
+D. Questa opzione è molto complessa: richiede l’analisi dei log di Cloud Logging per calcolare i costi, una metodologia meno diretta e più suscettibile di errori rispetto all’uso dei dati di fatturazione disponibili in BigQuery.
+
 #### Question 126
 
 You have designed a solution on Google Cloud that uses multiple Google Cloud products. Your company has asked you to estimate the costs of the solution. You need to provide estimates for the monthly total cost. What should you do?
@@ -1482,6 +1516,12 @@ C. Provision the solution on Google Cloud. Leave the solution provisioned for 1 
 D. Provision the solution on Google Cloud. Leave the solution provisioned for 1 week. Use Cloud Monitoring to determine the provisioned and used resource amounts. Multiply the 1 week cost to determine the monthly costs.
 
 **Answer: A (C)**
+
+Spiegazione:
+A. consente di ottenere una stima accurata dei costi mensili utilizzando il Pricing Calculator di Google Cloud, che è progettato appositamente per stimare i costi totali per più prodotti e configurazioni specifiche. Il calcolatore fornisce opzioni dettagliate per ogni prodotto, consentendo di specificare l'uso stimato e altri parametri chiave per una stima mensile realistica e ben documentata.
+B. Sebbene creare un foglio Google possa fornire una panoramica, è meno efficiente e più suscettibile a errori manuali rispetto all'uso del calcolatore di Google Cloud, che è progettato per essere preciso e aggiornato con i prezzi correnti.
+C. Lasciare una soluzione attiva per una settimana e calcolarne i costi è meno affidabile, in quanto non rappresenta accuratamente l’uso mensile completo, soprattutto se l'utilizzo di risorse è variabile.
+D. Questa opzione si basa su una stima settimanale e sull’utilizzo di Cloud Monitoring per stimare i costi mensili, ma presenta le stesse incertezze dell’opzione C, in quanto l’uso effettivo può variare su base mensile.
 
 #### Question 127
 
@@ -1496,6 +1536,12 @@ D. Internal TCP/UDP Load Balancer. Add a firewall rule allowing ingress traffic 
 
 Reference: https://cloud.google.com/load-balancing/docs/ssl
 
+Spiegazione:
+A. HTTPS Load Balancer: anche se supporta il traffico su porta 443, è specificamente progettato per il traffico HTTP/HTTPS, piuttosto che per il traffico TCP generico crittografato con SSL.
+B. Network Load Balancer: questa opzione è adatta per il traffico TCP/UDP senza crittografia. Non è ottimale per il traffico crittografato SSL e non supporta la gestione globale o il bilanciamento tra regioni diverse.
+C. L'opzione SSL Proxy Load Balancer è progettata per gestire il traffico TCP crittografato SSL (TLS) su porte standard come la porta 443. Questo tipo di bilanciamento del carico è ideale per distribuire il traffico tra aree geografiche differenti, minimizzando la latenza per i client in tutto il mondo. Utilizza punti di presenza globali per instradare il traffico verso il backend più vicino e affidabile, ottimizzando così le prestazioni.
+D.  Internal TCP/UDP Load Balancer: è progettato per il traffico interno, non per quello pubblico proveniente da internet. Aggiungere una regola firewall per consentire il traffico globale non è una best practice e non ottimizza la latenza per i client globali.
+
 #### Question 128
 
 You have an application on a general-purpose Compute Engine instance that is experiencing excessive disk read throttling on its Zonal SSD Persistent Disk. The application primarily reads large files from disk. The disk size is currently 350 GB. You want to provide the maximum amount of throughput while minimizing costs. What should you do?
@@ -1509,6 +1555,12 @@ D. Migrate to use a Regional SSD on the instance.
 
 Reference: https://cloud.google.com/compute/docs/disks/performance
 
+Spiegazione:
+A. ridimensionare il disco SSD Persistente può aumentare il limite di throughput (poiché la velocità massima di I/O dipende dalla dimensione), ma l'aumento di costo potrebbe non giustificare un miglioramento delle prestazioni comparabile a quello di una Local SSD.
+B. aumentare la CPU potrebbe migliorare le prestazioni generali dell'istanza, ma non influisce direttamente sul throughput di I/O del disco.
+C. Se l'applicazione ha bisogno di leggere grandi file dal disco e sta subendo un throttling (limitazione) nella lettura dei dati, un Local SSD è la scelta ideale per migliorare le prestazioni. Le Local SSD offrono velocità di lettura e scrittura significativamente più elevate rispetto ai dischi persistenti.
+D. i Regional SSD sono pensati per la ridondanza e la disponibilità su più zone, ma non offrono vantaggi significativi in termini di throughput rispetto alle Local SSD.
+
 #### Question 129
 
 Your Dataproc cluster runs in a single Virtual Private Cloud (VPC) network in a single subnet with range 172.16.20.128/25. There are no private IP addresses available in the VPC network. You want to add new VMs to communicate with your cluster using the minimum number of steps. What should you do?
@@ -1519,6 +1571,12 @@ C. Create a new VPC network for the VMs. Enable VPC Peering between the VMs' VPC
 D. Create a new VPC network for the VMs with a subnet of 172.32.0.0/16. Enable VPC network Peering between the Dataproc VPC network and the VMs VPC network. Configure a custom Route exchange.
 
 **Answer: A**
+
+Spiegazione:
+A. Se non ci sono più indirizzi IP privati disponibili nel VPC esistente, modificare l'intervallo della subnet (da 172.16.20.128/25 a 172.16.20.0/24) espanderà la gamma di indirizzi IP disponibili. Questo consentirà di aggiungere ulteriori VM al cluster Dataproc, permettendo la comunicazione tra queste nuove VM e il cluster senza la necessità di creare nuove reti o configurazioni di peering.
+B. una gamma IP secondaria è usata per gestire indirizzi IP aggiuntivi per risorse come Pod nei cluster GKE, ma non risolve il problema di esaurimento di IP primari per il Dataproc cluster.
+C. il peering tra VPC richiede ulteriori configurazioni e non risolve direttamente il problema della disponibilità di IP all’interno del VPC esistente.
+D. anche questa opzione è più complessa del necessario, poiché prevede configurazioni aggiuntive di routing e peering, che non sono richieste per soddisfare il requisito iniziale.
 
 #### Question 130
 
@@ -1531,8 +1589,11 @@ D. In Cloud IAM of your project, grant a newly created service account from the 
 
 **Answer: B**
 
-The Owner, Editor, and Viewer primitive roles include the BigQuery Admin (roles/bigquery.dataOwner), BigQuery Data Editor (roles/bigquery.dataEditor), and BigQuery Data Viewer (roles/bigquery.dataViewer) roles, respectively. This means the Owner, Editor, and Viewer primitive roles have BigQuery access as defined for the respective BigQuery roles.
-Reference: https://cloud.google.com/bigquery/docs/access-control
+Spiegazioni:
+A. BigQuery Job User concede autorizzazioni di query e creazione di job, che non sono necessarie per l'accesso in sola lettura.
+B. BigQuery Data Viewer consente la lettura del dataset, che è sufficiente per la visualizzazione dei dati, mentre BigQuery Job User (Opzione A) è più adatto a eseguire query, attività non richiesta per la visualizzazione.
+C. In Cloud IAM del proprio progetto non si può gestire direttamente l’accesso a dataset di un progetto esterno; sono necessarie autorizzazioni nel progetto del dataset.
+D. Creare un nuovo account di servizio nel progetto dell'altro team è un’operazione non necessaria e complessa rispetto a concedere l'accesso al tuo account di servizio predefinito.
 
 #### Question 131
 
@@ -1548,6 +1609,12 @@ D. Create a custom Compute Engine image from a snapshot. Create your instances f
 A custom image belongs only to your project. To create an instance with a custom image, you must first have a custom image.
 Reference: https://cloud.google.com/compute/docs/instances/create-start-instance
 
+Spiegazioni:
+A. Questa opzione non è corretta perché, mentre puoi creare uno snapshot della VM, non puoi creare direttamente un'immagine utilizzando solo lo snapshot. Devi prima convertire lo snapshot in un'immagine personalizzata per poter creare istanze da essa.
+B. Non puoi creare direttamente istanze da uno snapshot. Gli snapshot servono solo per il backup o la creazione di immagini. Per creare istanze, hai bisogno di un'immagine, quindi devi passare attraverso la fase di creazione di un'immagine personalizzata.
+C. Questa opzione è confusa. Anche se la creazione di un'immagine personalizzata dallo snapshot è corretta, la parte "creare le immagini da quell'immagine" è ambigua. Normalmente, da un'immagine si creano istanze, non altre immagini. Questa formulazione può portare a fraintendimenti riguardo al processo di creazione delle istanze.
+D. Correta
+
 #### Question 132
 
 You have deployed an application on a single Compute Engine instance. The application writes logs to disk. Users start reporting errors with the application. You want to diagnose the problem. What should you do?
@@ -1558,6 +1625,7 @@ C. Configure a Health Check on the instance and set a Low Healthy Threshold valu
 D. Install and configure the Cloud Logging Agent and view the logs from Cloud Logging.
 
 **Answer: D**
+
 
 #### Question 133
 
@@ -1572,6 +1640,13 @@ D. Make corp-aggregate-reports-storage public and create a folder with a pseudo-
 
 Reference: https://cloud.google.com/billing/docs/onboarding-checklist
 
+Spiegazioni:
+A. Errata. Spostare entrambi i progetti sotto la stessa cartella non è necessario per configurare l'accesso ai bucket. Inoltre, questa opzione non affronta il problema di concedere i permessi necessari in modo diretto e pratico.
+B. Corretta. Concedere al Service Account della VM il ruolo di Storage Object Creator sul bucket `corp-aggregate-reports-storage` consente alla VM di scrivere direttamente i report nel bucket desiderato. Questa opzione è semplice e segue le pratiche raccomandate da Google per la gestione delle autorizzazioni.
+C. Errata. Creare una rete VPC condivisa tra i progetti non è necessario per questo caso specifico. La condivisione delle risorse di rete non risolve direttamente il problema di autorizzazione per l'accesso al bucket e aggiunge complessità non necessaria.
+D. Errata. Rendere il bucket `corp-aggregate-reports-storage` pubblico espone i dati a tutti, aumentando i rischi di sicurezza. Creare una cartella con un suffisso pseudo-casuale non fornisce una soluzione sicura e non segue le migliori pratiche per la gestione degli accessi. È meglio mantenere il bucket privato e gestire l'accesso tramite autorizzazioni appropriate.
+
+
 #### Question 134
 
 You built an application on your development laptop that uses Google Cloud services. Your application uses Application Default Credentials for authentication and works fine on your development laptop. You want to migrate this application to a Compute Engine virtual machine (VM) and set up authentication using Google- recommended practices and minimal changes. What should you do?
@@ -1583,6 +1658,7 @@ D. Store credentials for your user account with appropriate access for Google se
 
 **Answer: B**
 
+
 #### Question 135
 
 You need to create a Compute Engine instance in a new project that doesn't exist yet. What should you do?
@@ -1593,6 +1669,13 @@ C. Using the Cloud SDK, create the new instance, and use the --project flag to s
 D. Enable the Compute Engine API in the Cloud Console. Go to the Compute Engine section of the Console to create a new instance, and look for the Create In A New Project option in the creation form.
 
 **Answer: A (B)**
+
+Spiegazioni:
+A. Corretta. Utilizzare il Cloud SDK per creare un nuovo progetto e abilitare l'API di Compute Engine in quel progetto è il metodo corretto per iniziare. Una volta che il progetto è stato creato e l'API è attivata, è possibile procedere alla creazione dell'istanza specificando il nuovo progetto. Questo approccio segue le pratiche raccomandate per la creazione di progetti e risorse in Google Cloud.
+B. Errata. Abilitare l'API di Compute Engine nel Cloud Console senza prima creare il progetto non è possibile. Prima è necessario creare il progetto, quindi abilitare l'API in esso. La descrizione di questa opzione non segue il flusso corretto di creazione di un progetto.
+C. Errata. Anche se si può utilizzare il flag `--project` per specificare un nuovo progetto, il Cloud SDK non abilita automaticamente l'API di Compute Engine per il nuovo progetto se non è stata precedentemente abilitata. Quindi, non si può semplicemente rispondere "sì" quando viene richiesto, poiché il progetto deve essere creato e l'API deve essere abilitata in anticipo.
+D. Errata. Non esiste un'opzione "Create In A New Project" nel modulo di creazione dell'istanza nel Cloud Console. Prima bisogna creare un progetto e abilitare l'API di Compute Engine, e solo successivamente si può creare un'istanza all'interno di quel progetto. Questa opzione non è valida in quanto confonde i passaggi necessari.
+
 
 #### Question 136
 
@@ -1607,6 +1690,13 @@ D. Create an Instance Template with Preemptible VMs On. Create a Managed Instanc
 
 Reference: https://cloud.google.com/kubernetes-engine/docs/tutorials/migrating-node-pool
 
+Spiegazioni:
+A. Errata. Anche se le VM Preemptible di Compute Engine possono ridurre i costi, esse possono essere terminate in qualsiasi momento e non garantiscono un tempo di esecuzione continuo. Dato che il processo batch richiede circa 30 ore e deve essere riavviato se interrotto, questa opzione non è adatta.
+B. Errata. L'utilizzo di Google Kubernetes Engine con nodi Preemptible comporterebbe simili problematiche alla scelta delle VM Preemptible. I nodi possono essere interrotti, il che significa che il processo batch non sarebbe sicuro e potrebbe dover essere riavviato frequentemente.
+C. Corretta. Migrando il carico di lavoro su una VM di Compute Engine e avviando e fermando l'istanza secondo necessità, si ha un controllo completo sull'ambiente di esecuzione. Si possono utilizzare VM standard per garantire la disponibilità continua del processo, riducendo al contempo i costi poiché si può interrompere l'istanza quando non è in uso.
+D. Errata. Creare un modello di istanza con VMs Preemptible e un gruppo di istanze gestito non è una buona soluzione per un carico di lavoro che richiede un'esecuzione continua. Anche in questo caso, i nodi possono essere interrotti, il che causerebbe la necessità di riavviare il lavoro. Questa soluzione non garantisce l'affidabilità necessaria per un processo di lunga durata.
+
+
 #### Question 137
 
 You are developing a new application and are looking for a Jenkins installation to build and deploy your source code. You want to automate the installation as quickly and easily as possible. What should you do?
@@ -1619,6 +1709,13 @@ D. Create an instance template with the Jenkins executable. Create a managed ins
 **Answer: A (C)**
 
 Reference: https://cloud.google.com/solutions/jenkins-on-kubernetes-engine
+
+Spiegazioni:
+A. Corretta. Utilizzare il Google Cloud Marketplace per distribuire Jenkins è la soluzione più rapida e semplice per avviare un'installazione. Il Marketplace offre immagini preconfigurate e configurazioni che facilitano l'installazione, consentendo di risparmiare tempo nella configurazione e nella gestione di Jenkins.
+B. Errata. Sebbene sia possibile creare un'istanza di Compute Engine e eseguire l'eseguibile di Jenkins, questo approccio richiede più passaggi manuali per la configurazione del server, la gestione delle dipendenze e la configurazione della rete. Non è il modo più rapido ed efficiente per avviare Jenkins.
+C. Errata. Creare un cluster di Kubernetes e un deployment per l'immagine di Jenkins può essere un buon approccio per un'installazione scalabile, ma è più complesso rispetto all'utilizzo del Google Cloud Marketplace. Richiede una gestione di Kubernetes che potrebbe non essere necessaria se si cerca una soluzione rapida.
+D. Errata. Creare un modello di istanza con l'eseguibile di Jenkins e un gruppo di istanze gestito richiederebbe ancora una configurazione manuale e non è il modo più veloce per iniziare a utilizzare Jenkins. Questo approccio è più complesso e richiede una gestione continua delle istanze.
+
 
 #### Question 138
 
@@ -1633,6 +1730,13 @@ D. Create a Metadata entry on the Compute Engine page with key compute/zone and 
 
 Reference: https://cloud.google.com/compute/docs/gcloud-compute
 
+Spiegazioni:
+A. Corretta. Utilizzare il comando `gcloud config` per impostare la zona predefinita è il modo raccomandato per evitare di specificare la zona con ogni comando. Questo comando aggiornerà la configurazione locale del gcloud, rendendo l'uso più semplice e veloce.
+B. Errata. Sebbene possa sembrare logico impostare la zona predefinita nella pagina delle impostazioni di Compute Engine, questo non influirà sulle configurazioni del CLI. Le impostazioni del CLI devono essere gestite attraverso il comando `gcloud config`.
+C. Errata. Creare un file chiamato `default.conf` nella directory di installazione del CLI non è un metodo supportato per configurare le impostazioni predefinite di gcloud. Le configurazioni dovrebbero essere gestite tramite il comando `gcloud config`.
+D. Errata. Creare una voce di metadata su Compute Engine con la chiave `compute/zone` non è il modo corretto per impostare una zona predefinita per il CLI. Questo approccio potrebbe influenzare il comportamento delle istanze stesse, ma non modifica la configurazione del CLI.
+
+
 #### Question 139
 
 The core business of your company is to rent out construction equipment at large scale. All the equipment that is being rented out has been equipped with multiple sensors that send event information every few seconds. These signals can vary from engine status, distance traveled, fuel level, and more. Customers are billed based on the consumption monitored by these sensors. You expect high throughput - up to thousands of events per hour per device - and need to retrieve consistent data based on the time of the event. Storing and retrieving individual signals should be atomic. What should you do?
@@ -1644,6 +1748,13 @@ D. Ingest the data into Cloud Bigtable. Create a row key based on the event time
 
 **Answer: D**
 
+Spiegazioni:
+A. Errata. Creare un file in Cloud Storage per dispositivo e appendere nuovi dati a quel file non è una soluzione ideale per eventi ad alta frequenza. L'append di file non garantisce la consistenza e l'atomicità necessarie per gestire eventi in tempo reale, e potrebbe causare conflitti di scrittura.
+B. Errata. Simile all'opzione A, utilizzare Cloud Filestore per appendere dati non è ottimale. Anche in questo caso, si tratterebbe di operazioni su file, che non garantiscono l'atomicità e potrebbero risultare in una gestione inefficiente dei dati in caso di alta concorrenza.
+C. Errata. Ingestire i dati in Datastore potrebbe funzionare, ma non è la scelta migliore per scenari ad alta throughput. Datastore ha limiti di throughput per le scritture, e gestire dati basati su timestamp potrebbe non garantire la consistenza temporale necessaria per il monitoraggio delle informazioni.
+D. Corretta. Cloud Bigtable è progettato per gestire grandi volumi di dati con alta velocità e bassa latenza. Creare una chiave di riga basata sul timestamp degli eventi permette di mantenere la consistenza temporale e garantisce che ogni evento sia memorizzato in modo atomico. Inoltre, Bigtable è ottimizzato per operazioni di lettura e scrittura ad alta velocità, rendendolo ideale per applicazioni come il monitoraggio dei sensori.
+
+
 #### Question 140
 
 You are asked to set up application performance monitoring on Google Cloud projects A, B, and C as a single pane of glass. You want to monitor CPU, memory, and disk. What should you do?
@@ -1654,6 +1765,13 @@ C. Enable API and then use default dashboards to view all projects in sequence.
 D. Enable API, create a workspace under project A, and then add projects B and C.
 
 **Answer: D**
+
+Spiegazioni:
+A. Errata. Condividere i grafici da ciascun progetto non fornisce una visione centralizzata delle prestazioni delle applicazioni. Non è un approccio scalabile per monitorare più progetti contemporaneamente, poiché richiede di gestire grafici separati per ogni progetto.
+B. Errata. Anche se assegnare il ruolo `metrics.reader` ai progetti A, B e C consente l'accesso ai dati delle metriche, non crea una vista centralizzata per il monitoraggio delle prestazioni. Non è sufficiente per configurare un monitoraggio unificato.
+C. Errata. Utilizzare dashboard predefiniti per visualizzare i progetti uno dopo l'altro non è un metodo efficiente per ottenere una visione globale delle prestazioni. Non fornisce una vera centralizzazione e richiederebbe comunque di navigare tra diversi dashboard.
+D. Corretta. Abilitare l'API e creare un workspace sotto il progetto A, quindi aggiungere i progetti B e C, permette di centralizzare il monitoraggio delle prestazioni. In questo modo, puoi visualizzare le metriche di CPU, memoria e disco in un'unica interfaccia, facilitando l'analisi e la gestione delle prestazioni delle applicazioni su più progetti.
+
 
 #### Question 141
 
@@ -1668,7 +1786,12 @@ Reference: https://cloud.google.com/billing/docs/how-to/visualize-data
 
 **Answer: A**
 
-Reference: https://cloud.google.com/billing/docs/how-to/visualize-data
+Spiegazioni:
+A. Corretta. Configurare l'esportazione dei dati di fatturazione in BigQuery consente di raccogliere e archiviare automaticamente i dati di costo da più progetti in un'unica posizione. Successivamente, puoi utilizzare Google Data Studio per creare visualizzazioni e report sui costi in tempo reale, facilitando l'analisi delle spese future e l'inclusione dei nuovi dati non appena disponibili.
+B. Errata. Sebbene tu possa ottenere un'esportazione CSV dalla pagina della tabella dei costi, questo metodo non automatizza l'importazione dei dati e richiede un passaggio manuale per l'analisi. Inoltre, non ti permette di visualizzare i dati in tempo reale, rendendolo meno efficace per stimare i costi futuri.
+C. Errata. Utilizzare il Pricing Calculator per stimare i costi mensili non fornisce un riepilogo delle spese correnti. Questo strumento è utile per pianificare i costi, ma non tiene traccia delle spese già sostenute o delle variazioni nei costi nel tempo.
+D. Errata. Anche se puoi utilizzare la vista Reports nel Cloud Billing Console per visualizzare informazioni sui costi, questo approccio non offre la flessibilità e la capacità di personalizzazione di BigQuery e Data Studio. Inoltre, i dati non saranno aggiornati automaticamente come nel caso dell'esportazione dei dati di fatturazione.
+
 
 #### Question 142
 
@@ -1679,11 +1802,16 @@ B. Create the instance with Private Google Access enabled.
 C. Create a deny-all egress firewall rule on the VPC network.
 D. Create a route on the VPC to route all traffic to the instance over the VPN tunnel.
 
-Get private access to Google services, such as storage, big data, analytics, or machine learning, without having to give your service a public IP address.
-
 **Answer: A (B)**
 
 Reference: https://cloud.google.com/vpc
+
+Spiegazioni:
+A. Corretta. Creare l'istanza senza un indirizzo IP pubblico impedisce qualsiasi traffico di Internet pubblico di accedere all'istanza. Questo è il metodo più semplice e diretto per garantire che l'istanza non sia esposta a Internet, mantenendola accessibile solo all'interno della VPC o tramite la VPN.
+B. Errata. Abilitare l'accesso privato a Google (Private Google Access) consente alle risorse senza IP pubblico di accedere ai servizi Google tramite l'IP privato. Tuttavia, questo non impedisce il traffico pubblico di raggiungere l'istanza; non è una misura sufficiente per garantire che non ci sia traffico di Internet.
+C. Errata. Creare una regola firewall deny-all per il traffico in uscita (egress) non impedisce il traffico in ingresso (ingress) dall'Internet pubblico. La regola firewall non impedisce l'accesso pubblico all'istanza; serve solo a controllare il traffico che l'istanza può inviare.
+D. Errata. Creare una route sulla VPC per instradare tutto il traffico verso l'istanza tramite il tunnel VPN non è necessario e non impedisce l'accesso pubblico all'istanza. Inoltre, non è pratico instradare tutto il traffico in questo modo quando l'istanza può semplicemente essere creata senza un indirizzo IP pubblico.
+
 
 #### Question 143
 
@@ -1696,6 +1824,13 @@ D. Apply the changes in a development environment, run gcloud compute instances 
 
 **Answer: B**
 
+Spiegazioni:
+A. Errata. Anche se è possibile utilizzare i modelli di Deployment Manager per descrivere i cambiamenti, archiviare i modelli in un bucket di Cloud Storage non è la migliore pratica consigliata per la gestione delle configurazioni e del versioning. I bucket di Cloud Storage non forniscono funzionalità di controllo della versione e collaborazione come un repository di codice.
+B. Corretta. Utilizzare i modelli di Deployment Manager per descrivere i cambiamenti e memorizzarli in Cloud Source Repositories è la soluzione migliore, poiché i repository di codice forniscono funzionalità di controllo delle versioni, collaborazione e revisione del codice. Questo metodo consente al team di visualizzare, commentare e approvare le modifiche in modo più efficace.
+C. Errata. Applicare i cambiamenti in un ambiente di sviluppo e salvare solo l'output di `gcloud compute instances list` non fornisce una documentazione completa o una descrizione dei cambiamenti proposti. Questo approccio è più orientato alla verifica dello stato attuale dell'infrastruttura piuttosto che alla condivisione di proposte di modifica.
+D. Errata. Anche in questo caso, applicare i cambiamenti in un ambiente di sviluppo e memorizzare solo l'output di `gcloud compute instances list` non è sufficiente. Non fornisce un modo strutturato per documentare e condividere le modifiche proposte, e l'output da solo non è una rappresentazione chiara delle modifiche necessarie.
+
+
 #### Question 144
 
 You have a Compute Engine instance hosting an application used between 9 AM and 6 PM on weekdays. You want to back up this instance daily for disaster recovery purposes. You want to keep the backups for 30 days. You want the Google-recommended solution with the least management overhead and the least number of services. What should you do?
@@ -1706,6 +1841,13 @@ C. 1. Create a Cloud Function that creates a snapshot of your instance's disk. 2
 D. 1. Create a bash script in the instance that copies the content of the disk to Cloud Storage. 2. Create a bash script in the instance that deletes data older than 30 days in the backup Cloud Storage bucket. 3. Configure the instance's crontab to execute these scripts daily at 1:00 AM.
 
 **Answer: B**
+
+Spiegazioni:
+A. Errata. Sebbene sia possibile utilizzare i metadati delle istanze per configurare snapshot e retention, questo metodo richiede una gestione manuale e una comprensione approfondita della sintassi cron per le pianificazioni. Non è il modo più raccomandato da Google per gestire i backup automatici.
+B. Corretta. Creare una pianificazione degli snapshot direttamente nella console di Google Cloud è il metodo consigliato con il minor overhead di gestione. Google Cloud gestisce automaticamente la creazione e l'eliminazione degli snapshot, mantenendo la semplicità e riducendo il rischio di errori.
+C. Errata. Sebbene le Cloud Functions possano automatizzare la creazione e l'eliminazione degli snapshot, questo approccio introduce una complessità e una dipendenza da più servizi. È più laborioso da gestire rispetto alla creazione di una semplice pianificazione degli snapshot tramite la console.
+D. Errata. Utilizzare script bash per gestire il backup su Cloud Storage e configurare il crontab è una soluzione complessa che richiede maggiore manutenzione. Questo approccio non è raccomandato da Google in quanto introduce vari punti di errore e richiede una gestione manuale delle operazioni di backup.
+
 
 #### Question 145
 
@@ -1718,6 +1860,13 @@ D. Create a new cluster with both n1-standard-2 and n2-highmem-16 nodes. Redeplo
 
 **Answer: B**
 
+Spiegazioni:
+A. Errata. L'upgrade del cluster tramite `gcloud container clusters upgrade` è destinato ad aggiornare la versione del cluster GKE e non consente di modificare il tipo di nodo per eseguire pod con requisiti diversi. Non è un metodo appropriato per aggiungere nodi con specifiche diverse senza downtime.
+B. Corretta. Creando un nuovo Node Pool con il tipo di macchina n2-highmem-16, è possibile aggiungere nodi con specifiche superiori al cluster esistente senza downtime. I nuovi pod possono quindi essere distribuiti su questo nuovo Node Pool, consentendo di scalare le risorse senza interrompere i pod già in esecuzione.
+C. Errata. Creare un nuovo cluster con nodi n2-highmem-16 richiederebbe il ridistribuzione dei pod e la cancellazione del cluster vecchio, comportando downtime. Questa soluzione non è ottimale per garantire continuità operativa.
+D. Errata. Anche se la creazione di un cluster con nodi n1-standard-2 e n2-highmem-16 è tecnicamente possibile, il passaggio a un nuovo cluster comporterebbe downtime e non è necessario. È meglio gestire tutto all'interno di un singolo cluster tramite i Node Pool per evitare interruzioni.
+
+
 #### Question 146
 
 You have an application that uses Cloud Spanner as a database backend to keep current state information about users. Cloud Bigtable logs all events triggered by users. You export Cloud Spanner data to Cloud Storage during daily backups. One of your analysts asks you to join data from Cloud Spanner and Cloud Bigtable for specific users. You want to complete this ad hoc request as efficiently as possible. What should you do?
@@ -1729,6 +1878,13 @@ D. Create two separate BigQuery external tables on Cloud Storage and Cloud Bigta
 
 **Answer: D (B)**
 
+Spiegazioni:
+A. Errata. Sebbene sia possibile creare un lavoro Dataflow per copiare i dati da Cloud Bigtable e Cloud Storage, unire i dati a livello di Dataflow potrebbe richiedere più tempo e risorse. Inoltre, non è chiaro se i dati di Cloud Spanner siano coinvolti in questo caso.
+B. Errata. Creare un lavoro Dataflow per copiare i dati da Cloud Bigtable e Cloud Spanner per specifici utenti sarebbe inefficiente. La richiesta di unire i dati non richiede necessariamente il caricamento dei dati in un altro sistema.
+C. Errata. Utilizzare un cluster Cloud Dataproc per eseguire un lavoro Spark sarebbe eccessivo per un'operazione di join semplice e potrebbe comportare costi elevati e tempi di avvio prolungati, rispetto a soluzioni più dirette.
+D. Corretta. Creando due tabelle esterne in BigQuery, una da Cloud Storage e l'altra da Cloud Bigtable, è possibile sfruttare la potenza di BigQuery per eseguire facilmente query e unire i dati attraverso i campi degli utenti. Questo approccio è più efficiente e permette di sfruttare la scalabilità e le capacità di query di BigQuery senza dover gestire ulteriori processi ETL.
+
+
 #### Question 147
 
 You are hosting an application from Compute Engine virtual machines (VMs) in us-central1-a. You want to adjust your design to support the failure of a single Compute Engine zone, eliminate downtime, and minimize cost. What should you do?
@@ -1739,6 +1895,13 @@ C. - Create an HTTP(S) Load Balancer. - Create one or more global forwarding rul
 D. - Perform regular backups of your application. - Create a Cloud Monitoring Alert and be notified if your application becomes unavailable. - Restore from backups when notified.
 
 **Answer: A**
+
+Spiegazioni:
+A. Corretta. Creando risorse in due zone diverse (us-central1-a e us-central1-b) e bilanciando il carico tra di esse, puoi garantire la disponibilità continua della tua applicazione anche in caso di guasti in una delle zone. Questo approccio elimina il downtime e mantiene i costi ridotti rispetto a configurazioni più complesse.
+B. Errata. Creare un Managed Instance Group in una sola zona non garantirebbe l'assenza di downtime in caso di guasto della zona. Inoltre, la configurazione di un Health Check con un intervallo breve non previene il downtime, ma piuttosto verifica lo stato delle istanze già attive.
+C. Errata. Anche se creare un HTTP(S) Load Balancer è utile per distribuire il traffico, se le istanze sono tutte localizzate in una sola zona (us-central1-a), un guasto in quella zona comporterebbe ancora downtime. Il Load Balancer è efficace solo se ci sono risorse distribuite in più zone.
+D. Errata. Effettuare backup regolari e configurare avvisi di monitoraggio non elimina il downtime; queste azioni servono per ripristinare il servizio dopo un guasto. Questa soluzione non è preventiva e non soddisfa il requisito di eliminare il downtime.
+
 
 #### Question 148
 
@@ -1753,6 +1916,13 @@ D. Use the command gcloud projects get-iam-policy to view the current role assig
 
 Reference: https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys
 
+Spiegazioni:
+A. Errata. Verificare le chiavi SSH memorizzate non fornisce informazioni sui ruoli IAM e sulle autorizzazioni degli utenti, quindi non è utile per controllare chi ha il ruolo di Project Owner.
+B. Errata. L'Identity-Aware Proxy gestisce l'accesso alle applicazioni, ma non è il posto giusto per controllare i ruoli a livello di progetto. Le autorizzazioni sui ruoli di progetto sono gestite a livello IAM, non specificamente in relazione all'Identity-Aware Proxy.
+C. Errata. Abilitare i log di audit può aiutarti a monitorare le attività future, ma non fornisce una panoramica immediata delle attuali assegnazioni di ruoli. Inoltre, la revisione dei log di audit può richiedere tempo e non è un metodo diretto per controllare le assegnazioni di ruoli esistenti.
+D. Corretta. Usare il comando `gcloud projects get-iam-policy` ti consente di visualizzare rapidamente le attuali assegnazioni di ruolo nel progetto, inclusi gli utenti con il ruolo di Project Owner. Questo è il metodo più diretto e efficace per ottenere l'informazione desiderata.
+
+
 #### Question 149
 
 You are running multiple VPC-native Google Kubernetes Engine clusters in the same subnet. The IPs available for the nodes are exhausted, and you want to ensure that the clusters can grow in nodes when needed. What should you do?
@@ -1763,6 +1933,13 @@ C. Create a new VPC, and set up VPC peering with the existing VPC.
 D. Expand the CIDR range of the relevant subnet for the cluster.
 
 **Answer: D**
+
+Spiegazioni:
+A. Errata. Creare un nuovo subnet nella stessa regione non affronta direttamente il problema dell'esaurimento degli indirizzi IP nel subnet esistente utilizzato dai cluster.
+B. Errata. Aggiungere un alias IP range è un'opzione, ma non risolve completamente il problema se gli indirizzi IP esistenti nel subnet sono esauriti.
+C. Errata. Creare un nuovo VPC e configurare il VPC peering è un approccio complesso e non necessario per questo scenario.
+D. Corretta. Espandere il CIDR range del subnet pertinente consente di aggiungere più indirizzi IP, permettendo così ai cluster GKE di crescere senza esaurire gli indirizzi IP disponibili. Questa soluzione è diretta e affronta efficacemente il problema dell'esaurimento degli indirizzi IP.
+
 
 #### Question 150
 
@@ -1775,6 +1952,12 @@ D. Run a test using N1 standard VMs instead of N2. If the test is successful, us
 
 **Answer: A (B)**
 
+Spiegazioni:
+A. Corretta. Le VM preemptible sono una scelta ideale per i workload che possono tollerare interruzioni, poiché offrono costi significativamente inferiori rispetto alle VM standard. Testare il comportamento del workload con eventi di manutenzione simulati ti consente di assicurarti che il tuo workload possa gestire la terminazione delle VM preemptible senza problemi.
+B. Errata. Usare solo VM N1 Standard non aiuta a ridurre i costi. Le VM standard sono più costose e non sfruttano il potenziale di riduzione dei costi delle VM preemptible.
+C. Errata. Sebbene l'uso di un managed instance group possa semplificare la gestione delle VM, non affronta il problema principale dei costi. Usare N1 Standard VMs non è la soluzione più economica.
+D. Errata. Eseguire un test utilizzando N1 Standard VMs rispetto a N2 non è rilevante per il problema del costo, poiché non si considera l'utilizzo delle VM preemptible che sono più economiche e adatte per workload tolleranti ai guasti.
+
 #### Question 151
 
 You are working with a user to set up an application in a new VPC behind a firewall. The user is concerned about data egress. You want to configure the fewest open egress ports. What should you do?
@@ -1785,6 +1968,12 @@ C. Set up a high-priority (1000) rule that blocks all egress and a low-priority 
 D. Set up a high-priority (1000) rule to allow the appropriate ports.
 
 **Answer: A (C)**
+
+Spiegazioni:
+A. Corretta. Questa configurazione crea una regola a bassa priorità che blocca tutto il traffico in uscita, garantendo che solo le porte specificate nella regola ad alta priorità siano aperte. Questo approccio minimizza il rischio di perdite di dati in uscita e limita l'egress solo alle porte necessarie per l'applicazione.
+B. Errata. Una regola che abbina ingressi e uscite non è una pratica standard e potrebbe portare a configurazioni poco chiare o indesiderate.
+C. Errata. Bloccare tutto l'egress con una regola ad alta priorità non è efficace, poiché le regole di firewall consentono il traffico per impostazione predefinita; pertanto, questa regola non consentirebbe alcun traffico in uscita.
+D. Errata. Una regola a priorità alta che consente solo le porte appropriate non è sufficiente se non c'è una regola che blocca esplicitamente tutto il resto, lasciando potenzialmente aperto un eccesso di traffico in uscita.
 
 #### Question 152
 
@@ -1799,6 +1988,12 @@ D. Ask the operations partner to generate SSH key pairs, and add the public keys
 
 Reference: https://cloud.google.com/vpc/docs/firewalls
 
+Spiegazioni:
+A. Errata. Abilitare Cloud IAP (Identity-Aware Proxy) richiede che gli utenti abbiano un account Google, quindi non sarebbe un'opzione praticabile per un partner operativo che non utilizza Google Accounts.
+B. Errata. Sebbene l'aggiunta di tag alle istanze e la creazione di regole di firewall sia una buona pratica per controllare l'accesso, non è sufficiente da sola per consentire accesso SSH. Inoltre, sarebbe necessario gestire le credenziali di accesso separatamente.
+C. Errata. Configurare un Cloud VPN è un'opzione valida per collegare le reti, ma non è specificamente necessario per concedere accesso SSH alle istanze. Può anche introdurre complessità non necessarie per l'accesso diretto alle istanze.
+D. Corretta. Chiedere al partner operativo di generare coppie di chiavi SSH e aggiungere le chiavi pubbliche alle istanze VM è un modo standard e sicuro per concedere accesso SSH. In questo modo, puoi gestire facilmente le chiavi e revocare l'accesso se necessario.
+
 #### Question 153
 
 You have created a code snippet that should be triggered whenever a new file is uploaded to a Cloud Storage bucket. You want to deploy this code snippet. What should you do?
@@ -1809,6 +2004,13 @@ C. Use Google Kubernetes Engine and configure a CronJob to trigger the applicati
 D. Use Dataflow as a batch job, and configure the bucket as a data source.
 
 **Answer: B**
+
+Spiegazioni:
+A. Errata: Questa opzione implica l'uso di App Engine con Cloud Scheduler, che non è la soluzione più semplice per il trigger di eventi basati sull'upload di file. App Engine è più adatto per applicazioni web e non è specificamente progettato per rispondere a eventi di Cloud Storage.
+B. Corretta: Questa è la soluzione raccomandata. Cloud Functions è un servizio di serverless computing che consente di eseguire codice in risposta a eventi. Configurando il bucket di Cloud Storage come risorsa di trigger, la funzione sarà automaticamente eseguita ogni volta che un nuovo file viene caricato, senza necessità di gestire l'infrastruttura.
+C. Errata: Questa opzione richiede più gestione dell'infrastruttura e non è ottimale per un trigger immediato su upload di file. Un CronJob è progettato per attività pianificate, non per eventi istantanei.
+D. Errata: Dataflow è più adatto per elaborazioni batch e stream di dati piuttosto che per rispondere a eventi di upload immediati. Questa opzione non fornisce un trigger istantaneo per i nuovi file caricati.
+
 
 #### Question 154
 
@@ -1821,6 +2023,13 @@ D. Set up a policy that uses Standard storage for 30 days, then moves to Coldlin
 
 **Answer: B**
 
+Spiegazioni:
+A. Errata: Nearline storage è destinato a dati che vengono letti meno di una volta al mese, il che non si adatta alla descrizione di oggetti che vengono accessibili frequentemente per 30 giorni. Inoltre, spostare direttamente a Archive storage dopo 30 giorni non è l'ideale per il costo.
+B. Corretta: Questa opzione prevede l'uso di Standard storage per i primi 30 giorni, il che è appropriato poiché gli oggetti sono frequentemente accessibili. Dopo 30 giorni, è possibile spostare gli oggetti in Archive storage, il che è economico per dati che non vengono letti frequentemente. Questa strategia minimizza i costi nel lungo periodo.
+C. Errata: Anche se Nearline storage è adatto per oggetti non letti frequentemente, l'opzione di spostare a Coldline per un anno è più costosa rispetto a spostare direttamente a Archive storage dopo 30 giorni. L'uso di Nearline e Coldline in questo contesto non è necessario.
+D. Errata: Questa opzione inizia con Standard storage, il che è corretto, ma poi prevede di spostare gli oggetti a Coldline per un anno, il che non è ottimale. Gli oggetti possono essere direttamente trasferiti ad Archive storage dopo 30 giorni, riducendo i costi complessivi.
+
+
 #### Question 155
 
 You are storing sensitive information in a Cloud Storage bucket. For legal reasons, you need to be able to record all requests that read any of the stored data. You want to make sure you comply with these requirements. What should you do?
@@ -1831,6 +2040,13 @@ C. Allow only a single Service Account access to read the data.
 D. Enable Data Access audit logs for the Cloud Storage API.
 
 **Answer: D**
+
+Spiegazioni:
+A. Errata: Abilitare l'Identity Aware Proxy API non è rilevante per la registrazione delle richieste di accesso ai dati in un bucket di Cloud Storage. L'Identity Aware Proxy è utilizzato per controllare l'accesso alle applicazioni, non per monitorare l'accesso ai dati in Cloud Storage.
+B. Errata: La Data Loss Prevention API è utilizzata per identificare e proteggere i dati sensibili, ma non per registrare le richieste di accesso ai dati. Non risponde ai requisiti di registrazione delle letture dei dati.
+C. Errata: Limitare l'accesso a un solo Service Account non fornisce una soluzione per registrare le richieste di lettura. Questa opzione non offre la tracciabilità necessaria per conformarsi ai requisiti legali.
+D. Corretta: Abilitare i Data Access audit logs per l'API Cloud Storage consente di registrare tutte le richieste che leggono i dati memorizzati nel bucket. Questa opzione è la più adatta per garantire la conformità legale richiesta.
+
 
 #### Question 156
 
@@ -1843,6 +2059,13 @@ D. Create a single billing account for all sandbox projects and enable BigQuery 
 
 **Answer: C**
 
+Spiegazioni:
+A. Errata: Creare un singolo budget per tutti i progetti non permette di ricevere notifiche individuali per ogni progetto. Questo approccio non fornisce la granularità necessaria per monitorare le spese di ciascun sandbox.
+B. Errata: Creare un account di fatturazione separato per ogni progetto complicerebbe la gestione e non è necessario per ricevere avvisi di spesa. Inoltre, richiederebbe più configurazione e monitoraggio.
+C. Corretta: Creare un budget separato per ciascun progetto consente di configurare avvisi specifici per ogni sandbox. Questo approccio è efficace per monitorare e ricevere notifiche sulle spese di ciascun sviluppatore in modo autonomo.
+D. Errata: Creare un unico account di fatturazione per tutti i progetti non consentirebbe di ricevere avvisi di spesa specifici per ciascun progetto. Inoltre, questo approccio potrebbe rendere difficile l'individuazione delle spese eccessive in singoli sandbox.
+
+
 #### Question 157
 
 You are deploying a production application on Compute Engine. You want to prevent anyone from accidentally destroying the instance by clicking the wrong button. What should you do?
@@ -1853,6 +2076,13 @@ C. Disable Automatic restart on the instance.
 D. Enable Preemptibility on the instance.
 
 **Answer: B (A)**
+
+Spiegazioni:
+A. Errata: Disabilitare la flag `Delete boot disk when instance is deleted` non previene la cancellazione dell'istanza stessa, ma solo la cancellazione del disco di avvio. Non protegge l'istanza dalla sua eliminazione.
+B. Corretta: Abilitare la protezione alla cancellazione sull'istanza impedisce che l'istanza venga eliminata accidentalmente, anche se l'utente ha i permessi necessari. Questa è la misura di protezione più diretta per evitare la cancellazione.
+C. Errata: Disabilitare il riavvio automatico dell'istanza non ha alcun impatto sulla possibilità di eliminare l'istanza. Questa opzione è più utile per gestire le interruzioni e non per proteggere l'istanza dalla cancellazione.
+D. Errata: Abilitare la preemptibilità consente a Google di terminare l'istanza in qualsiasi momento, il che va contro l'obiettivo di proteggere l'istanza da cancellazioni accidentali. La preemptibilità è utilizzata per le istanze temporanee e a basso costo.
+
 
 #### Question 158
 
@@ -1865,14 +2095,22 @@ D. Create a custom role that combines the required permissions. Grant the DevOps
 
 **Answer: C (B)**
 
+Spiegazioni:
+A. Errata: Concedere il ruolo di Project Editor a livello organizzativo darebbe accesso completo a tutte le risorse nei progetti dell'organizzazione, il che è troppo permissivo e non segue le migliori pratiche di sicurezza.
+B. Errata: Anche se concedere il ruolo di Project Editor sul progetto di produzione limita i diritti al solo progetto di produzione, questo ruolo consente comunque modifiche a tutte le risorse, il che non previene cambiamenti futuri nelle autorizzazioni associate al ruolo.
+C. Corretta: Creare un ruolo personalizzato che combina solo le autorizzazioni necessarie consente di controllare in modo preciso quali azioni il team DevOps può eseguire. Assegnare questo ruolo personalizzato al progetto di produzione è in linea con le migliori pratiche di sicurezza.
+D. Errata: Creare un ruolo personalizzato a livello organizzativo darebbe accesso a tutte le risorse nell'organizzazione, simile a quanto accadrebbe con i ruoli predefiniti, violando l'obiettivo di limitare i permessi e prevenire cambiamenti futuri nelle autorizzazioni.
+
+
 #### Question 159
 
 You are building an application that processes data files uploaded from thousands of suppliers. Your primary goals for the application are data security and the expiration of aged data. You need to design the application to:
+
 - Restrict access so that suppliers can access only their own data.
 - Give suppliers write access to data only for 30 minutes.
 - Delete data that is over 45 days old.
-You have a very short development cycle, and you need to make sure that the application requires minimal maintenance. Which two strategies should you use?
-(Choose two.)
+  You have a very short development cycle, and you need to make sure that the application requires minimal maintenance. Which two strategies should you use?
+  (Choose two.)
 
 A. Build a lifecycle policy to delete Cloud Storage objects after 45 days.
 B. Use signed URLs to allow suppliers limited time access to store their objects.
@@ -1881,6 +2119,14 @@ D. Build a Cloud function that triggers a timer of 45 days to delete objects tha
 E. Develop a script that loops through all Cloud Storage buckets and deletes any buckets that are older than 45 days.
 
 **Answer: A-B (A-E)**
+
+Spiegazioni:
+A. Corretta: Creare una policy di ciclo di vita per eliminare gli oggetti di Cloud Storage dopo 45 giorni è un metodo efficace e automatizzato per gestire l'eliminazione dei dati obsoleti, soddisfacendo l'esigenza di ridurre il mantenimento dell'applicazione.
+B. Corretta: Utilizzare URL firmati consente ai fornitori di accedere ai propri dati con un accesso temporaneo limitato, in questo caso a 30 minuti. Questo metodo garantisce che i fornitori possano caricare i loro dati in modo sicuro e solo per il tempo necessario.
+C. Errata: L'uso di un server SFTP richiederebbe una gestione più complessa e non garantirebbe automaticamente la scadenza dei dati o l'accesso limitato nel tempo, aumentando il carico di manutenzione.
+D. Errata: Sebbene una Cloud Function possa essere utilizzata per eliminare oggetti scaduti, la gestione di un timer di 45 giorni non è la soluzione più efficiente o necessaria, poiché la policy di ciclo di vita è già in grado di gestire l'eliminazione automatica.
+E. Errata: Creare uno script che controlla e elimina i bucket più vecchi di 45 giorni non è pratico e non si allinea con le esigenze specifiche di mantenere solo i dati dei fornitori, aumentando il rischio di eliminare erroneamente dati utili.
+
 
 #### Question 160
 
@@ -1893,6 +2139,13 @@ D. Create a bash script that contains all requirement steps as gcloud commands.
 
 **Answer: A**
 
+Spiegazioni:
+A. Corretta: Sviluppare modelli per l'ambiente utilizzando Cloud Deployment Manager consente di standardizzare la creazione e la gestione delle risorse Google Cloud in modo efficiente, riducendo al minimo il codice ripetitivo grazie all'uso di modelli e configurazioni.
+B. Errata: Utilizzare curl per inviare richieste REST alle API Google per ogni risorsa individuale comporterebbe un'implementazione complessa e ripetitiva, aumentando la possibilità di errori e non offrendo un approccio scalabile.
+C. Errata: Utilizzare l'interfaccia del Cloud Console per gestire le risorse è più manuale e non supporta l'approccio di Infrastructure as Code, non consentendo quindi di standardizzare la creazione e la gestione delle risorse.
+D. Errata: Creare uno script bash con comandi gcloud richiede ancora una certa quantità di codice ripetitivo e non fornisce la flessibilità e la standardizzazione offerte da un gestore delle distribuzioni come il Cloud Deployment Manager.
+
+
 #### Question 161
 
 You are performing a monthly security check of your Google Cloud environment and want to know who has access to view data stored in your Google Cloud Project. What should you do?
@@ -1903,6 +2156,13 @@ C. Review the Identity-Aware Proxy settings for each resource.
 D. Create a Data Loss Prevention job.
 
 **Answer: B**
+
+Spiegazioni:
+A. Errata: Abilitare i log di audit per tutte le API relative alla memorizzazione dei dati può fornire informazioni sui accessi effettuati, ma non elenca direttamente chi ha accesso a visualizzare i dati, rendendo questo approccio non completamente efficace per il tuo obiettivo.
+B. Corretta: Rivedere le autorizzazioni IAM per qualsiasi ruolo che consente l'accesso ai dati è il modo più diretto per identificare chi ha accesso a visualizzare i dati nel tuo progetto Google Cloud, poiché i ruoli IAM definiscono i permessi degli utenti.
+C. Errata: Rivedere le impostazioni di Identity-Aware Proxy (IAP) non fornisce un elenco completo degli utenti che possono visualizzare i dati, poiché IAP è più focalizzato sul controllo dell'accesso alle applicazioni, non direttamente ai dati memorizzati.
+D. Errata: Creare un lavoro di Data Loss Prevention (DLP) è utile per identificare e proteggere informazioni sensibili, ma non aiuta a identificare chi ha accesso ai dati nel progetto, quindi non risponde direttamente alla tua esigenza di verifica.
+
 
 #### Question 162
 
@@ -1915,6 +2175,13 @@ D. Query the Compute Engine internal DNS from the applications to retrieve the I
 
 **Answer: B (A)**
 
+Spiegazioni:
+A. Errata: Configurare Cloud NAT aiuta nella gestione degli indirizzi IP per l'uscita da una VPC, ma non risolve il problema di cambiamenti negli indirizzi IP per il database on-premises. Non è una soluzione efficace per il tuo scenario.
+B. Corretta: Creare una zona privata in Cloud DNS e configurare le applicazioni con il nome DNS consente di utilizzare un nome invece di un indirizzo IP. Questo approccio permette di modificare facilmente l'indirizzo IP del database senza dover aggiornare tutte le applicazioni, semplicemente modificando il record DNS.
+C. Errata: Configurare l'IP del database come metadato personalizzato per ogni istanza non è pratico, poiché richiederebbe un aggiornamento manuale dei metadati ogni volta che l'IP cambia, rendendo la gestione più complessa e suscettibile a errori.
+D. Errata: Consultare il DNS interno di Compute Engine per recuperare l'IP del database è possibile, ma non è garantito che il DNS interno conosca l'IP del database on-premises. Inoltre, richiede una configurazione aggiuntiva per garantire che il database sia accessibile tramite il DNS interno, quindi non è la soluzione migliore.
+
+
 #### Question 163
 
 You have developed a containerized web application that will serve internal colleagues during business hours. You want to ensure that no costs are incurred outside of the hours the application is used. You have just created a new Google Cloud project and want to deploy the application. What should you do?
@@ -1925,6 +2192,13 @@ C. Deploy the container on App Engine flexible environment with autoscaling, and
 D. Deploy the container on App Engine flexible environment with manual scaling, and set the value instances to zero in the app.yaml.
 
 **Answer: B (C)**
+
+Spiegazioni:
+A. Errata: Cloud Run for Anthos non supporta l'impostazione del numero minimo di istanze a zero. Anche se è una soluzione per eseguire contenitori, non è ottimizzata per l'uso a costo zero al di fuori delle ore lavorative.
+B. Corretta: Cloud Run (gestito) permette di impostare il numero minimo di istanze a zero, il che significa che non ci saranno costi quando l'applicazione non è in uso. Inoltre, Cloud Run si adatta automaticamente in base alle richieste, rendendolo ideale per scenari di utilizzo intermittente.
+C. Errata: Anche se App Engine flessibile supporta l'autoscaling, l'impostazione di `min_instances` a zero non è supportata nella flessibile. Questo potrebbe comportare costi anche quando l'applicazione non è in uso.
+D. Errata: App Engine flessibile con scaling manuale non permette di impostare gli istanti a zero. Questa configurazione comporterebbe costi continui anche quando l'applicazione non è attiva.
+
 
 #### Question 164
 
@@ -1937,6 +2211,13 @@ D. Change the billing account of your projects to the billing account of your co
 
 **Answer: D**
 
+Spiegazioni:
+A. Errata: Anche se concedere il ruolo di `Billing Account User` permetterebbe al team finanziario di visualizzare i dettagli della fatturazione, non risolve il problema di caricare i costi dei progetti sull'account di fatturazione dell'azienda. 
+B. Errata: Configurare l'esportazione della fatturazione in BigQuery fornisce visibilità sui costi, ma non trasferisce effettivamente i costi all'account di fatturazione dell'azienda.
+C. Errata: Aprire un ticket con Google Billing Support per richiedere l'invio della fattura all'azienda non è una soluzione praticabile per ristrutturare la fatturazione. La fatturazione è legata agli account e non può essere cambiata su richiesta.
+D. Corretta: Cambiare l'account di fatturazione dei progetti all'account di fatturazione della tua azienda è la soluzione più diretta e appropriata per garantire che i costi siano caricati sulla fattura mensile dell'azienda.
+
+
 #### Question 165
 
 You are running a data warehouse on BigQuery. A partner company is offering a recommendation engine based on the data in your data warehouse. The partner company is also running their application on Google Cloud. They manage the resources in their own project, but they need access to the BigQuery dataset in your project. You want to provide the partner company with access to the dataset. What should you do?
@@ -1947,6 +2228,13 @@ C. Ask the partner to create a Service Account in their project, and have them g
 D. Ask the partner to create a Service Account in their project, and grant their Service Account access to the BigQuery dataset in your project.
 
 **Answer: D**
+
+Spiegazioni:
+A. Errata: Creare un Service Account nel tuo progetto e concedergli accesso a BigQuery non risolve il problema, poiché il Service Account non può accedere direttamente alle risorse del partner.
+B. Errata: Creare un Service Account nel tuo progetto e chiedere al partner di concedere accesso a questo Service Account non è possibile, poiché non possono gestire le autorizzazioni per un Service Account che non appartiene al loro progetto.
+C. Errata: Chiedere al partner di creare un Service Account nel loro progetto non fornisce una soluzione diretta per accedere ai dati nel tuo dataset BigQuery.
+D. Corretta: Chiedere al partner di creare un Service Account nel loro progetto e concedere a quel Service Account accesso al dataset BigQuery nel tuo progetto è la soluzione corretta. Questo permette al loro applicativo di accedere ai dati nel tuo dataset in modo sicuro e controllato.
+
 
 #### Question 166
 
@@ -1959,6 +2247,13 @@ D. Create a new revision with the new version of the application. Add an HTTP Lo
 
 **Answer: B (A)**
 
+Spiegazioni:
+A. Errata: Creare un nuovo servizio con la nuova versione dell'applicazione non è necessario per un canary deployment. Un canary deployment può essere effettuato all'interno dello stesso servizio, senza dover creare un servizio separato.
+B. Corretta: Creare una nuova revisione con la nuova versione dell'applicazione e dividere il traffico tra questa revisione e quella attualmente in esecuzione è la strategia giusta per un canary deployment. Cloud Run per Anthos supporta la gestione delle revisioni e la distribuzione del traffico tra di esse.
+C. Errata: Creare un nuovo servizio richiede più configurazione e gestione, e non è l'approccio corretto per eseguire un canary deployment. È preferibile gestire le versioni all'interno dello stesso servizio.
+D. Errata: Anche se l'uso di un HTTP Load Balancer per gestire le revisioni è possibile, non è necessario per il canary deployment. Cloud Run gestisce già il traffico tra le revisioni senza necessità di un bilanciatore di carico esterno.
+
+
 #### Question 167
 
 Your company developed a mobile game that is deployed on Google Cloud. Gamers are connecting to the game with their personal phones over the Internet. The game sends UDP packets to update the servers about the gamers' actions while they are playing in multiplayer mode. Your game backend can scale over multiple virtual machines (VMs), and you want to expose the VMs over a single IP address. What should you do?
@@ -1969,6 +2264,13 @@ C. Configure an External HTTP(s) load balancer in front of the application serve
 D. Configure an External Network load balancer in front of the application servers.
 
 **Answer: D (A)**
+
+Spiegazioni:
+A. Errata: Un SSL Proxy load balancer è progettato per gestire il traffico HTTPS e non è adatto per le comunicazioni UDP, che sono necessarie per la tua applicazione di gioco.
+B. Errata: Un Internal UDP load balancer è utilizzato per gestire il traffico UDP all'interno di una rete VPC, ma non può essere esposto direttamente a Internet, quindi non è adatto per il tuo caso in cui i giocatori si connettono tramite Internet.
+C. Errata: Un External HTTP(s) load balancer è progettato per gestire il traffico HTTP/HTTPS, non UDP. Pertanto, non è idoneo per il tuo scenario in cui i pacchetti UDP devono essere gestiti.
+D. Corretta: Un External Network load balancer può gestire il traffico UDP e può essere utilizzato per esporre le tue VM su un singolo indirizzo IP, permettendo ai giocatori di connettersi senza problemi.
+
 
 #### Question 168
 
@@ -1981,6 +2283,13 @@ D. In the Cloud Console, go to Cloud Storage. Upload the relevant images to the 
 
 **Answer: C**
 
+Spiegazioni:
+A. Errata: Creare un Pub/Sub topic e abilitare un trigger di Cloud Storage richiede un'applicazione per inviare le immagini, ma questo approccio è più complesso e non ottimizzato per l'archiviazione automatizzata delle immagini mediche.
+B. Errata: Sebbene un lavoro di Dataflow possa elaborare i dati, non è l'approccio migliore per caricare automaticamente immagini mediche da una sorgente on-premises a Cloud Storage, soprattutto se si tratta solo di caricare file.
+C. Corretta: Creare uno script che utilizza il comando gsutil per sincronizzare lo storage on-premises con Cloud Storage è una soluzione semplice ed efficace. Pianificare lo script come un cron job garantirà che tutte le nuove immagini vengano caricate automaticamente a intervalli regolari.
+D. Errata: Caricare manualmente le immagini tramite la Console Cloud non è un metodo automatizzato e richiederebbe intervento umano ogni volta che ci sono nuove immagini da archiviare.
+
+
 #### Question 169
 
 Your auditor wants to view your organization's use of data in Google Cloud. The auditor is most interested in auditing who accessed data in Cloud Storage buckets. You need to help the auditor access the data they need. What should you do?
@@ -1991,6 +2300,13 @@ C. Assign the appropriate permissions, and then use Cloud Monitoring to review m
 D. Use the export logs API to provide the Admin Activity Audit Logs in the format they want.
 
 **Answer: A (D)**
+
+Spiegazioni:
+A. Corretta: Attivare i Data Access Logs per i bucket di Cloud Storage consente di registrare e monitorare l'accesso ai dati. Creare una query nel visualizzatore di log per filtrare i log di Cloud Storage fornisce all'auditor le informazioni necessarie sui dati accessi.
+B. Errata: Creare un report su Admin Activity Audit Logs non è specifico per l'accesso ai dati nei bucket di Cloud Storage e non soddisfa le esigenze dell'auditor, che è interessato a dati specifici.
+C. Errata: Sebbene assegnare le autorizzazioni appropriate sia importante, utilizzare Cloud Monitoring per rivedere le metriche non fornisce informazioni dettagliate sull'accesso ai dati nei bucket di Cloud Storage.
+D. Errata: L'API di esportazione dei log per fornire i log delle attività amministrative non è pertinente per auditare l'accesso ai dati in Cloud Storage, poiché si concentra sulle attività amministrative piuttosto che sull'accesso ai dati.
+
 
 #### Question 170
 
@@ -2003,6 +2319,13 @@ D. Place the private key file in your home directory and rename it to `GOOGLE_AP
 
 **Answer: B**
 
+Spiegazioni:
+A. Errata: Il comando `gcloud auth login` è utilizzato per autenticare un utente tramite il proprio account Google, non per un Service Account.
+B. Corretta: Il comando `gcloud auth activate-service-account` consente di attivare un Service Account utilizzando la chiave privata specificata. Questo è il modo corretto per autenticarsi utilizzando un Service Account con il Cloud SDK.
+C. Errata: Non è necessario e non è raccomandato posizionare la chiave privata nella directory di installazione del Cloud SDK o rinominarla in `credentials.json`.
+D. Errata: Anche se posizionare la chiave nella home directory è una pratica comune, il nome del file deve essere `GOOGLE_APPLICATION_CREDENTIALS`, ma questa impostazione non è direttamente utilizzata dal comando gcloud; è invece usata dalle librerie client di Google Cloud per autenticazione automatica.
+
+
 #### Question 171
 
 You are working with a Cloud SQL MySQL database at your company. You need to retain a month-end copy of the database for three years for audit purposes. What should you do?
@@ -2014,6 +2337,12 @@ D. Convert the automatic first-of-the-month backup to an export file. Write the 
 
 **Answer: A (B)**
 
+Spiegazioni:
+A. Corretta: Configurare un job di esportazione mensile e salvare il file in un bucket di Cloud Storage di classe Archive è una soluzione efficiente e a lungo termine, poiché l'Archive class offre il costo di storage più basso per dati che devono essere conservati a lungo senza accessi frequenti.
+B. Errata: Le copie di backup automatiche non sono progettate per essere conservate a lungo termine, poiché potrebbero essere automaticamente eliminate secondo la politica di gestione del ciclo di vita dei backup.
+C. Errata: I backup on-demand in Cloud SQL non offrono lo stesso controllo per essere conservati per periodi estesi, e l’uso di un backup diretto non è l’opzione ideale per un archivio a lungo termine.
+D. Errata: Convertire un backup automatico in un file di esportazione può complicare il processo. Inoltre, Coldline è più costoso rispetto ad Archive per dati che necessitano di un'archiviazione prolungata.
+
 #### Question 172
 
 You are monitoring an application and receive user feedback that a specific error is spiking. You notice that the error is caused by a Service Account having insufficient permissions. You are able to solve the problem but want to be notified if the problem recurs. What should you do?
@@ -2024,6 +2353,12 @@ C. Create a custom log-based metric for the specific error to be used in an Aler
 D. Grant Project Owner access to the Service Account.
 
 **Answer: C (A)**
+
+Spiegazioni:
+A. Errata: Filtrare manualmente i log in Log Viewer non permette di ricevere notifiche automatiche, rendendolo inadeguato per monitorare ricorrenze future dell’errore.
+B. Errata: Esportare i log in BigQuery e visualizzarli in Data Studio richiede lavoro aggiuntivo e non offre notifiche automatiche in caso di ricorrenza dell’errore.
+C. Corretta: Creare una metrica basata su log specifica per l'errore e utilizzarla in una policy di avviso è il metodo più efficace per monitorare automaticamente l’errore e ricevere notifiche qualora dovesse ripresentarsi.
+D. Errata: Concedere al Service Account il ruolo di Project Owner è eccessivo e non segue il principio di "least privilege," introducendo rischi di sicurezza aggiuntivi.
 
 #### Question 173
 
@@ -2037,6 +2372,14 @@ E. Grant an owner role for the Cloud KMS project to a different user than the ow
 
 **Answer: A-B (A-E)**
 
+Spiegazioni:
+
+A. Corretta: Creare Cloud KMS in un progetto separato consente di migliorare la sicurezza, centralizzando la gestione delle chiavi e seguendo le best practices di Google per la gestione e il controllo delle chiavi.
+B. Errata: Non assegnare un proprietario al progetto KMS non è consigliato, poiché ogni progetto necessita di un proprietario per garantire una gestione adeguata.
+C. Errata: Progettare Cloud KMS nello stesso progetto in cui vengono utilizzate le chiavi non rispetta il principio di separazione dei ruoli.
+D. Errata: Assegnare il ruolo di cloudkms.admin al proprietario del progetto di utilizzo delle chiavi contravviene al principio di separazione dei ruoli.
+E. Corretta: Assegnare il ruolo di proprietario del progetto Cloud KMS a un utente diverso rispetto al proprietario del progetto che utilizza le chiavi promuove la separazione dei ruoli, riducendo i rischi associati a un accesso illimitato alle risorse e alle chiavi di crittografia.
+
 #### Question 174
 
 You are about to deploy a new Enterprise Resource Planning (ERP) system on Google Cloud. The application holds the full database in-memory for fast data access, and you need to configure the most appropriate resources on Google Cloud for this application. What should you do?
@@ -2047,6 +2390,12 @@ C. Provision Compute Engine instances with local SSDs attached.
 D. Provision Compute Engine instances with M1 machine type.
 
 **Answer: D (C)**
+
+Spiegazioni:
+A. Errata: Le istanze preemptible non sono adatte per sistemi ERP, poiché possono essere interrotte da Google Cloud in qualsiasi momento, causando potenzialmente perdita di dati o interruzioni del servizio, il che è inaccettabile per applicazioni critiche che richiedono accesso ininterrotto alla memoria.
+B. Errata: Le GPU sono utili per attività che richiedono elaborazioni parallele elevate, come l'apprendimento automatico o il calcolo scientifico, ma non per applicazioni ERP che necessitano principalmente di molta memoria per l'elaborazione in memoria.
+C. Errata: Gli SSD locali offrono prestazioni di archiviazione elevate, ma non sono adatti per un'applicazione in-memory, poiché l'accesso ai dati sarebbe più lento rispetto a un'istanza ottimizzata per la memoria.
+D. Corretta: Le istanze di tipo M1 (ottimizzate per la memoria) sono progettate per applicazioni che richiedono grandi quantità di memoria, fino a 12 TB, offrendo la capacità e la velocità necessarie per archiviare e gestire database completamente in memoria come quelli di un sistema ERP.
 
 #### Question 175
 
@@ -2059,6 +2408,11 @@ D. Create and deploy a Deployment per microservice.
 
 **Answer: D**
 
+A. Errata: Le Custom Resource Definitions (CRD) in Kubernetes sono utilizzate per definire risorse personalizzate che estendono l'API Kubernetes, non per gestire la distribuzione e il ridimensionamento di microservizi.
+B. Errata: Docker Compose è uno strumento per orchestrare container su una singola macchina, e non è compatibile con Google Kubernetes Engine (GKE). In GKE è necessario utilizzare risorse native di Kubernetes come Deployment per la gestione dei microservizi.
+C. Errata: I Job in Kubernetes sono utilizzati per eseguire attività di breve durata (batch job), e non sono adatti per microservizi che richiedono un'esecuzione continua e che devono essere scalati orizzontalmente.
+D. Corretta: I Deployment sono l'opzione corretta per distribuire e gestire microservizi su GKE, in quanto consentono di scalare individualmente ogni microservizio e di garantire l'alta disponibilità tramite il controllo automatico delle repliche e l'aggiornamento graduale.
+
 #### Question 176
 
 You will have several applications running on different Compute Engine instances in the same project. You want to specify at a more granular level the service account each instance uses when calling Google Cloud APIs. What should you do?
@@ -2069,6 +2423,13 @@ C. After starting the instances, use gcloud compute instances update to specify 
 D. After starting the instances, use gcloud compute instances update to assign the name of the relevant Service Account as instance metadata.
 
 **Answer: A (C)**
+
+Spiegazioni:
+
+A. Corretta: Quando si creano le istanze, è possibile specificare un Account di Servizio per ciascuna istanza. Questo è il metodo consigliato per assegnare permessi specifici a ciascuna istanza in modo che possa accedere solo alle API di Google Cloud necessarie. In questo modo, ogni istanza utilizza il proprio Account di Servizio con i permessi appropriati.
+B. Errata: Assegnare il nome dell'Account di Servizio come metadato dell'istanza non determina quale Account di Servizio utilizzerà l'istanza. I metadati servono a fornire informazioni aggiuntive all'istanza ma non assegnano effettivamente un Account di Servizio.
+C. Errata: Una volta creata l'istanza, non è possibile aggiornare l'Account di Servizio associato utilizzando gcloud compute instances update. È necessario specificare l'Account di Servizio desiderato durante la creazione dell'istanza.
+D. Errata: Assegnare il nome dell'Account di Servizio come metadato dopo l'avvio dell'istanza non modifica l'Account di Servizio utilizzato per chiamare le API.
 
 #### Question 177
 
@@ -2081,6 +2442,12 @@ D. Download a MongoDB installation package, and run it on a Managed Instance Gro
 
 **Answer: B (C)**
 
+Spiegazioni:
+A. Errata: Cloud Bigtable è un database NoSQL gestito su Google Cloud, ma è progettato per grandi volumi di dati con basse latenze, non per l'uso specifico di MongoDB. Inoltre, Cloud Bigtable usa un'API HBase, quindi non supporta nativamente le API o il modello di dati di MongoDB.
+B. Corretta: MongoDB Atlas è una soluzione gestita per MongoDB disponibile su Google Cloud Marketplace. Scegliendo MongoDB Atlas, è possibile configurare e gestire facilmente i cluster MongoDB con supporto SLA, backup e scalabilità gestiti, eliminando la necessità di configurazioni manuali su Compute Engine o Kubernetes.
+C. Errata: Eseguire MongoDB su Compute Engine richiederebbe la gestione manuale della scalabilità, della tolleranza ai guasti e del backup, e non garantirebbe un supporto SLA per l'ambiente MongoDB, rendendo difficile ottenere la gestione automatizzata.
+D. Errata: Anche eseguire MongoDB su un Managed Instance Group comporta la gestione manuale dell'infrastruttura e la mancanza di un supporto SLA specifico per MongoDB. Questo approccio non fornisce l'ambiente gestito richiesto.
+
 #### Question 178
 
 You are managing a project for the Business Intelligence (BI) department in your company. A data pipeline ingests data into BigQuery via streaming. You want the users in the BI department to be able to run the custom SQL queries against the latest data in BigQuery. What should you do?
@@ -2091,6 +2458,14 @@ C. Use Cloud Scheduler to schedule a batch Dataflow job to copy the data from Bi
 D. Assign the IAM role of BigQuery User to a Google Group that contains the members of the BI team.
 
 **Answer: D (C)**
+
+
+Spiegazioni:
+
+A. Errata: Creare un dashboard in Data Studio può essere utile per visualizzare i dati, ma non consente agli utenti del team BI di eseguire query SQL personalizzate direttamente sui dati in BigQuery. Inoltre, limitarsi all'accesso in visualizzazione non permette la flessibilità richiesta per creare query su misura.
+B. Errata: Distribuire chiavi private per un Service Account ai membri del team non è una pratica consigliata per motivi di sicurezza e gestione. Ogni membro dovrebbe avere accesso tramite ruoli IAM connessi ai loro account personali piuttosto che tramite una chiave condivisa di un Service Account.
+C. Errata: Spostare i dati tramite un job Dataflow programmato non è necessario, poiché BigQuery è già progettato per gestire grandi volumi di dati e può essere interrogato in tempo reale. Questo approccio aggiungerebbe complessità e ritardi non necessari.
+D. Corretta: Assegnare il ruolo IAM di BigQuery User a un Google Group che include i membri del team BI consente loro di eseguire query sui dati direttamente in BigQuery, rispettando i criteri di accesso in modo sicuro e gestibile.
 
 #### Question 179
 
@@ -2103,6 +2478,12 @@ D. 1. Create a VPC with a subnet for the DMZ and another VPC with a subnet for t
 
 **Answer: A**
 
+Spiegazioni:
+A. Corretta: Creare una singola VPC con una subnet per la DMZ e una per la LAN consente di gestire facilmente il traffico tra i due ambienti. Impostare regole di firewall per consentire il traffico rilevante tra i due sottoreti e per abilitare il traffico pubblico in ingresso per la DMZ soddisfa i requisiti di accessibilità dei server.
+B. Errata: Sebbene la creazione di una VPC con sottoreti per la DMZ e la LAN sia corretta, consentire solo il traffico in uscita pubblico per la DMZ non è sufficiente. È necessario consentire il traffico in ingresso per i server pubblici nella DMZ, non solo il traffico in uscita.
+C. Errata: Creare due VPC separate non è necessario e complica la gestione della rete. I server nella DMZ e nella LAN possono comunicare più facilmente all'interno di una singola VPC, rendendo più semplice l'applicazione delle regole del firewall.
+D. Errata: Analogamente alla spiegazione per la risposta C, la creazione di due VPC separate è eccessiva. Inoltre, consentire solo il traffico in uscita per la DMZ non soddisfa i requisiti di accessibilità dei server pubblici. È necessario permettere il traffico in ingresso.
+
 #### Question 180
 
 You have just created a new project which will be used to deploy a globally distributed application. You will use Cloud Spanner for data storage. You want to create a Cloud Spanner instance. You want to perform the first step in preparation of creating the instance. What should you do?
@@ -2113,6 +2494,13 @@ C. Create a new VPC network with subnetworks in all desired regions.
 D. Grant yourself the IAM role of Cloud Spanner Admin.
 
 **Answer: A (B)**
+
+Spiegazioni:
+
+A. Corretta: Abilitare l'API Cloud Spanner è il primo passo necessario per poter utilizzare il servizio. Senza l'abilitazione dell'API, non sarà possibile creare un'istanza di Cloud Spanner.
+B. Errata: Anche se configurare l'istanza Cloud Spanner come multi-regionale è importante per un'applicazione distribuita a livello globale, questa configurazione viene eseguita dopo l'abilitazione dell'API e non è il primo passo.
+C. Errata: Creare una nuova rete VPC con subnet in tutte le regioni desiderate è un passo successivo nella preparazione dell'ambiente. Non è necessario avere una rete VPC per iniziare a creare un'istanza di Cloud Spanner.
+D. Errata: Anche se è importante avere il ruolo IAM appropriato per gestire Cloud Spanner, la prima azione da compiere è abilitare l'API. La concessione di autorizzazioni IAM può essere eseguita in seguito.
 
 #### Question 181
 
@@ -2125,6 +2513,12 @@ D. Grant yourself the IAM role of Computer Admin.
 
 **Answer: C (D)**
 
+Spiegazioni:
+A. Errata: Creare un Cloud Monitoring Workspace non è un requisito per lanciare un'istanza di Compute Engine. Il Cloud Monitoring serve per monitorare risorse ma non è necessario per creare istanze.
+B. Errata: Anche se creare una rete VPC è utile per configurazioni di rete personalizzate, Compute Engine creerà una rete VPC di default se non esiste già, quindi non è un requisito preliminare.
+C. Corretta: Abilitare l'API di Compute (`compute.googleapis.com`) è un passaggio necessario per utilizzare le risorse di Compute Engine, inclusa la creazione di istanze.
+D. Errata: Anche se il ruolo di Compute Admin è importante per gestire le istanze, il primo passo è abilitare l'API. Il ruolo IAM può essere configurato in un secondo momento, se necessario.
+
 #### Question 182
 
 Your company has developed a new application that consists of multiple microservices. You want to deploy the application to Google Kubernetes Engine (GKE), and you want to ensure that the cluster can scale as more applications are deployed in the future. You want to avoid manual intervention when each new application is deployed. What should you do?
@@ -2135,6 +2529,12 @@ C. Create a GKE cluster with autoscaling enabled on the node pool. Set a minimum
 D. Create a separate node pool for each application, and deploy each application to its dedicated node pool.
 
 **Answer: C**
+
+Spiegazioni:
+A. Errata: L'aggiunta di un `HorizontalPodAutoscaler` gestisce la scalabilità delle *repliche dei pod* per un'applicazione, ma non garantisce la scalabilità dell'intero cluster man mano che vengono aggiunte nuove applicazioni.
+B. Errata: L'aggiunta di un `VerticalPodAutoscaler` consente di adattare le risorse (CPU e memoria) di ciascun pod, ma non scala il cluster a livello di nodo per supportare un aumento delle applicazioni.
+C. Corretta: Abilitare l'autoscaling sul pool di nodi del cluster consente a GKE di aumentare o ridurre automaticamente il numero di nodi in base al carico. Configurare un minimo e un massimo per la dimensione del nodo permette di gestire la scalabilità generale del cluster man mano che si aggiungono nuove applicazioni, senza intervento manuale.
+D. Errata: Creare un pool di nodi dedicato per ciascuna applicazione è inefficiente e non è scalabile automaticamente, richiedendo intervento manuale per gestire ogni nuovo pool e applicazione.
 
 #### Question 183
 
@@ -2147,6 +2547,12 @@ D. Create a new service account and assign this service account to the new insta
 
 **Answer: C (A)**
 
+Spiegazioni:
+A. Errata: L'uso dell'account di servizio predefinito per la nuova istanza concederebbe accesso agli oggetti di Cloud Storage anche alle altre istanze, non rispettando il requisito di accesso riservato al nuovo server.
+B. Errata: L'aggiunta di metadati agli oggetti di Cloud Storage per adattarli ai metadati dell'istanza non è un metodo di controllo dell'accesso in Google Cloud, quindi non garantirebbe l'accesso selettivo.
+C. Corretta: Creare un nuovo account di servizio e assegnarlo alla nuova istanza, concedendo poi i permessi necessari su Cloud Storage solo a questo account, consente di gestire i permessi in modo granulare, permettendo l'accesso esclusivo alla nuova VM.
+D. Errata: Anche se si crea un nuovo account di servizio, l'aggiunta di metadati agli oggetti di Cloud Storage non è un meccanismo di controllo dell'accesso appropriato per limitare l'accesso a una singola VM.
+
 #### Question 184
 
 You need to configure optimal data storage for files stored in Cloud Storage for minimal cost. The files are used in a mission-critical analytics pipeline that is used continually. The users are in Boston, MA (United States). What should you do?
@@ -2157,6 +2563,12 @@ C. Configure dual-regional storage for the dual region closest to the users. Con
 D. Configure dual-regional storage for the dual region closest to the users. Configure a Standard storage class.
 
 **Answer: B**
+
+Spiegazioni:
+A. Errata: La classe di storage Nearline è progettata per dati a bassa frequenza di accesso, come backup o archiviazione a lungo termine, con costi di accesso elevati. Poiché i file sono usati continuamente in una pipeline mission-critical, Nearline non è adatta a questo caso.
+B. Corretta: Lo storage regionale nella regione più vicina agli utenti con la classe di storage Standard offre bassa latenza e costi di accesso ridotti, ideali per dati usati frequentemente in pipeline mission-critical. Questa configurazione garantisce accesso rapido e costi relativamente ottimali per l'uso continuo.
+C. Errata: Sebbene la configurazione dual-region possa offrire un'alta disponibilità, l'uso della classe Nearline non è appropriato per dati utilizzati continuamente poiché comporta costi elevati di accesso ai dati.
+D. Errata: La configurazione dual-region con la classe Standard potrebbe aumentare la resilienza, ma a un costo più elevato rispetto allo storage regionale. Per un'area specifica come Boston, uno storage regionale è sufficiente e più economico per dati critici con accesso continuo.
 
 #### Question 185
 
@@ -2169,6 +2581,12 @@ D. Deploy the application on Kubernetes Engine. For a new release, create a new 
 
 **Answer: A**
 
+Spiegazioni:
+A. Corretta: Su App Engine, la creazione di una nuova versione dello stesso servizio e la configurazione dello splitting del traffico permette di distribuire una piccola percentuale di traffico alla versione aggiornata. Questo è utile per testare le modifiche in produzione senza impattare la maggior parte degli utenti, mantenendo il resto del traffico sulla versione stabile.
+B. Errata: Creare un nuovo servizio per ogni aggiornamento non è la pratica ottimale per il testing delle nuove versioni, poiché si basa su nuovi servizi anziché versioni dello stesso servizio. App Engine supporta meglio il traffico frazionato a livello di versione per testare nuove release.
+C. Errata: Su Kubernetes Engine, aggiornare il deployment alla nuova versione distribuisce immediatamente il nuovo codice a tutti i pod gestiti, non consentendo di dirigere una piccola porzione di traffico a una nuova versione per il testing controllato.
+D. Errata: La creazione di un nuovo deployment e l'aggiornamento del servizio per puntare a quel deployment non offre un controllo semplice per lo splitting del traffico. Su GKE, servirebbe una configurazione avanzata (come con Istio o altri ingressi) per ottenere un simile comportamento di frazionamento del traffico, cosa che App Engine gestisce in modo nativo.
+
 #### Question 186
 
 You need to add a group of new users to Cloud Identity. Some of the users already have existing Google accounts. You want to follow one of Google's recommended practices and avoid conflicting accounts. What should you do?
@@ -2179,6 +2597,12 @@ C. Tell the user that they must delete their existing account.
 D. Tell the user to remove all personal email from the existing account.
 
 **Answer: A**
+
+Spiegazioni:
+A. Corretta: Invitare l'utente a trasferire il proprio account esistente è una delle pratiche consigliate da Google per evitare account in conflitto. Questo approccio permette agli utenti di mantenere i dati esistenti e di migrare il loro account sotto il dominio dell'azienda in Cloud Identity.
+B. Errata: L'uso di un alias email non risolve il problema di un account in conflitto, poiché l'alias non cambia il dominio o la gestione dell'account esistente.
+C. Errata: Richiedere agli utenti di eliminare il proprio account esistente non è una pratica consigliata, poiché potrebbe comportare la perdita di dati importanti e non risolve il conflitto in modo organizzato.
+D. Errata: Rimuovere l'email personale dal proprio account non risolve il conflitto tra gli account personali e aziendali. Il conflitto riguarda la gestione e il dominio dell'account, non il contenuto delle email.
 
 #### Question 187
 
@@ -2191,6 +2615,12 @@ D. Create an alert in Cloud Monitoring to alert when the percentage of high prio
 
 **Answer: C**
 
+Spiegazioni:
+A. Errata: La soglia del 45% di utilizzo della CPU ad alta priorità è troppo bassa per una gestione efficiente delle risorse di Cloud Spanner, e potrebbe causare scalabilità eccessiva senza un reale beneficio per le prestazioni.
+B. Errata: Anche se l'ottimizzazione delle query è utile, la soglia del 45% è troppo conservativa e non rientra tra le best practice di Google. Un limite superiore è consigliato per mantenere un equilibrio tra prestazioni e costi.
+C. Corretta: Impostare un avviso per il 65% di utilizzo della CPU ad alta priorità segue le best practice di Google per aggiungere nodi solo quando necessario, migliorando le prestazioni senza un eccessivo aumento di costi.
+D. Errata: Sebbene l'ottimizzazione delle query possa aiutare, l'approccio consigliato per migliorare rapidamente le prestazioni di un'istanza è aumentare i nodi quando il limite di utilizzo della CPU è al 65%, senza la necessità immediata di riscrivere le query.
+
 #### Question 188
 
 Your company has an internal application for managing transactional orders. The application is used exclusively by employees in a single physical location. The application requires strong consistency, fast queries, and ACID guarantees for multi-table transactional updates. The first version of the application is implemented in PostgreSQL, and you want to deploy it to the cloud with minimal code changes. Which database is most appropriate for this application?
@@ -2201,6 +2631,12 @@ C. Cloud Spanner
 D. Cloud Datastore
 
 **Answer: B (C)**
+
+Spiegazioni:
+A. Errata: BigQuery è progettato per l'analisi di grandi volumi di dati e non offre le garanzie di transazioni ACID per aggiornamenti multi-tabella. Non è adatto per applicazioni transazionali con consistenza forte e bassa latenza richiesta da un'applicazione di ordini transazionali.
+B. Corretta: Cloud SQL supporta PostgreSQL e garantisce consistenza forte e transazioni ACID, rendendolo adatto per applicazioni transazionali che richiedono aggiornamenti multi-tabella con latenza bassa. Inoltre, consente una migrazione a basso impatto per applicazioni già basate su PostgreSQL.
+C. Errata: Sebbene Cloud Spanner offra consistenza forte e supporto per transazioni ACID, è più indicato per applicazioni distribuite globalmente. Essendo l’applicazione utilizzata in una singola sede, Cloud SQL risulta più appropriato e offre compatibilità nativa con PostgreSQL.
+D. Errata: Cloud Datastore non supporta transazioni ACID multi-tabella e non è ottimizzato per query relazionali complesse, rendendolo inadatto per applicazioni che necessitano di forte consistenza e operazioni transazionali complesse.
 
 #### Question 189
 
@@ -2213,6 +2649,12 @@ D. Create a file called defaults.json in the ~/.gcloud folder that contains the 
 
 **Answer: A**
 
+Spiegazioni:
+A. Corretta: Il comando `gcloud config set container/cluster dev` imposta il cluster "dev" come predefinito per i comandi futuri di Google Kubernetes Engine (GKE), consentendo di gestire il cluster senza dover specificare il nome in ogni comando.
+B. Errata: Il comando `gcloud container clusters update dev` viene utilizzato per aggiornare configurazioni specifiche del cluster "dev" esistente, ma non imposta il cluster come predefinito per i comandi futuri.
+C. Errata: Non esiste alcun file `gke.default` nella cartella `~/.gcloud` per specificare il cluster predefinito. L’impostazione dei predefiniti avviene tramite il comando `gcloud config set`.
+D. Errata: Un file `defaults.json` nella cartella `~/.gcloud` non è un metodo supportato per impostare le configurazioni predefinite del cluster.
+
 #### Question 190
 
 The sales team has a project named Sales Data Digest that has the ID acme-data-digest. You need to set up similar Google Cloud resources for the marketing team but their resources must be organized independently of the sales team. What should you do?
@@ -2223,6 +2665,12 @@ C. Create another project with the ID acme-marketing-data-digest for the Marketi
 D. Create a new project named Marketing Data Digest and use the ID acme-data-digest. Grant the Project Editor role to the Marketing team.
 
 **Answer: C (A)**
+
+Spiegazione delle opzioni:
+- A. Errata: Concedere il ruolo di **Project Editor** al team di Marketing per il progetto `acme-data-digest` non soddisfa il requisito di separare le risorse tra i team, dato che le risorse rimarrebbero organizzate nello stesso progetto.
+- B. Errata: Applicare un **Project Lien** su `acme-data-digest` non organizza le risorse separatamente; serve a impedire la cancellazione accidentale del progetto, ma non crea un nuovo progetto per il Marketing.
+- C. Corretta: Creando un progetto indipendente `acme-marketing-data-digest`, le risorse del team di Marketing saranno gestite separatamente rispetto a quelle del team di Vendite, come richiesto.
+- D. Errata: Non è possibile usare lo stesso ID di progetto (`acme-data-digest`) per due progetti distinti, poiché ogni ID deve essere unico su Google Cloud.
 
 #### Question 191
 
@@ -2235,6 +2683,12 @@ D. Create an SSH keypair and store the private key as a project-wide SSH Key.
 
 **Answer: B**
 
+Spiegazione:
+A. Errata: Il Cloud Identity-Aware Proxy per risorse HTTPS non è rilevante per l'accesso SSH.
+B. Corretta: Configurando il Cloud Identity-Aware Proxy per SSH e TCP, puoi accedere in modo sicuro alle istanze Compute Engine senza un indirizzo IP pubblico. Questo approccio fornisce un livello di sicurezza aggiuntivo, poiché gli utenti devono autenticarsi tramite IAP prima di poter accedere alle istanze.
+C. Errata: Anche se la creazione di chiavi SSH è una pratica comune, non risolve il problema dell'accesso a istanze senza IP pubblico.
+D. Errata: Memorizzare la chiave privata come chiave SSH a livello di progetto non è sicuro e non fornisce l'accesso SSH.
+
 #### Question 192
 
 You have created an application that is packaged into a Docker image. You want to deploy the Docker image as a workload on Google Kubernetes Engine. What should you do?
@@ -2245,6 +2699,11 @@ C. Upload the image to Container Registry and create a Kubernetes Service refere
 D. Upload the image to Container Registry and create a Kubernetes Deployment referencing the image.
 
 **Answer: D (B)**
+Spiegazione:
+A. Errata: Caricare l'immagine su Cloud Storage non è la prassi consigliata per l'esecuzione di immagini Docker su Kubernetes. Kubernetes non può direttamente eseguire immagini da Cloud Storage.
+B. Errata: Simile alla spiegazione precedente, Kubernetes non può eseguire direttamente immagini da Cloud Storage, quindi non è possibile creare un Deployment in questo modo.
+C. Errata: Anche se caricare l'immagine su Container Registry è corretto, non dovresti creare un Kubernetes Service per fare riferimento all'immagine. Il Service è usato per esporre le applicazioni in esecuzione (ad es., i Deployment) e non per gestire direttamente le immagini.
+D. Corretta: Devi caricare l'immagine Docker nel Container Registry (o nel nuovo Artifact Registry), quindi creare un Kubernetes Deployment che fa riferimento a quest'immagine. Questo ti consente di gestire il ciclo di vita dell'applicazione in Kubernetes, assicurando anche che il tuo cluster possa accedere e eseguire l'immagine in modo efficiente.
 
 #### Question 193
 
@@ -2257,6 +2716,12 @@ D. In Cloud Logging, create a filter for your Data Studio report.
 
 **Answer: B (C)**
 
+Spiegazione:
+A. Errata: La pagina di Error Reporting in Cloud Console è più utile per identificare errori nelle applicazioni, non per problemi specifici relativi ai job di BigQuery.
+B. Corretta: Poiché il problema è legato all'aggiornamento notturno della tabella, è fondamentale controllare il lavoro notturno in BigQuery. Controllando la cronologia delle esecuzioni delle query e i log del job in BigQuery, puoi identificare se ci sono stati errori durante l'elaborazione dei dati e capire se il job ha completato correttamente il caricamento dei dati nella tabella.
+C. Errata: Cloud Debugger è utile per il debugging di applicazioni, ma non è adatto per analizzare problemi legati a BigQuery o Data Studio.
+D. Errata: Creare un filtro in Cloud Logging per il report di Data Studio non ti darà informazioni dirette sui problemi di aggiornamento della tabella in BigQuery.
+
 #### Question 194
 
 You have been asked to set up the billing configuration for a new Google Cloud customer. Your customer wants to group resources that share common IAM policies. What should you do?
@@ -2267,6 +2732,12 @@ C. Set up a proper billing account structure to group IAM policies.
 D. Set up a proper project naming structure to group IAM policies.
 
 **Answer: B**
+
+Spiegazioni:
+A. Errata: Le etichette (labels) possono essere utilizzate per categorizzare risorse, ma non influenzano le politiche IAM e non possono essere utilizzate per gestire autorizzazioni a livello di gruppo.
+B. Corretta: Le cartelle in Google Cloud consentono di organizzare progetti e risorse in una gerarchia. Utilizzando le cartelle, puoi applicare politiche IAM comuni a un gruppo di progetti, facilitando così la gestione delle autorizzazioni e della sicurezza.
+C. Errata: I conti di fatturazione non sono utilizzati per raggruppare politiche IAM. Sono principalmente utilizzati per gestire la fatturazione e i costi associati alle risorse.
+D. Errata: Una struttura di denominazione dei progetti non influisce sulle politiche IAM. Anche se può aiutare a identificare i progetti, non è un metodo per applicare politiche comuni.
 
 #### Question 195
 
@@ -2279,6 +2750,12 @@ D. Use an automatic mode VPC network, use Cloud Router border gateway protocol (
 
 **Answer: C (D)**
 
+Spiegazioni:
+A. Errata: Anche se una rete VPC in modalità personalizzata può essere appropriata, l'uso di percorsi statici non supporta il routing dinamico, che è un requisito chiave per la connettività VPN robusta. Inoltre, il routing attivo/passivo non ottimizza l'uso delle risorse durante il failover.
+B. Errata: La modalità automatica per la VPC è limitata nella personalizzazione e non offre la flessibilità necessaria per configurare il routing dinamico con BGP. Inoltre, l'uso di percorsi statici non soddisfa i requisiti di routing dinamico.
+C. Corretta: Utilizzando una rete VPC in modalità personalizzata e il protocollo BGP con Cloud Router, puoi implementare un routing dinamico che consente una gestione efficace delle route e della connettività VPN. L'approccio attivo/passivo soddisfa anche il requisito di non sovraccaricare le tunnel durante un evento di failover.
+D. Errata: Sebbene la modalità automatica sia più semplice, non offre la stessa flessibilità della modalità personalizzata. Inoltre, il routing basato su policy non è necessario in questo caso, poiché il BGP fornisce già una gestione più robusta delle rotte e della connettività.
+
 #### Question 196
 
 You are running multiple microservices in a Kubernetes Engine cluster. One microservice is rendering images. The microservice responsible for the image rendering requires a large amount of CPU time compared to the memory it requires. The other microservices are workloads that are optimized for n1-standard machine types. You need to optimize your cluster so that all workloads are using resources as efficiently as possible. What should you do?
@@ -2289,6 +2766,12 @@ C. Use the node pool with general-purpose machine type nodes for the image rende
 D. Configure the required amount of CPU and memory in the resource requests specification of the image rendering microservice deployment. Keep the resource requests for the other microservices at the default.
 
 **Answer: B**
+
+Spiegazioni:
+A. Errata: Assegnare una priorità più alta ai pod del microservizio di rendering delle immagini non ottimizza necessariamente l'uso delle risorse, poiché non affronta il problema dell'allocazione delle risorse a livello di nodo. La priorità non influisce direttamente sull'efficienza delle risorse a lungo termine.
+B. Corretta: Creare un pool di nodi con macchine ottimizzate per il calcolo per il microservizio di rendering delle immagini consente di fornire più risorse CPU a quel carico di lavoro specifico. Utilizzare un pool di nodi con macchine generali per gli altri microservizi ottimizza l'uso delle risorse, poiché le macchine ottimizzate per il calcolo sono più adatte per carichi di lavoro che richiedono più CPU e meno memoria.
+C. Errata: Utilizzare il pool di nodi con macchine generali per il microservizio di rendering delle immagini non è efficiente, poiché queste macchine non sono ottimizzate per gestire carichi di lavoro ad alta intensità di CPU. Creare un pool di nodi con macchine ottimizzate per il calcolo è la scelta migliore per ottimizzare le risorse.
+D. Errata: Configurare la quantità richiesta di CPU e memoria nei requisiti di risorse del microservizio di rendering delle immagini è importante, ma non risolve il problema dell'allocazione delle risorse a livello di nodo. Senza un pool di nodi adeguato, non si garantisce un'ottimizzazione efficiente delle risorse a lungo termine.
 
 #### Question 197
 
@@ -2301,6 +2784,12 @@ D. 1. Verify that you are assigned the Organization Administrator IAM role for y
 
 **Answer: A**
 
+Spiegazioni:
+A. Corretta: Per addebitare solo i servizi Google Cloud del dipartimento Marketing, è necessario verificare di avere il ruolo di Billing Administrator per il progetto Google Cloud del dipartimento Marketing e quindi collegare il nuovo progetto a un account di fatturazione specifico per il Marketing. Questo approccio consente di separare le spese del dipartimento Marketing da quelle degli altri progetti.
+B. Errata: Anche se creare un nuovo progetto e impostare etichette per identificare il dipartimento Marketing è utile, non affronta il problema principale della separazione della fatturazione. È fondamentale collegare il progetto a un account di fatturazione appropriato per garantire che solo i servizi del dipartimento Marketing vengano addebitati.
+C. Errata: Anche se è importante avere il ruolo di Organization Administrator, non è necessario per collegare un progetto a un account di fatturazione. Inoltre, creare un nuovo progetto non è indispensabile se si desidera fatturare per un'iniziativa all'interno di un progetto esistente.
+D. Errata: Simile alla risposta precedente, avere il ruolo di Organization Administrator non è necessario per collegare un progetto a un account di fatturazione. Anche in questo caso, l'impostazione di etichette non è sufficiente per garantire che le spese siano correttamente addebitate al dipartimento Marketing.
+
 #### Question 198
 
 You deployed an application on a managed instance group in Compute Engine. The application accepts Transmission Control Protocol (TCP) traffic on port 389 and requires you to preserve the IP address of the client who is making a request. You want to expose the application to the internet by using a load balancer. What should you do?
@@ -2311,6 +2800,12 @@ C. Expose the application by using an SSL Proxy Load Balancer.
 D. Expose the application by using an internal TCP Network Load Balancer.
 
 **Answer: A (B)**
+
+Spiegazioni:
+A. Corretta: L'External TCP Network Load Balancer può preservare l'indirizzo IP originale del client utilizzando il modulo di bilanciamento del carico TCP, il che soddisfa il requisito di mantenere l'IP del client. È ideale per applicazioni che ricevono traffico TCP diretto dall'esterno.
+B. Errata: Il TCP Proxy Load Balancer è utile per gestire il traffico TCP, ma introduce un'overhead in più e di solito è utilizzato per protocolli applicativi su TCP, come HTTP. Non è la scelta ottimale quando non è necessario l'overhead di proxy e si desidera un bilanciamento del carico più diretto.
+C. Errata: L'SSL Proxy Load Balancer è progettato per gestire traffico HTTPS, non TCP generico, e non è rilevante per le applicazioni che comunicano su porta 389.
+D. Errata: L'Internal TCP Network Load Balancer è progettato per traffico interno e non può essere utilizzato per esporre l'applicazione su Internet, non ricevendo traffico pubblico.
 
 #### Question 199
 
@@ -2323,6 +2818,12 @@ D. Store game statistics in a Bigtable database partitioned by username.
 
 **Answer: B**
 
+Spiegazioni:
+A. Errata: L'uso di Cloud SQL con replica cross-region potrebbe aiutare a distribuire i dati, ma non è la scelta migliore per applicazioni con requisiti di scalabilità e performance elevati come un'app di gioco multiplayer, poiché la replica può introdurre latenza e la gestione delle istanze può diventare complessa.
+B. Corretta: Cloud Spanner è progettato per gestire applicazioni con requisiti di scalabilità globale e bassa latenza. Offre consistenza forte e distribuzione automatica dei dati, il che lo rende adatto per applicazioni come un gioco multiplayer dove la performance ottimale è fondamentale per gli utenti globali, senza aumentare significativamente la complessità di gestione.
+C. Errata: Anche se BigQuery è eccellente per analisi di grandi quantità di dati, non è ottimale per operazioni di scrittura e aggiornamento frequenti come quelle richieste da un'app di gioco multiplayer. Inoltre, Redis su Memorystore non garantirebbe una persistenza dei dati adeguata.
+D. Errata: Sebbene Bigtable possa gestire grandi quantità di dati, non è progettato per fornire consistenza globale e operazioni transazionali che sono tipicamente necessarie in un'app di gioco multiplayer. La partizione per nome utente potrebbe complicare ulteriormente l'accesso ai dati.
+
 #### Question 200
 
 You are building an application that stores relational data from users. Users across the globe will use this application. Your CTO is concerned about the scaling requirements because the size of the user base is unknown. You need to implement a database solution that can scale with your user growth with minimum configuration changes. Which storage solution should you use?
@@ -2333,6 +2834,13 @@ C. Cloud Spanner
 D. Bigtable
 
 **Answer: C**
+
+### Spiegazioni:
+A. **Errata**: **Cloud SQL** è un'ottima soluzione per database relazionali, ma ha limitazioni di scalabilità orizzontale. Man mano che la base utenti cresce, la gestione delle risorse e la scalabilità possono diventare complesse, richiedendo potenzialmente migrazioni o configurazioni manuali.
+B. **Errata**: **Firestore** è un database NoSQL, non relazionale, che può scalare bene, ma non è progettato specificamente per gestire dati relazionali. La struttura dei dati e le query potrebbero non adattarsi bene a un modello relazionale complesso.
+C. **Corretta**: **Cloud Spanner** è progettato per fornire scalabilità orizzontale automatica con supporto per transazioni ACID. Può gestire crescenti quantità di dati e carichi di lavoro senza richiedere modifiche significative alla configurazione, rendendolo adatto per un'applicazione con una base utenti in crescita.
+D. **Errata**: **Bigtable** è un database NoSQL progettato per gestire grandi volumi di dati non relazionali. Sebbene possa scalare bene, non è adatto per dati relazionali e non offre le funzionalità transazionali di cui potresti aver bisogno.
+In sintesi, la scelta migliore per un'applicazione che richiede scalabilità e gestione dei dati relazionali è **Cloud Spanner** (risposta C).
 
 #### Question 201
 
@@ -2345,6 +2853,12 @@ D. Configure Cloud Billing data export to BigQuery for the billing account. Crea
 
 **Answer: D**
 
+Spiegazioni:
+A. Errata: Reports nella console di Google Cloud offre una visualizzazione dei costi, ma non consente la personalizzazione e l'automazione necessarie per calcoli specifici basati su criteri aziendali.
+B. Errata: Cost breakdown fornisce una visualizzazione dettagliata dei costi, ma anch'essa non è progettata per l'automazione o la personalizzazione avanzata che richiede un'analisi basata su criteri aziendali specifici.
+C. Errata: Sebbene l'export CSV possa offrire una vista dei costi, richiede ulteriori passaggi manuali per creare un dashboard su Looker Studio, non è l'approccio più efficiente o automatizzato per analizzare i costi.
+D. Corretta: Configurando l'export dei dati di fatturazione in BigQuery, puoi automatizzare il processo di raccolta e archiviazione dei dati di fatturazione. Creando un dashboard in Looker Studio sopra l'export di BigQuery, puoi ottenere visualizzazioni personalizzate e dinamiche basate su criteri specifici della tua azienda, facilitando l'analisi e il monitoraggio dei costi.
+
 #### Question 202
 
 You have an application that runs on Compute Engine VM instances in a custom Virtual Private Cloud (VPC). Your company’s security policies only allow the use of internal IP addresses on VM instances and do not let VM instances connect to the internet. You need to ensure that the application can access a file hosted in a Cloud Storage bucket within your project. What should you do?
@@ -2355,6 +2869,11 @@ C. Enable Private Google Access on the subnet within the custom VPC.
 D. Deploy a Cloud NAT instance and route the traffic to the dedicated IP address of the Cloud Storage bucket.
 
 **Answer: C (A)**
+
+A. Errata: Abilitare il Private Service Access su un bucket di Cloud Storage non è corretto perché questa opzione è destinata alla connessione ai servizi Google Cloud, non ai bucket di Cloud Storage direttamente.
+B. Errata: Aggiungere storage.googleapis.com alla lista dei servizi ristretti in un perimeter di VPC Service Controls non consente l'accesso ai bucket di Cloud Storage dai VM con IP interni; al contrario, questo approccio potrebbe limitare l'accesso.
+C. Corretta: Abilitare il Private Google Access nella subnet del VPC consente alle VM che utilizzano solo indirizzi IP interni di accedere ai servizi Google Cloud, incluso Cloud Storage. Questo permette alle VM di comunicare con i bucket di Cloud Storage senza la necessità di un indirizzo IP pubblico.
+D. Errata: Implementare un Cloud NAT per instradare il traffico verso l'indirizzo IP dedicato di un bucket di Cloud Storage non è necessario, poiché le VM non devono connettersi a Internet e il NAT non risolve il problema dell'accesso ai servizi Google Cloud tramite indirizzi IP interni.
 
 #### Question 203
 
@@ -2367,6 +2886,12 @@ D. Create an infrastructure-as-code template for all resources in the project by
 
 **Answer: A (D)**
 
+Spiegazioni:
+A. Corretta: Utilizzare il metodo projects.move per spostare il progetto nella propria organizzazione è il metodo più diretto per completare la migrazione. Dopo aver spostato il progetto, è possibile aggiornare l'account di fatturazione del progetto per farlo riferire all'organizzazione, minimizzando così lo sforzo richiesto.
+B. Errata: Anche se è importante avere il ruolo di Organization Administrator IAM in entrambe le organizzazioni, non è possibile "trascinare" un progetto da un'organizzazione a un'altra. La gestione dei progetti in Google Cloud avviene tramite API o interfacce specifiche, non tramite un'interazione visiva come il drag-and-drop.
+C. Errata: Creare un Private Catalog per il Google Cloud Marketplace e caricare le risorse del progetto non è una soluzione valida per spostare un progetto esistente. Questo metodo richiederebbe di ricreare le risorse manualmente, aumentando significativamente l'effort.
+D. Errata: Creare un template infrastructure-as-code con Terraform e distribuirlo in un nuovo progetto è un'opzione valida, ma richiede molto lavoro e pianificazione. Inoltre, non affronta direttamente il problema del trasferimento del progetto esistente e comporterebbe una ricreazione delle risorse, nonostante la possibilità di eliminare il progetto originario.
+
 #### Question 204
 
 All development (dev) teams in your organization are located in the United States. Each dev team has its own Google Cloud project. You want to restrict access so that each dev team can only create cloud resources in the United States (US). What should you do?
@@ -2377,6 +2902,12 @@ C. Create an Identity and Access Management (IAM) policy to restrict the resourc
 D. Create an Identity and Access Management (IAM) policy to restrict the resources locations in all dev projects. Apply the policy to all dev roles.
 
 **Answer: A (C)**
+
+Spiegazioni:
+A. Corretta: Creare una cartella per contenere tutti i progetti di sviluppo e implementare una politica di organizzazione per limitare le risorse nelle posizioni degli Stati Uniti è il modo migliore per garantire che tutti i team di sviluppo possano solo creare risorse in quelle aree. Questo approccio centralizza la gestione delle politiche e si applica automaticamente a tutti i progetti nella cartella.
+B. Errata: Creare un'organizzazione per contenere tutti i progetti di sviluppo non è necessario in questo contesto, poiché le organizzazioni di Google Cloud già forniscono una struttura gerarchica. Inoltre, un IAM policy non può limitare direttamente le regioni, mentre le politiche di organizzazione possono.
+C. Errata: Creare una politica IAM per limitare le posizioni delle risorse negli Stati Uniti non è efficace, poiché le politiche IAM non hanno la capacità di limitare le regioni in cui possono essere create le risorse. Le politiche IAM controllano l'accesso alle risorse, non le limitazioni geografiche.
+D. Errata: Analogamente alla risposta C, le politiche IAM non possono limitare direttamente le posizioni delle risorse in modo geograficamente specifico. Applicare tali politiche a tutti i ruoli di sviluppo non risolverebbe il problema delle limitazioni geografiche.
 
 #### Question 205
 
@@ -2389,6 +2920,13 @@ D. Create one A record to point mydomain.com to the load balancer, and create tw
 
 **Answer: C (B)**
 
+Spiegazioni:
+A. Errata: Creare un record CNAME per puntare mydomain.com al bilanciatore di carico non è corretto, poiché i record CNAME non possono essere utilizzati per il dominio radice (mydomain.com). I record CNAME sono destinati a puntare a sottodomini.
+B. Errata: Simile alla risposta A, un record CNAME non può essere utilizzato per il dominio radice. Inoltre, i record AAAA sono utilizzati per indirizzi IPv6, mentre in questo caso si sta facendo riferimento a un bilanciatore di carico che è più comunemente puntato tramite un record A.
+C. Corretta: Creare un record A per puntare mydomain.com al bilanciatore di carico è l'approccio corretto. Inoltre, creare due record CNAME per puntare WWW e HOME a mydomain.com consente di gestire correttamente i sottodomini. I record CNAME reindirizzano correttamente le richieste per i sottodomini.
+D. Errata: Creare record NS (Name Server) non è appropriato in questo contesto, poiché i record NS sono utilizzati per definire quali server DNS sono responsabili per un dominio, non per mappare i nomi di dominio agli indirizzi IP.
+
+
 #### Question 206
 
 You have two subnets (subnet-a and subnet-b) in the default VPC. Your database servers are running in subnet-a. Your application servers and web servers are running in subnet-b. You want to configure a firewall rule that only allows database traffic from the application servers to the database servers. What should you do?
@@ -2399,6 +2937,8 @@ C. 1) Create a service account sa-app and a network tag db-server. 2) Associate 
 D. 1) Create a network tag app-server and service account sa-db. 2) Add the tag to the application servers and associate the service account with the database servers. 3) Create an egress firewall rule to allow network traffic from source network tag app-server to target service account sa-db.
 
 **Answer: A (B)**
+
+Spiegazioni: Sia gli account di servizio che i tag di rete possono essere utilizzati per creare una regola di Cloud Firewall. La parola chiave è "per consentire il traffico di rete dal server dell'app al server del database", cosa realizzabile tramite regola inbound/ingress e non regola egress.
 
 #### Question 207
 
@@ -2411,6 +2951,12 @@ D. Use the installation guide of the CMS provider. Perform the installation thro
 
 **Answer: B (C)**
 
+Spiegazioni:
+A. Errata: Anche se l'uso di gcloud CLI per implementare soluzioni è valido, non è la scelta più semplice o veloce. Inoltre, la maggior parte delle soluzioni nel Google Cloud Marketplace possono essere distribuite direttamente dalla console senza la necessità di utilizzare la riga di comando.
+B. Corretta: Questo è il modo più semplice e veloce per implementare una soluzione CMS. Google Cloud Marketplace offre un'interfaccia user-friendly per distribuire applicazioni e soluzioni. Puoi semplicemente cercare il CMS desiderato e distribuirlo direttamente dalla console senza bisogno di passaggi aggiuntivi.
+C. Errata: Anche se Terraform è uno strumento potente per la gestione dell'infrastruttura come codice, la domanda chiede un modo "rapido e facile". Utilizzare Terraform richiede configurazione e conoscenza pregressa, quindi non è l'opzione più semplice per un'implementazione rapida.
+D. Errata: Sebbene seguire la guida di installazione del provider sia un approccio valido, non è necessariamente il modo più veloce o facile. La gestione della configurazione potrebbe richiedere tempo e non sarebbe immediatamente disponibile come soluzione chiavi in mano.
+
 #### Question 208
 
 You are working for a startup that was officially registered as a business 6 months ago. As your customer base grows, your use of Google Cloud increases. You want to allow all engineers to create new projects without asking them for their credit card information. What should you do?
@@ -2421,6 +2967,12 @@ C. Apply for monthly invoiced billing, and have a single invoice for the project
 D. Create a billing account, associate it with a monthly purchase order (PO), and send the PO to Google Cloud.
 
 **Answer: A**
+
+Spiegazioni:
+A. Corretta: Questa opzione consente di creare un solo account di fatturazione, associando un metodo di pagamento ad esso. Gli ingegneri possono quindi creare progetti e associarli all'account di fatturazione senza la necessità di fornire informazioni sulla carta di credito, facilitando la gestione delle risorse e delle spese.
+B. Errata: Consentire a ogni ingegnere di creare i propri account di fatturazione per ciascun nuovo progetto complica la gestione delle spese e può portare a una maggiore confusione nel monitoraggio dei costi complessivi.
+C. Errata: Sebbene l'applicazione per una fatturazione mensile possa sembrare una soluzione praticabile, richiede un processo di approvazione e potrebbe non essere il metodo più semplice per consentire agli ingegneri di creare nuovi progetti senza l'input della carta di credito.
+D. Errata: Creare un account di fatturazione e associarlo a un ordine d'acquisto mensile è più complesso e potrebbe richiedere una maggiore burocrazia rispetto all'assegnazione di un unico account di fatturazione agli ingegneri.
 
 #### Question 209
 
@@ -2433,6 +2985,12 @@ D. Open the Google Cloud console, and run a query of the audit logs to find perm
 
 **Answer: A**
 
+Spiegazioni:
+A. Corretta: Questa opzione permette di verificare direttamente i ruoli IAM assegnati al servizio account nel progetto specifico e anche quelli ereditati a livello di cartella o organizzazione. Questo è essenziale per identificare eventuali problemi di autorizzazione.
+B. Errata: Controllare le politiche dell'organizzazione non fornisce informazioni dirette sui ruoli specifici assegnati a un servizio account. Le politiche dell'organizzazione possono limitare alcune azioni, ma non mostrano le assegnazioni di ruolo specifiche.
+C. Errata: Anche se questo approccio potrebbe fornire informazioni sulle risorse accessibili, non identifica direttamente quali ruoli sono stati assegnati al servizio account. La visibilità delle autorizzazioni è più utile per risolvere il problema di accesso.
+D. Errata: Esaminare i log di audit per trovare errori di accesso negato potrebbe fornire indizi sul problema, ma non è la soluzione più diretta per verificare quali ruoli sono assegnati al servizio account. Inoltre, non mostra i ruoli effettivi o le autorizzazioni.
+
 #### Question 210
 
 Your team is using Linux instances on Google Cloud. You need to ensure that your team logs in to these instances in the most secure and cost efficient way. What should you do?
@@ -2443,6 +3001,12 @@ C. Use a third party tool to provide remote access to the instances.
 D. Create a bastion host with public internet access. Create the SSH tunnel to the instance through the bastion host.
 
 **Answer: B (D)**
+
+piegazioni:
+A. Errata: Attaccare un IP pubblico agli istanze e consentire le connessioni in entrata da Internet sulla porta 22 per SSH è rischioso. Espone le istanze direttamente a Internet, aumentando il rischio di attacchi informatici e vulnerabilità.
+B. Corretta: Utilizzare il comando gcloud compute ssh con l'opzione --tunnel-through-iap è una soluzione sicura. IAP (Identity-Aware Proxy) consente l'accesso alle istanze senza la necessità di un IP pubblico, utilizzando invece l'autenticazione Google per garantire che solo gli utenti autorizzati possano connettersi.
+C. Errata: Sebbene gli strumenti di terze parti possano fornire accesso remoto, non sono sempre la soluzione più sicura o conveniente, e possono comportare costi aggiuntivi o requisiti di configurazione complessi.
+D. Errata: Creare un bastion host con accesso pubblico e tunnel SSH tramite di esso introduce un ulteriore livello di complessità e costi. Anche se può migliorare la sicurezza rispetto all'esposizione diretta delle istanze, l'opzione B è più sicura e meno costosa.
 
 #### Question 211
 
@@ -2783,9 +3347,10 @@ D. Lift and shift to a VM on Compute Engine. Use an instance schedule to start a
 #### Question 241
 
 You used the gcloud container clusters command to create two Google Cloud Kubernetes (GKE) clusters: prod-cluster and dev-cluster.
+
 - prod-cluster is a standard cluster.
 - dev-cluster is an auto-pilot cluster.
-When you run the kubectl get nodes command, you only see the nodes from prod-cluster. Which commands should you run to check the node status for dev-cluster?
+  When you run the kubectl get nodes command, you only see the nodes from prod-cluster. Which commands should you run to check the node status for dev-cluster?
 
 A. gcloud container clusters get-credentials dev-cluster kubectl get nodes
 B. gcloud container clusters update -generate-password dev-cluster kubectl get nodes
@@ -2797,9 +3362,10 @@ D. kubectl config set-credentials dev-cluster kubectl cluster-info
 #### Question 242
 
 You recently discovered that your developers are using many service account keys during their development process. While you work on a long term improvement, you need to quickly implement a process to enforce short-lived service account credentials in your company. You have the following requirements:
+
 - All service accounts that require a key should be created in a centralized project called pj-sa.
 - Service account keys should only be valid for one day.
-You need a Google-recommended solution that minimizes cost. What should you do?
+  You need a Google-recommended solution that minimizes cost. What should you do?
 
 A. Implement a Cloud Run job to rotate all service account keys periodically in pj-sa. Enforce an org policy to deny service account key creation with an exception to pj-sa.
 B. Implement a Kubernetes CronJob to rotate all service account keys periodically. Disable attachment of service accounts to resources in all projects with an exception to pj-sa.
@@ -2853,10 +3419,11 @@ D. Deploy a standard private cluster and enable shielded nodes.
 #### Question 246
 
 Your company wants to migrate their on-premises workloads to Google Cloud. The current on-premises workloads consist of:
+
 - A Flask web application
 - A backend API
 - A scheduled long-running background job for ETL and reporting
-You need to keep operational costs low. You want to follow Google-recommended practices to migrate these workloads to serverless solutions on Google Cloud. What should you do?
+  You need to keep operational costs low. You want to follow Google-recommended practices to migrate these workloads to serverless solutions on Google Cloud. What should you do?
 
 A. Migrate the web application to App Engine and the backend API to Cloud Run. Use Cloud Tasks to run your background job on Compute Engine.
 B. Migrate the web application to App Engine and the backend API to Cloud Run. Use Cloud Tasks to run your background job on Cloud Run.
@@ -2911,10 +3478,11 @@ D. Configure the Vertical Pod Autoscaler recommendations for availability, and c
 #### Question 250
 
 You need to migrate invoice documents stored on-premises to Cloud Storage. The documents have the following storage requirements:
+
 - Documents must be kept for five years.
 - Up to five revisions of the same invoice document must be stored, to allow for corrections.
 - Documents older than 365 days should be moved to lower cost storage tiers.
-You want to follow Google-recommended practices to minimize your operational and development costs. What should you do?
+  You want to follow Google-recommended practices to minimize your operational and development costs. What should you do?
 
 A. Enable retention policies on the bucket, and use Cloud Scheduler to invoke a Cloud Function to move or delete your documents based on their metadata.
 B. Enable retention policies on the bucket, use lifecycle rules to change the storage classes of the objects, set the number of versions, and delete old files.
@@ -3102,10 +3670,11 @@ E. Run gcloud config set project $my_project to set the default project for gclo
 #### Question 266
 
 You are planning to migrate your on-premises data to Google Cloud. The data includes:
+
 - 200 TB of video files in SAN storage
 - Data warehouse data stored on Amazon Redshift
 - 20 GB of PNG files stored on an S3 bucket
-You need to load the video files into a Cloud Storage bucket, transfer the data warehouse data into BigQuery, and load the PNG files into a second Cloud Storage bucket. You want to follow Google-recommended practices and avoid writing any code for the migration. What should you do?
+  You need to load the video files into a Cloud Storage bucket, transfer the data warehouse data into BigQuery, and load the PNG files into a second Cloud Storage bucket. You want to follow Google-recommended practices and avoid writing any code for the migration. What should you do?
 
 A. Use gcloud storage for the video files, Dataflow for the data warehouse data, and Storage Transfer Service for the PNG files.
 B. Use Transfer Appliance for the videos, BigQuery Data Transfer Service for the data warehouse data, and Storage Transfer Service for the PNG files.
