@@ -3536,10 +3536,9 @@ D. Corretta: Questa opzione è corretta poiché eseguire un lift-and-shift su un
 #### Question 241
 
 You used the gcloud container clusters command to create two Google Cloud Kubernetes (GKE) clusters: prod-cluster and dev-cluster.
-
 - prod-cluster is a standard cluster.
 - dev-cluster is an auto-pilot cluster.
-  When you run the kubectl get nodes command, you only see the nodes from prod-cluster. Which commands should you run to check the node status for dev-cluster?
+When you run the kubectl get nodes command, you only see the nodes from prod-cluster. Which commands should you run to check the node status for dev-cluster?
 
 A. gcloud container clusters get-credentials dev-cluster kubectl get nodes
 B. gcloud container clusters update -generate-password dev-cluster kubectl get nodes
@@ -3548,13 +3547,19 @@ D. kubectl config set-credentials dev-cluster kubectl cluster-info
 
 **Answer: A (D)**
 
+Spiegazioni:
+A. Corretta: Questo comando è corretto. Utilizzando `gcloud container clusters get-credentials dev-cluster`, si configura `kubectl` per comunicare con `dev-cluster`, permettendo poi di eseguire `kubectl get nodes` per visualizzare lo stato dei nodi. In quanto cluster Autopilot, dev-cluster non mostra i nodi nello stesso modo dei cluster standard, ma questo comando consente di controllare le informazioni dei nodi se necessario.
+B. Errata: `gcloud container clusters update -generate-password dev-cluster` non è un comando valido per ottenere credenziali o configurare l’accesso. L'opzione `-generate-password` non è supportata in questo contesto.
+C. Errata: `kubectl config set-context dev-cluster` imposta il contesto di configurazione, ma non garantisce che `kubectl` possa accedere al cluster se non è stato eseguito `get-credentials` per configurare le credenziali di accesso.
+D. Errata: `kubectl config set-credentials dev-cluster` consente di definire credenziali specifiche per il cluster, ma senza usare `get-credentials`, `kubectl` non potrà accedere al cluster `dev-cluster`.
+
+
 #### Question 242
 
 You recently discovered that your developers are using many service account keys during their development process. While you work on a long term improvement, you need to quickly implement a process to enforce short-lived service account credentials in your company. You have the following requirements:
-
 - All service accounts that require a key should be created in a centralized project called pj-sa.
 - Service account keys should only be valid for one day.
-  You need a Google-recommended solution that minimizes cost. What should you do?
+You need a Google-recommended solution that minimizes cost. What should you do?
 
 A. Implement a Cloud Run job to rotate all service account keys periodically in pj-sa. Enforce an org policy to deny service account key creation with an exception to pj-sa.
 B. Implement a Kubernetes CronJob to rotate all service account keys periodically. Disable attachment of service accounts to resources in all projects with an exception to pj-sa.
@@ -3562,6 +3567,13 @@ C. Enforce an org policy constraint allowing the lifetime of service account key
 D. Enforce a DENY org policy constraint over the lifetime of service account keys for 24 hours. Disable attachment of service accounts to resources in all projects with an exception to pj-sa.
 
 **Answer: C (D)**
+
+Spiegazioni:
+A. Errata: Sebbene la rotazione delle chiavi tramite un job Cloud Run sia una soluzione valida per garantire la rotazione delle chiavi, questa opzione non garantisce che le chiavi abbiano una durata di vita massima di 24 ore. La configurazione di un job Cloud Run può comportare dei costi aggiuntivi e richiede una gestione più complessa rispetto a una policy centralizzata.
+B. Errata: Utilizzare un Kubernetes CronJob per ruotare le chiavi periodicamente è meno consigliato poiché Kubernetes aggiunge una complessità infrastrutturale aggiuntiva e non offre un controllo diretto sulla durata delle chiavi, rendendo questa soluzione meno pratica e non conforme alla raccomandazione di Google.
+C. Corretta: Applicare una org policy per limitare la durata delle chiavi di account di servizio a 24 ore e negare la creazione delle chiavi tranne che per il progettocentralizzato pj-sa è la soluzione raccomandata. Questa configurazione consente di soddisfare entrambi i requisiti di durata breve delle chiavi e di controllo centralizzato, mantenendo i costi bassi e riducendo al minimo la complessità.
+D. Errata: Applicare una org policy che imponga una durata DENY sulle chiavi di account di servizio non è il modo corretto per imporre la durata delle chiavi a 24 ore. Questa opzione non soddisfa correttamente il requisito della durata di 24 ore e potrebbe risultare in una configurazione non funzionante.
+
 
 #### Question 243
 
@@ -3574,25 +3586,30 @@ D. Use the Google Cloud Pricing Calculator to determine the cost of every Google
 
 **Answer: D**
 
+Spiegazioni:
+A. Errata: Creare un foglio Google con diverse combinazioni di risorse Google Cloud può essere un approccio laborioso e poco efficace per stimare i costi. Importare i prezzi attuali è utile, ma questo metodo non sfrutta gli strumenti di calcolo dei costi progettati specificamente per Google Cloud, risultando in un calcolo meno preciso.
+B. Errata: Sebbene utilizzare il Google Cloud Pricing Calculator sia utile, selezionare il template Cloud Operations non è specifico per la tua applicazione. Per stimare i costi in modo efficace, è necessario utilizzare il calcolatore per le risorse specifiche necessarie per la tua applicazione e non un template generico.
+C. Errata: Implementare un'architettura simile su Google Cloud e testare a carico è un approccio valido, ma potrebbe richiedere molto tempo e risorse. Inoltre, non fornisce una stima basata su una configurazione dettagliata delle risorse necessarie.
+D. Corretta: Utilizzare il Google Cloud Pricing Calculator per determinare il costo di ogni risorsa Google Cloud prevista è il modo più diretto e preciso per stimare i costi. Confrontare le istanze di dimensioni simili per il server web e le macchine attuali con Cloud SQL consente di ottenere una stima dettagliata e realistica delle spese.
+
+
 #### Question 244
 
 You have a Bigtable instance that consists of three nodes that store personally identifiable information (PII) data. You need to log all read or write operations, including any metadata or configuration reads of this database table, in your company’s Security Information and Event Management (SIEM) system. What should you do?
 
-A.
-    - Navigate to Cloud Monitoring in the Google Cloud console, and create a custom monitoring job for the Bigtable instance to track all changes.
-    - Create an alert by using webhook endpoints, with the SIEM endpoint as a receiver.
-B.
-    - Navigate to the Audit Logs page in the Google Cloud console, and enable Admin Write logs for the Bigtable instance.
-    - Create a Cloud Functions instance to export logs from Cloud Logging to your SIEM.
-C.
-    - Navigate to the Audit Logs page in the Google Cloud console, and enable Data Read, Data Write and Admin Read logs for the Bigtable instance.
-    - Create a Pub/Sub topic as a Cloud Logging sink destination, and add your SIEM as a subscriber to the topic.
-D.
-    - Install the Ops Agent on the Bigtable instance during configuration.
-    - Create a service account with read permissions for the Bigtable instance.
-    - Create a custom Dataflow job with this service account to export logs to the company’s SIEM system.
+A. - Navigate to Cloud Monitoring in the Google Cloud console, and create a custom monitoring job for the Bigtable instance to track all changes. - Create an alert by using webhook endpoints, with the SIEM endpoint as a receiver.
+B. - Navigate to the Audit Logs page in the Google Cloud console, and enable Admin Write logs for the Bigtable instance. - Create a Cloud Functions instance to export logs from Cloud Logging to your SIEM.
+C. - Navigate to the Audit Logs page in the Google Cloud console, and enable Data Read, Data Write and Admin Read logs for the Bigtable instance. - Create a Pub/Sub topic as a Cloud Logging sink destination, and add your SIEM as a subscriber to the topic.
+D. - Install the Ops Agent on the Bigtable instance during configuration. - Create a service account with read permissions for the Bigtable instance. - Create a custom Dataflow job with this service account to export logs to the company’s SIEM system.
 
 **Answer: C**
+
+Spiegazioni:
+A. Errata: Sebbene creare un lavoro di monitoraggio personalizzato per Bigtable possa fornire alcune informazioni, non è un metodo completo per registrare tutte le operazioni di lettura e scrittura. Le informazioni relative ai log di accesso ai dati non vengono necessariamente tracciate tramite Cloud Monitoring, e il webhook potrebbe non essere l'approccio migliore per un'integrazione con un SIEM.
+B. Errata: Abilitare i log di scrittura dell'amministratore è un passo nella giusta direzione, ma non include le letture di dati. Inoltre, l'esportazione tramite Cloud Functions non è necessaria; è più diretto utilizzare i log di Cloud Logging con una destinazione adeguata.
+C. Corretta: Abilitare i log di lettura dei dati, scrittura dei dati e lettura dell'amministratore fornisce un tracciamento completo delle operazioni effettuate sul tuo Bigtable. Creare un argomento Pub/Sub come destinazione del sink di Cloud Logging e aggiungere il tuo SIEM come sottoscrittore garantisce che i log vengano inviati direttamente al tuo sistema di gestione della sicurezza.
+D. Errata: Sebbene installare l'Ops Agent e configurare un lavoro Dataflow sia un approccio avanzato, è eccessivo per il requisito di registrare operazioni di lettura e scrittura. L'Ops Agent non è necessario per Bigtable e la complessità di configurare un lavoro Dataflow per l'esportazione dei log non è giustificata quando ci sono metodi più semplici disponibili.
+
 
 #### Question 245
 
@@ -3604,6 +3621,13 @@ C. Deploy a standard public cluster and enable shielded nodes.
 D. Deploy a standard private cluster and enable shielded nodes.
 
 **Answer: A**
+
+Spiegazioni:
+A. Corretta: Creare un cluster autopilot privato consente di avere nodi non accessibili da Internet, garantendo così la sicurezza. Inoltre, l'autopilot riduce i costi operativi gestendo automaticamente le risorse del cluster, in linea con le pratiche consigliate di Google.
+B. Errata: Un cluster pubblico autopilot non soddisfa i requisiti di accessibilità, poiché i nodi sarebbero accessibili da Internet, compromettendo la sicurezza e la conformità con le specifiche di identità e integrità dei nodi.
+C. Errata: Anche se un cluster standard pubblico con nodi protetti garantirebbe l'integrità, i nodi sarebbero ancora accessibili da Internet, il che non soddisfa il requisito di non accessibilità. Inoltre, gestire un cluster standard implica un maggiore costo operativo rispetto a un cluster autopilot.
+D. Errata: Sebbene un cluster standard privato con nodi protetti offra sicurezza e integrità, comporta anche costi operativi più elevati e una maggiore complessità nella gestione rispetto a un cluster autopilot privato, che è progettato per ridurre l'onere operativo.
+
 
 #### Question 246
 
@@ -3620,6 +3644,13 @@ C. Run the web application on a Cloud Storage bucket and the backend API on Clou
 D. Run the web application on a Cloud Storage bucket and the backend API on Cloud Run. Use Cloud Tasks to run your background job on Compute Engine.
 
 **Answer: B (D)**
+
+Spiegazioni:
+A. Errata: Sebbene App Engine e Cloud Run siano scelte appropriate per il web application e il backend API, l'uso di Compute Engine per il job in background non è una soluzione serverless. Compute Engine comporterebbe costi operativi più elevati e una gestione più complessa.
+B. Corretta: Migrando il web application su App Engine e il backend API su Cloud Run, si seguono pratiche raccomandate e si mantiene un approccio serverless. L'uso di Cloud Tasks per eseguire il job in background su Cloud Run permette di scalare automaticamente e di ridurre i costi operativi.
+C. Errata: Anche se Cloud Run è una scelta corretta per il backend API, eseguire l'applicazione web su un bucket di Cloud Storage non è appropriato, poiché i bucket non possono eseguire codice Flask. Questo approccio non consentirebbe l'esecuzione dell'applicazione.
+D. Errata: Analogamente all'opzione C, eseguire l'applicazione web su un bucket di Cloud Storage non è appropriato. Inoltre, utilizzare Compute Engine per il job in background non è una soluzione serverless, quindi non soddisfa l'obiettivo di mantenere i costi operativi bassi.
+
 
 #### Question 247
 
@@ -3642,6 +3673,13 @@ D.
 
 **Answer: D**
 
+Spiegazioni:
+A. Errata: Anche se l'idea di permettere a un servizio di impersonare un utente con privilegi elevati è utile per gestire le autorizzazioni, questo approccio può portare a un'esposizione non necessaria dei privilegi e non segue le best practices di sicurezza. Un singolo account di servizio con diritti minimi non dovrebbe avere la capacità di impersonare utenti con accessi più elevati.
+B. Errata: Aggiungere un passaggio di approvazione umana prima dell'esecuzione della provisioning dell'infrastruttura è una buona pratica di sicurezza, ma non è sufficiente a garantire un controllo adeguato sulle autorizzazioni. Inoltre, l'utilizzo di un account IAM per le approvazioni umane non affronta le necessità di gestione delle autorizzazioni in modo pratico.
+C. Errata: Attaccare un solo account di servizio e dargli tutti i permessi necessari è contro le pratiche di sicurezza raccomandate. Dare troppi privilegi a un singolo account di servizio aumenta il rischio di esposizione e attacchi. È meglio seguire il principio del privilegio minimo.
+D. Corretta: Creare più account di servizio consente di applicare il principio del privilegio minimo, dando a ciascun pipeline solo i permessi necessari. L'uso di un gestore di segreti per archiviare le chiavi riduce il rischio di esposizione delle chiavi stesse. Inoltre, la possibilità per la pipeline di richiedere segreti durante l'esecuzione è una buona pratica di gestione delle credenziali, consentendo una maggiore sicurezza.
+
+
 #### Question 248
 
 Your application stores files on Cloud Storage by using the Standard Storage class. The application only requires access to files created in the last 30 days. You want to automatically save costs on files that are no longer accessed by the application. What should you do?
@@ -3653,6 +3691,13 @@ D. Enable object versioning on the storage bucket and add lifecycle rules to exp
 
 **Answer: A (C)**
 
+Spiegazioni:
+A. Corretta: Creare una regola di lifecycle sugli oggetti nel bucket per cambiare la classe di archiviazione a Archive Storage per gli oggetti più vecchi di 30 giorni consente di risparmiare costi su file che non sono più accessibili dall'applicazione. Questo approccio è efficiente per ottimizzare i costi di archiviazione, mantenendo comunque i file accessibili per eventuali necessità future.
+B. Errata: Creare un cron job in Cloud Scheduler per chiamare una funzione Cloud ogni giorno per eliminare file più vecchi di 30 giorni può sembrare una soluzione valida, ma non ottimizza i costi in modo efficiente. Inoltre, la cancellazione dei file non consente di conservarli per eventuali necessità future. Questa soluzione potrebbe comportare una perdita di dati.
+C. Errata: Creare una politica di retention di 30 giorni e bloccare il bucket con una retention policy lock impedirebbe la cancellazione di file anche dopo 30 giorni. Questo non risponde all'esigenza di ridurre i costi per file non più accessibili e potrebbe creare complicazioni nella gestione dei dati.
+D. Errata: Abilitare la versione degli oggetti e aggiungere regole di lifecycle per far scadere le versioni non correnti dopo 30 giorni non affronta direttamente il problema di ridurre i costi per i file più vecchi di 30 giorni. Questa soluzione è più adatta per gestire le versioni dei file, non per risparmiare sui costi di archiviazione.
+
+
 #### Question 249
 
 Your manager asks you to deploy a workload to a Kubernetes cluster. You are not sure of the workload's resource requirements or how the requirements might vary depending on usage patterns, external dependencies, or other factors. You need a solution that makes cost-effective recommendations regarding CPU and memory requirements, and allows the workload to function consistently in any situation. You want to follow Google-recommended practices. What should you do?
@@ -3663,6 +3708,16 @@ C. Configure the Vertical Pod Autoscaler recommendations for availability, and c
 D. Configure the Vertical Pod Autoscaler recommendations for availability, and configure the Horizontal Pod Autoscaler for suggestions.
 
 **Answer: B**
+
+Spiegazioni:
+A. Errata: Configurare l'Horizontal Pod Autoscaler per la disponibilità è utile, ma non affronta direttamente l'incertezza riguardo ai requisiti delle risorse del workload. La Cluster Autoscaler può fornire suggerimenti sulla dimensione del cluster, ma non sui requisiti specifici di CPU e memoria del workload.
+B. Corretta: Configurare l'Horizontal Pod Autoscaler per garantire la disponibilità dei pod in base al carico di lavoro e configurare il Vertical Pod Autoscaler per fornire raccomandazioni sui requisiti di CPU e memoria è una soluzione efficace. Questo approccio consente al workload di adattarsi automaticamente ai requisiti variabili, mantenendo un funzionamento costante e ottimizzando i costi.
+C. Errata: Configurare il Vertical Pod Autoscaler per le raccomandazioni è utile, ma non fornisce la disponibilità per il workload in base ai carichi variabili. La Cluster Autoscaler può fornire suggerimenti sulla dimensione del cluster, ma non è specifica per le risorse del workload.
+D. Errata: Configurare il Vertical Pod Autoscaler per la disponibilità non è corretto, poiché questo strumento si concentra sulla regolazione delle risorse all'interno di un pod esistente piuttosto che sulla disponibilità dei pod in base ai requisiti di carico. L'Horizontal Pod Autoscaler è più adatto a gestire la disponibilità in base alla domanda.
+Horizontal Pod Autoscaler (HPA): It automatically scales the number of pods in a deployment, replica set, or stateful set based on observed CPU utilization (or, with custom metrics support, on some other application-provided metrics). This helps maintain availability by ensuring that your application has the necessary number of pods to handle the workload.
+Vertical Pod Autoscaler (VPA): It automatically adjusts the CPU and memory reservations for your pods to help "right size" your applications. This is particularly useful when you're unsure of the resource requirements. VPA makes recommendations for the appropriate CPU and memory settings based on usage patterns, which can be very effective for cost optimization.
+This combination ensures that your workload is both horizontally scalable (to handle changes in demand) and vertically optimized (to use resources efficiently), following Google-recommended practices for Kubernetes workloads.
+
 
 #### Question 250
 
@@ -3679,6 +3734,12 @@ C. Enable object versioning on the bucket, and use Cloud Scheduler to invoke a C
 D. Enable object versioning on the bucket, use lifecycle conditions to change the storage class of the objects, set the number of versions, and delete old files.
 
 **Answer: D (C)**
+
+The correct answer is D. Here's why:
+- **Object versioning** allows you to keep up to five revisions of the same invoice document.
+- **Lifecycle conditions** can be used to automatically change the storage class of objects older than 365 days to a lower-cost storage tier.
+- You can also set the number of versions to keep and automatically delete old files, which helps to manage storage costs effectively.
+This approach aligns with Google-recommended practices and helps to minimize operational and development costs.
 
 #### Question 251
 
@@ -3702,6 +3763,12 @@ D. Create a cluster with both a Spot VM node pool and a nods pool by using stand
 
 **Answer: D (A)**
 
+Spiegazioni:  
+A. Errata: Creare un cluster con un solo node-pool standard e contrassegnare i Deployment fault-tolerant come `spot_true` non sfrutta affatto le Spot VM, il che significa che non si ottiene alcun risparmio sui costi.  
+B. Errata: Utilizzare solo Spot VM per l'intero cluster è rischioso per le parti critiche dell'applicazione, poiché le Spot VM possono essere terminate in qualsiasi momento, portando a downtime indesiderato per i servizi essenziali.  
+C. Errata: Questa opzione scambia i ruoli delle Spot VM e dei nodi standard, posizionando i Deployment critici su Spot VM. Questo è inadeguato perché le Spot VM non garantiscono disponibilità continua, il che non è accettabile per componenti critici.  
+D. Corretta: Creando un cluster con sia un node pool di Spot VM che un node pool di standard VM, puoi garantire che le parti critiche dell'applicazione siano eseguite su nodi standard (che sono più stabili e non soggetti a interruzioni improvvise come le Spot VM).  
+
 #### Question 253
 
 You need to deploy an application in Google Cloud using serverless technology. You want to test a new version of the application with a small percentage of production traffic. What should you do?
@@ -3712,6 +3779,12 @@ C. Deploy the application to Cloud Functions. Specify the version number in the 
 D. Deploy the application to App Engine. For each new version, create a new service.
 
 **Answer: A (D)**
+
+Spiegazioni:  
+A. Corretta: Cloud Run consente il deployment di applicazioni serverless e supporta il traffico suddiviso attraverso i rollouts graduali, permettendo di testare una nuova versione con una piccola percentuale di traffico di produzione.
+B. Errata: Anche se Google Kubernetes Engine può gestire il traffico, l'utilizzo di Anthos Service Mesh è più complesso rispetto ad altre opzioni serverless come Cloud Run e non è la scelta ideale per il traffico suddiviso per testare nuove versioni.  
+C. Errata: Cloud Functions non supporta direttamente il traffico suddiviso come funzionalità. Specificare il numero di versione nel nome della funzione non consente di controllare il traffico in modo fluido e non rappresenta una strategia di test efficiente.  
+D. Errata: Creare un nuovo servizio per ogni versione su App Engine non è un metodo efficiente per testare le nuove versioni con traffico suddiviso, in quanto complica la gestione e non offre un modo semplice per monitorare il traffico tra le versioni.  
 
 #### Question 254
 
@@ -3733,6 +3806,12 @@ D.
     - Provide the security team member with access to this dataset.
 
 **Answer: C (B)**
+
+Spiegazioni:
+A. Errata: Anche se l'Ops Agent fornisce metriche e log, non è specificamente progettato per fornire visibilità su vulnerabilità e metadata OS. Creare una metrica personalizzata non garantisce accesso diretto alle informazioni di vulnerabilità necessarie.
+B. Errata: L'installazione dell'Ops Agent fornisce alcune funzionalità, ma non include direttamente visibilità sulle vulnerabilità OS. La permission roles/osconfig.inventoryViewer non è sufficiente per ottenere informazioni dettagliate sulle vulnerabilità.
+C. Corretta: L'installazione dell'OS Config agent consente di raccogliere informazioni sulle vulnerabilità e fornire report dettagliati. Assegnare il permesso roles/osconfig.vulnerabilityReportViewer garantisce al membro del team di sicurezza l'accesso necessario per visualizzare le vulnerabilità e altri metadata OS.
+D. Errata: Sebbene l'OS Config agent sia necessario per raccogliere informazioni sulle vulnerabilità, creare un log sink a BigQuery non è la soluzione più diretta per fornire visibilità sulle vulnerabilità. Questo approccio aggiunge complessità senza garantire l'accesso immediato alle informazioni necessarie.
 
 #### Question 255
 
@@ -3767,6 +3846,12 @@ D. Turn on Google Cloud firewall rules logging, and set up alerts for any insert
 
 **Answer: B**
 
+Spiegazioni:  
+A. Errata: L'Identity-Aware Proxy richiede l'autenticazione tramite un account Google, quindi un consulente senza un account Google non può utilizzare questa opzione per accedere all'istanza.  
+B. Errata: Utilizzare il comando `gcloud compute ssh` con l'indirizzo IP pubblico dell'istanza non è praticabile per un consulente che non ha un account Google, poiché il comando richiede l'autenticazione tramite Google Cloud.  
+C. Corretta: Questa opzione è la più adatta. Il consulente può generare una coppia di chiavi SSH e inviare la chiave pubblica. Aggiungendo la chiave pubblica all'istanza, il consulente potrà accedervi utilizzando la propria chiave privata senza necessità di un account Google.  
+D. Errata: Richiedere la chiave privata del consulente è una pratica di sicurezza scorretta, poiché la chiave privata non dovrebbe mai essere condivisa. Solo la chiave pubblica deve essere fornita e aggiunta all'istanza per consentire l'accesso.  
+
 #### Question 258
 
 You are configuring service accounts for an application that spans multiple projects. Virtual machines (VMs) running in the web-applications project need access to BigQuery datasets in the crm-databases project. You want to follow Google-recommended practices to grant access to the service account in the web-applications project. What should you do?
@@ -3777,6 +3862,12 @@ C. Grant "project owner" role to crm-databases and roles/bigquery.dataViewer rol
 D. Grant roles/bigquery.dataViewer role to crm-databases and appropriate roles to web-applications.
 
 **Answer: D (C)**
+
+Spiegazioni:  
+A. Errata: Dare il ruolo di "project owner" al progetto web-applications per il progetto crm-databases non è consigliabile, poiché dà accesso completo al progetto, superando il principio del minimo privilegio necessario. 
+B. Errata: Assegnare il ruolo di "project owner" a entrambi i progetti è eccessivo e non segue le pratiche consigliate, poiché concede più privilegi di quanto necessario per accedere a BigQuery.  
+C. Errata: Assegnare il ruolo di "project owner" a crm-databases e il ruolo di roles/bigquery.dataViewer a web-applications non è corretto, poiché il progetto web-applications non necessita di diritti di proprietà per visualizzare i dati.  
+D. Corretta: Assegnare il ruolo roles/bigquery.dataViewer a crm-databases permette al servizio di visualizzare i dataset BigQuery, mentre si concedono i ruoli appropriati al progetto web-applications, garantendo che ogni progetto abbia solo le autorizzazioni necessarie per funzionare.  
 
 #### Question 259
 
@@ -3789,6 +3880,12 @@ D. Create a new VPC network for the VMs with a subnet of 172.32.0.0/16. Enable V
 
 **Answer: A**
 
+Spiegazioni:  
+A. Errata: Modificare l'intervallo della subnet da 172.16.20.128/25 a 172.16.20.0/24 non è possibile poiché l'intervallo attuale è già in uso, e non si possono "espandere" gli intervalli delle subnet esistenti in questo modo.
+B. Corretta: Creare un nuovo Secondary IP Range nella VPC consente di aggiungere ulteriori indirizzi IP disponibili per i VMs, permettendo loro di comunicare con il cluster Dataproc senza richiedere ulteriori modifiche alla configurazione esistente.  
+C. Errata: Creare una nuova VPC per i VMs richiede passaggi aggiuntivi e la configurazione di VPC Peering, il che non è necessario quando si possono utilizzare le risorse già disponibili nella VPC esistente.  
+D. Errata: Creare una nuova VPC con un intervallo di subnet diverso e configurare il VPC Peering richiede più passaggi e complessità rispetto all'aggiunta di un Secondary IP Range, che sarebbe più diretto e semplice.  
+
 #### Question 260
 
 You are building a backend service for an ecommerce platform that will persist transaction data from mobile and web clients. After the platform is launched, you expect a large volume of global transactions. Your business team wants to run SQL queries to analyze the data. You need to build a highly available and scalable data store for the platform. What should you do?
@@ -3799,6 +3896,12 @@ C. Create a multi-region Cloud SQL for PostgreSQL database with optimized indexe
 D. Create a multi-region BigQuery dataset with optimized tables.
 
 **Answer: A (C)**
+
+Spiegazioni:  
+A. Corretta: Creare un'istanza Cloud Spanner multi-regione fornisce alta disponibilità e scalabilità orizzontale, rendendola adatta per gestire un grande volume di transazioni globali e consentendo query SQL per analizzare i dati in modo efficace.  
+B. Errata: Sebbene Firestore possa gestire un volume elevato di dati, non è ottimizzato per query SQL e le sue funzionalità di aggregazione sono limitate rispetto a quelle di un database relazionale come Cloud Spanner.  
+C. Errata: Cloud SQL può offrire buone prestazioni, ma non è progettato per gestire carichi di lavoro altamente scalabili e globali come quelli di un ecommerce in crescita. Inoltre, le istanze Cloud SQL non sono multi-regione, il che potrebbe compromettere l'alta disponibilità necessaria.  
+D. Errata: BigQuery è ottimizzato per l'analisi dei dati e l'esecuzione di query su grandi volumi di dati, ma non è progettato per le transazioni in tempo reale come un backend di ecommerce. È più adatto per l'analisi dei dati storici piuttosto che per l'archiviazione di transazioni attive.  
 
 #### Question 261
 
@@ -3811,6 +3914,12 @@ D. Use the gcloud iam roles copy command, and provide the project IDs of all pro
 
 **Answer: C (D)**
 
+Spiegazioni:  
+A. Errata: Non è possibile creare un ruolo in un'organizzazione e trasferirlo direttamente in un'altra con l'opzione "Create role from selection"; questa opzione non consente di spostare ruoli tra organizzazioni.  
+B. Errata: Creare un ruolo partendo dal pannello della startup non replica esattamente i ruoli e permessi, né li trasferisce tra organizzazioni. Non è la soluzione per replicare i permessi SRE dell'altra organizzazione.  
+C. Corretta: Usando `gcloud iam roles copy` e specificando l'ID dell'organizzazione di destinazione, è possibile copiare ruoli personalizzati tra le organizzazioni. Questo garantisce che i ruoli SRE siano replicati per tutti i progetti nella nuova organizzazione.  
+D. Errata: Specificare gli ID dei singoli progetti è inefficiente e non scala facilmente; inoltre, non replica i permessi a livello di organizzazione, come richiesto per i SRE.
+
 #### Question 262
 
 You need to extract text from audio files by using the Speech-to-Text API. The audio files are pushed to a Cloud Storage bucket. You need to implement a fully managed, serverless compute solution that requires authentication and aligns with Google-recommended practices. You want to automate the call to the API by submitting each file to the API as the audio file arrives in the bucket. What should you do?
@@ -3821,6 +3930,12 @@ C. Run a Python script by using a Linux cron job in Compute Engine to scan the b
 D. Create a Cloud Function triggered by Cloud Storage bucket events to submit the file URI to the Google Speech-to-Text API.
 
 **Answer: D (B)**
+
+Spiegazioni:  
+A. Errata: Anche se App Engine può interagire con eventi del Cloud Storage, non è la soluzione più diretta per rispondere agli eventi del bucket in tempo reale. Inoltre, App Engine è meno adatto per carichi di lavoro reattivi e di breve durata come la chiamata a un'API per file individuali.  
+B. Errata: L'uso di un job Kubernetes che scansiona regolarmente il bucket aggiunge latenza e complessità. La scansione periodica non è necessaria, e Kubernetes introduce un'infrastruttura non serverless, richiedendo gestione continua.  
+C. Errata: Una soluzione basata su Compute Engine e cron job richiede un VM sempre attiva, che introduce costi e non è serverless. Non risponde in tempo reale e richiede gestione continua della VM.  
+D. Corretta: Cloud Functions offre una soluzione completamente gestita e serverless che può essere attivata automaticamente da eventi in un bucket Cloud Storage. Questo consente di chiamare l'API in tempo reale per ogni nuovo file in linea con le best practices di Google Cloud.
 
 #### Question 263
 
@@ -3833,6 +3948,12 @@ D. An external HTTP(S) load balancer to distribute the load and a URL map to tar
 
 **Answer: A (D)**
 
+Spiegazioni:  
+A. Corretta: L'HTTP(S) Load Balancer esterno con certificato SSL gestito distribuisce il traffico in modo sicuro e automatico, con mappa URL per dirigere le richieste dei contenuti statici al backend Cloud Storage. Questa è la configurazione più sicura ed efficiente per autoscaling e gestione del traffico.  
+B. Errata: Un Network Load Balancer non supporta il protocollo HTTP(S), quindi non è in grado di gestire certificati SSL o dirigere il traffico HTTP. Non è adatto per distribuire carichi di lavoro HTTPS con contenuti statici su Cloud Storage.  
+C. Errata: Un HTTP(S) Load Balancer interno è destinato a traffico interno e non pubblico, e non è compatibile con l'accesso pubblico richiesto per un sito web accessibile da utenti esterni.  
+D. Errata: Sebbene l'HTTP(S) Load Balancer sia corretto per la distribuzione, l'installazione manuale dei certificati sugli istanze non è ottimale rispetto all'uso di certificati SSL gestiti.
+
 #### Question 264
 
 The core business of your company is to rent out construction equipment at large scale. All the equipment that is being rented out has been equipped with multiple sensors that send event information every few seconds. These signals can vary from engine status, distance traveled, fuel level, and more. Customers are billed based on the consumption monitored by these sensors. You expect high throughput – up to thousands of events per hour per device – and need to retrieve consistent data based on the time of the event. Storing and retrieving individual signals should be atomic. What should you do?
@@ -3844,6 +3965,12 @@ D. Ingest the data into Bigtable. Create a row key based on the event timestamp.
 
 **Answer: D (B)**
 
+Spiegazioni:  
+A. Errata: Cloud Storage è un sistema di archiviazione di oggetti e non è ottimizzato per operazioni ad alta frequenza o per garantire coerenza su dati strutturati come eventi temporizzati. Non è ideale per query frequenti o per una struttura dati ad alto throughput come richiesto.
+B. Errata: Filestore è progettato per gestire file system e condivisioni di file, ma non è adatto a operazioni di scrittura altamente frequenti come nel caso di eventi di sensori in tempo reale. Inoltre, non supporta la ricerca per timestamp o altre query complesse in modo efficiente.  
+C. Errata: Cloud SQL potrebbe non gestire il throughput elevato e le operazioni atomicamente su singoli segnali di sensori. Sebbene le repliche di lettura possano aumentare la capacità di lettura, non risolvono il problema di scritture rapide e massive con coerenza temporale.
+D. Corretta: Bigtable è progettato per gestire elevati volumi di dati con scritture e letture rapide e coerenti. Utilizzare una chiave di riga basata sul timestamp dell'evento consente di organizzare i dati in modo efficiente, supportando query per evento temporale e garantendo operazioni atomiche su ogni segnale.
+
 #### Question 265
 
 You just installed the Google Cloud CLI on your new corporate laptop. You need to list the existing instances of your company on Google Cloud. What must you do before you run the gcloud compute instances list command? (Choose two.)
@@ -3854,7 +3981,14 @@ C. Download your Cloud Identity user account key. Place the key file in a folder
 D. Run gcloud config set compute/zone $my_zone to set the default zone for gcloud CLI.
 E. Run gcloud config set project $my_project to set the default project for gcloud CLI.
 
-**Answer: A (B)**
+**Answer: A-E**
+
+Spiegazioni:  
+A. Corretta: Prima di utilizzare i comandi `gcloud`, è necessario autenticarsi tramite il comando `gcloud auth login`, che richiede di accedere con le proprie credenziali e autorizzare la CLI ad accedere ai servizi Google Cloud.  
+B. Errata: La creazione e il download di una chiave di account di servizio non sono necessari per la lista delle istanze se si utilizza un account utente Cloud Identity o Google Workspace con i permessi necessari.  
+C. Errata: Le chiavi dell’account utente Cloud Identity non sono utilizzate per autenticare la `gcloud CLI`. L'autenticazione per gli utenti avviene tramite `gcloud auth login`.  
+D. Errata: Anche se può essere utile per i comandi che richiedono una zona specifica, non è necessario impostare una zona per eseguire `gcloud compute instances list`.  
+E. Corretta: È necessario impostare un progetto predefinito con `gcloud config set project $my_project` per consentire alla CLI di sapere su quale progetto eseguire i comandi.
 
 #### Question 266
 
@@ -3872,6 +4006,12 @@ D. Use Cloud Data Fusion for the video files, Dataflow for the data warehouse da
 
 **Answer: B (A)**
 
+Spiegazioni:  
+A. Errata: `gcloud storage` richiede l’uso della riga di comando per gestire i trasferimenti, e `Dataflow` richiederebbe di scrivere codice per spostare i dati da Redshift a BigQuery, il che non rispetta l'obiettivo di evitare la scrittura di codice.  
+B. Corretta: `Transfer Appliance` consente la migrazione offline di grandi quantità di dati come i 200 TB di video, `BigQuery Data Transfer Service` è progettato per importare dati da Redshift in BigQuery senza necessità di codice, e `Storage Transfer Service` può essere utilizzato per trasferire i PNG da S3 a Cloud Storage.  
+C. Errata: `Storage Transfer Service` non è adatto per grandi volumi di dati on-premises come i video su SAN storage; `Transfer Appliance` è più efficace per questi casi.  
+D. Errata: `Cloud Data Fusion` e `Dataflow` sono strumenti ETL che richiederebbero configurazioni complesse e, nel caso di `Dataflow`, anche codice per trasferire i dati da Redshift.
+
 #### Question 267
 
 You want to deploy a new containerized application into Google Cloud by using a Kubernetes manifest. You want to have full control over the Kubernetes deployment, and at the same time, you want to minimize configuring infrastructure. What should you do?
@@ -3882,6 +4022,10 @@ C. Deploy the application on GKE Standard.
 D. Deploy the application on Cloud Functions.
 
 **Answer: A (C)**
+
+Spiegazioni:
+Despite the managed nature of the infrastructure of a GKE Autopilot Cluster, you still have full control over your Kubernetes workloads, configurations, and deployments. This allows you to use Kubernetes manifests and customize your deployment as needed.
+
 
 #### Question 268
 
@@ -3894,6 +4038,13 @@ D. Save the incoming votes to Pub/Sub. Use the Pub/Sub topic to trigger a Cloud 
 
 **Answer: D**
 
+Spiegazioni:
+A. Errata: Firestore è una soluzione per l’archiviazione dati in tempo reale ma non è ottimizzata per la gestione di un elevato volume di eventi in arrivo come i voti, e l’uso di Cloud Scheduler per elaborazioni periodiche non risponde bene a un flusso variabile.
+B. Errata: Usare un’istanza dedicata limita la scalabilità e l’affidabilità dell’elaborazione. Inoltre, l’invio diretto dei voti a una singola istanza non è efficiente per gestire i picchi di traffico.
+C. Errata: Salvare i voti in un file JSON su Cloud Storage e processarli in batch non è ottimale per un’applicazione che potrebbe richiedere elaborazioni in tempo reale o quasi. Questo approccio introduce ritardi significativi.
+D. Corretta: Pub/Sub è progettato per gestire flussi di dati variabili in modo scalabile, consentendo l’elaborazione dei voti in tempo reale tramite Cloud Functions. Questo approccio è efficiente e scalabile, ideale per gestire picchi e volumi elevati di eventi.
+
+
 #### Question 269
 
 You are deploying an application on Google Cloud that requires a relational database for storage. To satisfy your company’s security policies, your application must connect to your database through an encrypted and authenticated connection that requires minimal management and integrates with Identity and Access Management (IAM). What should you do?
@@ -3905,6 +4056,13 @@ D. Deploy a Cloud SQL database and configure a database user and password. Acces
 
 **Answer: C**
 
+Spiegazioni:
+A. Errata: Anche se l’uso di SSL/TLS offre connessioni crittografate, la configurazione di certificati SSL/TLS client richiede una gestione aggiuntiva, e non si integra pienamente con IAM, che è richiesto nelle policy di sicurezza.
+B. Errata: Configurare SSL/TLS client certificates e autenticazione IAM fornisce sicurezza, ma gestire certificati SSL/TLS richiede manutenzione, andando contro alla richiesta di gestione minima.
+C. Corretta: Utilizzare il Cloud SQL Auth Proxy permette di gestire connessioni sicure e crittografate senza richiedere certificati SSL/TLS, e consente anche l’integrazione con IAM per una gestione sicura e semplice delle autorizzazioni, soddisfacendo così le policy di sicurezza.
+D. Errata: Configurare l’accesso tramite database user e password non sfrutta IAM, e questo non risponde alla policy aziendale di autenticazione basata su IAM.
+
+
 #### Question 270
 
 You have two Google Cloud projects: project-a with VPC vpc-a (10.0.0.0/16) and project-b with VPC vpc-b (10.8.0.0/16). Your frontend application resides in vpc-a and the backend API services are deployed in vpc-b. You need to efficiently and cost-effectively enable communication between these Google Cloud projects. You also want to follow Google-recommended practices. What should you do?
@@ -3915,6 +4073,13 @@ C. Configure a Cloud Router in vpc-a and another Cloud Router in vpc-b.
 D. Configure a Cloud Interconnect connection between vpc-a and vpc-b.
 
 **Answer: B**
+
+Spiegazioni:
+A. Errata: Creare una connessione OpenVPN richiede gestione e manutenzione aggiuntive e non è la soluzione più efficace o economica per la comunicazione tra VPC in Google Cloud.
+B. Corretta: La VPC Network Peering consente una connessione diretta tra vpc-a e vpc-b, consentendo la comunicazione tra le istanze in modo efficiente e senza costi di trasporto aggiuntivi, seguendo le pratiche consigliate da Google.
+C. Errata: Configurare un Cloud Router non è necessario per la comunicazione diretta tra VPC e non è una soluzione adatta per il semplice scambio di dati tra vpc-a e vpc-b.
+D. Errata: Configurare una connessione Cloud Interconnect è più costosa e complessa, ed è utilizzata principalmente per connessioni dedicate a reti locali, non è adatta per la comunicazione tra VPC all'interno di Google Cloud.
+
 
 #### Question 271
 

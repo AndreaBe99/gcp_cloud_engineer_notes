@@ -2823,19 +2823,10 @@ D. Use the Google Cloud Pricing Calculator to determine the cost of every Google
 
 You have a Bigtable instance that consists of three nodes that store personally identifiable information (PII) data. You need to log all read or write operations, including any metadata or configuration reads of this database table, in your company’s Security Information and Event Management (SIEM) system. What should you do?
 
-A.
-    - Navigate to Cloud Monitoring in the Google Cloud console, and create a custom monitoring job for the Bigtable instance to track all changes.
-    - Create an alert by using webhook endpoints, with the SIEM endpoint as a receiver.
-B.
-    - Navigate to the Audit Logs page in the Google Cloud console, and enable Admin Write logs for the Bigtable instance.
-    - Create a Cloud Functions instance to export logs from Cloud Logging to your SIEM.
-C.
-    - Navigate to the Audit Logs page in the Google Cloud console, and enable Data Read, Data Write and Admin Read logs for the Bigtable instance.
-    - Create a Pub/Sub topic as a Cloud Logging sink destination, and add your SIEM as a subscriber to the topic.
-D.
-    - Install the Ops Agent on the Bigtable instance during configuration.
-    - Create a service account with read permissions for the Bigtable instance.
-    - Create a custom Dataflow job with this service account to export logs to the company’s SIEM system.
+A. - Navigate to Cloud Monitoring in the Google Cloud console, and create a custom monitoring job for the Bigtable instance to track all changes. - Create an alert by using webhook endpoints, with the SIEM endpoint as a receiver.
+B. - Navigate to the Audit Logs page in the Google Cloud console, and enable Admin Write logs for the Bigtable instance. - Create a Cloud Functions instance to export logs from Cloud Logging to your SIEM.
+C. - Navigate to the Audit Logs page in the Google Cloud console, and enable Data Read, Data Write and Admin Read logs for the Bigtable instance. - Create a Pub/Sub topic as a Cloud Logging sink destination, and add your SIEM as a subscriber to the topic.
+D. - Install the Ops Agent on the Bigtable instance during configuration. - Create a service account with read permissions for the Bigtable instance. - Create a custom Dataflow job with this service account to export logs to the company’s SIEM system.
 
 **Answer: C**
 
@@ -2869,20 +2860,10 @@ D. Run the web application on a Cloud Storage bucket and the backend API on Clou
 
 Your company is moving its continuous integration and delivery (CI/CD) pipeline to Compute Engine instances. The pipeline will manage the entire cloud infrastructure through code. How can you ensure that the pipeline has appropriate permissions while your system is following security best practices?
 
-A.
-    - Attach a single service account to the compute instances.
-    - Add minimal rights to the service account.
-    - Allow the service account to impersonate a Cloud Identity user with elevated permissions to create, update, or delete resources.
-B.
-    - Add a step for human approval to the CI/CD pipeline before the execution of the infrastructure provisioning.
-    - Use the human approvals IAM account for the provisioning.
-C.
-    - Attach a single service account to the compute instances.
-    - Add all required Identity and Access Management (IAM) permissions to this service account to create, update, or delete resources.
-D.
-    - Create multiple service accounts, one for each pipeline with the appropriate minimal Identity and Access Management (IAM) permissions.
-    - Use a secret manager service to store the key files of the service accounts.
-    - Allow the CI/CD pipeline to request the appropriate secrets during the execution of the pipeline.
+A. - Attach a single service account to the compute instances. - Add minimal rights to the service account. - Allow the service account to impersonate a Cloud Identity user with elevated permissions to create, update, or delete resources.
+B. - Add a step for human approval to the CI/CD pipeline before the execution of the infrastructure provisioning. - Use the human approvals IAM account for the provisioning.
+C. - Attach a single service account to the compute instances. - Add all required Identity and Access Management (IAM) permissions to this service account to create, update, or delete resources.
+D. - Create multiple service accounts, one for each pipeline with the appropriate minimal Identity and Access Management (IAM) permissions. - Use a secret manager service to store the key files of the service accounts. - Allow the CI/CD pipeline to request the appropriate secrets during the execution of the pipeline.
 
 **Answer: D**
 
@@ -2960,20 +2941,10 @@ D. Deploy the application to App Engine. For each new version, create a new serv
 
 Your company's security vulnerability management policy wants a member of the security team to have visibility into vulnerabilities and other OS metadata for a specific Compute Engine instance. This Compute Engine instance hosts a critical application in your Google Cloud project. You need to implement your company's security vulnerability management policy. What should you do?
 
-A.
-    - Ensure that the Ops Agent is installed on the Compute Engine instance.
-    - Create a custom metric in the Cloud Monitoring dashboard.
-    - Provide the security team member with access to this dashboard.
-B.
-    - Ensure that the Ops Agent is installed on the Compute Engine instance.
-    - Provide the security team member roles/osconfig.inventoryViewer permission.
-C.
-    - Ensure that the OS Config agent is installed on the Compute Engine instance.
-    - Provide the security team member roles/osconfig.vulnerabilityReportViewer permission.
-D.
-    - Ensure that the OS Config agent is installed on the Compute Engine instance.
-    - Create a log sink to BigQuery dataset.
-    - Provide the security team member with access to this dataset.
+A. - Ensure that the Ops Agent is installed on the Compute Engine instance. - Create a custom metric in the Cloud Monitoring dashboard. - Provide the security team member with access to this dashboard.
+B. - Ensure that the Ops Agent is installed on the Compute Engine instance. - Provide the security team member roles/osconfig.inventoryViewer permission.
+C. - Ensure that the OS Config agent is installed on the Compute Engine instance. - Provide the security team member roles/osconfig.vulnerabilityReportViewer permission.
+D. - Ensure that the OS Config agent is installed on the Compute Engine instance. - Create a log sink to BigQuery dataset. - Provide the security team member with access to this dataset.
 
 **Answer: C (B)**
 
@@ -3097,7 +3068,7 @@ C. Download your Cloud Identity user account key. Place the key file in a folder
 D. Run gcloud config set compute/zone $my_zone to set the default zone for gcloud CLI.
 E. Run gcloud config set project $my_project to set the default project for gcloud CLI.
 
-**Answer: A (B)**
+**Answer: A-E**
 
 #### Question 266
 
