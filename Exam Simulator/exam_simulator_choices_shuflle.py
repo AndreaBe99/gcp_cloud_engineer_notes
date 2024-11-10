@@ -1,7 +1,13 @@
 import json
 import random
 from typing import Dict, List, Tuple
-from colorama import Fore, Style, init
+
+from rich.console import Console
+from rich.markdown import Markdown
+from rich.text import Text
+
+# Initialize the rich Console
+console = Console()
 
 # Modify the path to the markdown file containing the questions and answers
 LINUX_PATH = "/home/andrea/Documenti"
@@ -12,16 +18,13 @@ ABS_PATH = [LINUX_PATH, WINDOWS_PATH, ANDROID_PATH][1]
 
 PATH = f"{ABS_PATH}/gcp_cloud_engineer_notes/Quizzes/exam_topics.json"
 
-# Initialize colorama for coloring text in the terminal
-init(autoreset=True)
-
 # Define a list of colors to apply only to the choice letters (A, B, C, D)
 choice_colors = [
-    Fore.YELLOW,
-    Fore.RED,
-    Fore.GREEN,
-    Fore.BLUE,
-    Fore.MAGENTA,
+    "yellow",
+    "red",
+    "green",
+    "blue",
+    "magenta",
 ]
 
 
@@ -110,7 +113,7 @@ def ask_question(
     question_data: Dict[str, str],
     original_number: str,
     current_number: int,
-):
+) -> bool:
     """
     Display the question and choices, and get the user's response.
 
@@ -118,14 +121,15 @@ def ask_question(
         question_data (Dict[str, str]): The question data including text, choices, and answers.
         original_number (str): The original number of the question.
         current_number (int): The current question number in the exam.
+
+    Returns:
+        bool: True if the answer is correct, False otherwise.
     """
     # Display the question number and the original number
-    print(
-        f"\n{Style.BRIGHT}Question {current_number} (Original #{original_number}){Style.RESET_ALL}"
+    console.print(
+        f"\nQuestion {current_number} (Original #{original_number})", style="bold"
     )
-
-    # Display the question text in bold
-    print(f"{Style.BRIGHT}{question_data['question']}{Style.RESET_ALL}\n")
+    console.print(Markdown(f"{question_data['question']}"))
 
     # Shuffle and display the choices, along with a mapping to update correct answers
     shuffled_choices, label_map = shuffle_choices(question_data["choices"])
@@ -135,23 +139,23 @@ def ask_question(
 
     # Display the shuffled choices with colored letters
     for i, (label, text) in enumerate(shuffled_choices):
-        color = choice_colors[
-            i % len(choice_colors)
-        ]  # Cycle through the defined colors
-        print(f"{color}{label}{Style.RESET_ALL}. {text}")
+        color = choice_colors[i % len(choice_colors)]
+        # Cycle through the defined colors
+        console.print(f"[{color}]{label}.[/{color}] {text}")
 
     # Get user's answer
     user_answer = input("\nYour answer: ").upper().strip()
 
     # Check if the answer is correct
+    is_correct = True
     if user_answer in correct_answers:
-        print(f"{Fore.GREEN}Correct!{Style.RESET_ALL}\n")
+        console.print(f"[green]Correct![/green]\n")
     else:
         correct_text = ", ".join(correct_answers)
-        print(
-            f"{Fore.RED}Wrong! The correct answer is: {correct_text}{Style.RESET_ALL}\n"
-        )
+        console.print(f"[red]Wrong! The correct answer is: {correct_text}[/red]\n")
+        is_correct = False
     print("-" * 50)
+    return is_correct
 
 
 def run_exam(exam_json: Dict[str, Dict[str, str]], num_questions: int = 50):
@@ -165,17 +169,23 @@ def run_exam(exam_json: Dict[str, Dict[str, str]], num_questions: int = 50):
     # Select random questions
     selected_questions = select_random_questions(exam_json, num_questions)
 
-    print("Welcome to the Exam Simulator!")
-    print("You will be presented with a series of multiple-choice questions.")
-    print("Please select the letter(s) corresponding to the correct answer(s).")
-    print(
-        f"{Fore.YELLOW}If the question has multiple correct answers, you need to write the letters separated by a '-'.{Style.RESET_ALL}"
+    console.print("Welcome to the Exam Simulator!", style="bold")
+    console.print(
+        "You will be presented with a series of multiple-choice questions.\n"
+        "Please select the letter(s) corresponding to the correct answer(s)."
+    )
+    console.print(
+        "[yellow]If the question has multiple correct answers, write the letters separated by a '-'.[/yellow]"
     )
 
     # Loop over the selected questions and ask one at a time
+    correct_answers = 0
     for current_number, question_number in enumerate(selected_questions, 1):
-        ask_question(exam_json[question_number], question_number, current_number)
+        is_correct = ask_question(exam_json[question_number], question_number, current_number)
+        if is_correct:
+            correct_answers += 1
 
+    console.print(f"You got {correct_answers} out of {num_questions} questions correct!")
 
 # Main code to run the exam simulation
 if __name__ == "__main__":

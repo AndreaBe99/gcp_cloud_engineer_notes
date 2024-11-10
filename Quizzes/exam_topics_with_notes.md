@@ -819,6 +819,13 @@ D. In the cluster's definition in Deployment Manager, add a metadata that has ku
 
 Reference: https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl
 
+Spiegazioni:
+A. Corretta: Aggiungere l'API del cluster come nuovo Type Provider in Deployment Manager consente di usare direttamente il tipo per creare la DaemonSet, riducendo al minimo l'uso di servizi esterni.
+B. Errata: Il Deployment Manager Runtime Configurator è utilizzato per gestire configurazioni dinamiche e non è ottimale per creare risorse come una DaemonSet.
+C. Errata: Creare un'istanza di Compute Engine con uno script di avvio per gestire la DaemonSet richiede risorse aggiuntive e complica la configurazione, non rispettando l'obiettivo di minimizzare i servizi.
+D. Errata: L'aggiunta di metadata nella definizione del cluster non è un metodo valido per creare una DaemonSet, poiché i metadata non gestiscono direttamente manifesti Kubernetes.
+
+
 #### Question 70
 
 You are building an application that will run in your data center. The application will use Google Cloud Platform (GCP) services like AutoML. You created a service account that has appropriate access to AutoML. You need to enable authentication to the APIs from your on-premises environment. What should you do?
@@ -3150,13 +3157,7 @@ D. Errata: Le Spot VMs offrono un vantaggio in termini di costo, ma non garantis
 
 #### Question 219
 
-You are planning to migrate the following on-premises data management solutions to Google Cloud:
-
-- One MySQL cluster for your main database
-- Apache Kafka for your event streaming platform
-- One Cloud SQL for PostgreSQL database for your analytical and reporting needs
-
-You want to implement Google-recommended solutions for the migration. You need to ensure that the new solutions provide global scalability and require minimal operational and infrastructure management. What should you do?
+You are planning to migrate the following on-premises data management solutions to Google Cloud: - One MySQL for your main database; - Apache Kafka for your event streaming platform; - One Cloud SQL for PostgreSQL database for your analytical and reporting need. You want to implement Google-recommended solutions for the migration. You need to ensure that the new solutions provide global scalability and require minimal operational and infrastructure management. What should you do?
 
 A. Migrate from MySQL to Cloud SQL, from Kafka to Pub/Sub, and from Cloud SQL for PostgreSQL to BigQuery.
 B. Migrate from MySQL to Cloud Spanner, from Kafka to Pub/Sub, and from Cloud SQL for PostgreSQL to BigQuery.
@@ -4092,6 +4093,13 @@ D. Configure a bash script using gsutil to run daily through a cron job. Copy th
 
 **Answer: B**
 
+Spiegazioni:
+A. Errata: La replica asincrona del disco persistente non è una soluzione di backup. È progettata per migliorare la disponibilità, ma non fornisce un controllo di conservazione o backup giornaliero.
+B. Corretta: Le istantanee giornaliere programmate per i dischi persistenti con un periodo di conservazione di 7 giorni soddisfano i requisiti per la politica di recupero dati, la sicurezza e richiedono una configurazione minima.
+C. Errata: Creare immagini della macchina tramite Cloud Scheduler e Cloud Function è una soluzione valida ma più complessa rispetto all'uso delle istantanee del disco persistente e richiede gestione aggiuntiva.
+D. Errata: Utilizzare un bash script con gsutil e cron job per copiare i file è un approccio meno efficace e richiede una gestione aggiuntiva per garantire la conformità e la sicurezza.
+
+
 #### Question 272
 
 Your company requires that Google Cloud products are created with a specific configuration to comply with your company’s security policies. You need to implement a mechanism that will allow software engineers at your company to deploy and update Google Cloud products in a preconfigured and approved manner. What should you do?
@@ -4102,6 +4110,13 @@ C. Use the Google Cloud APIs by using curl to configure Google Cloud products. S
 D. Create Terraform modules that utilize the Google Cloud Terraform Provider to configure Google Cloud products. Store and share the modules in a source code repository.
 
 **Answer: D**
+
+Spiegazioni:
+A. Errata: Sebbene le librerie client di Google Cloud per Java possano configurare i prodotti Google Cloud, questa opzione richiede competenze di programmazione e non è ottimizzata per il provisioning e la gestione dell'infrastruttura in un ambiente aziendale.
+B. Errata: I bash script con il Google Cloud CLI possono essere utili, ma sono difficili da gestire su larga scala e mancano di caratteristiche per il controllo della configurazione e la conformità, come il mantenimento dell'idempotenza.
+C. Errata: Usare i comandi curl per chiamare direttamente le API di Google Cloud è inefficiente e difficile da mantenere, poiché ogni configurazione dovrebbe essere gestita manualmente e non garantisce idempotenza.
+D. Corretta: I moduli Terraform con il Google Cloud Terraform Provider sono ideali per garantire che i prodotti Google Cloud siano configurati in modo predefinito e conforme. Terraform consente anche versionamento, modularità e controllo della configurazione in modo centralizzato.
+
 
 #### Question 273
 
@@ -4114,6 +4129,13 @@ D. Organize projects under folders for each department. Configure organization p
 
 **Answer: C**
 
+Spiegazioni:
+A. Errata: Sebbene un nome standard possa aiutare nell'organizzazione, configurare i criteri a livello di organizzazione e i sink di log solo a livello di progetto non impedisce ai Project Owner di rimuovere i log sink, il che viola i requisiti di sicurezza.
+B. Errata: Configurare criteri e log sink direttamente sui progetti non garantisce la protezione, poiché i Project Owner possono ancora modificarli o rimuoverli, il che non soddisfa le politiche di sicurezza.
+C. Corretta: Organizzare i progetti sotto cartelle per ogni dipartimento e configurare le policy e i log sink a livello di cartella consente di applicare impostazioni personalizzate per ogni dipartimento, impedendo ai Project Owner di modificarli.
+D. Errata: Configurare le policy a livello di organizzazione non consente di adattare le policy per ogni dipartimento, mentre i log sink a livello di cartella potrebbero essere corretti. Tuttavia, questa configurazione non risponde pienamente alle necessità di personalizzazione e protezione.
+
+
 #### Question 274
 
 You are deploying a web application using Compute Engine. You created a managed instance group (MIG) to host the application. You want to follow Google-recommended practices to implement a secure and highly available solution. What should you do?
@@ -4125,6 +4147,13 @@ D. Use HTTP(S) load balancing for the MIG and an A record in your DNS public zon
 
 **Answer: D**
 
+Spiegazioni:
+A. Errata: Sebbene l’SSL proxy load balancing offra sicurezza, l’uso di una zona DNS privata limita l’accesso solo alla rete privata, non permettendo l'accesso pubblico necessario per una web app.
+B. Errata: L'SSL proxy load balancing è sicuro ma progettato per carichi di lavoro TCP, non per applicazioni web su HTTP(S), quindi non è la soluzione raccomandata per un'applicazione web.
+C. Errata: L'HTTP(S) load balancing è corretto per un’app web, ma una zona DNS privata non consentirebbe la disponibilità pubblica richiesta per gli utenti esterni.
+D. Corretta: L'HTTP(S) load balancing fornisce un bilanciamento del carico sicuro e ad alte prestazioni per applicazioni web, e l'uso di un record A in una zona DNS pubblica assicura che l'app sia accessibile pubblicamente e sia ad alta disponibilità.
+
+
 #### Question 275
 
 You have several hundred microservice applications running in a Google Kubernetes Engine (GKE) cluster. Each microservice is a deployment with resource limits configured for each container in the deployment. You've observed that the resource limits for memory and CPU are not appropriately set for many of the microservices. You want to ensure that each microservice has right sized limits for memory and CPU. What should you do?
@@ -4135,6 +4164,13 @@ C. Configure a Horizontal Pod Autoscaler for each microservice.
 D. Configure GKE cluster autoscaling.
 
 **Answer: A**
+
+Spiegazioni:
+A. Corretta: La Vertical Pod Autoscaler (VPA) è la soluzione raccomandata per regolare automaticamente i limiti di memoria e CPU dei container. Monitora l'utilizzo delle risorse e suggerisce o applica nuove configurazioni per ottimizzare i limiti dei container, garantendo che siano dimensionati correttamente per le risorse richieste.
+B. Errata: Modificare il tipo di macchina del nodo pool aumenta la capacità generale del cluster ma non ottimizza i limiti di risorse specifici dei container. Questo approccio non risolverebbe l’esigenza di regolare i limiti dei singoli microservizi.
+C. Errata: La Horizontal Pod Autoscaler (HPA) aumenta o diminuisce il numero di pod in base alla richiesta di risorse, ma non modifica i limiti di memoria e CPU per i container individuali.
+D. Errata: Il cluster autoscaling regola il numero di nodi nel cluster in base al carico di lavoro complessivo ma non incide sui limiti di risorse impostati per ciascun container nei pod.
+
 
 #### Question 276
 
@@ -4148,6 +4184,14 @@ E. View errors in Cloud Monitoring to analyze the issue.
 
 **Answer: B-D**
 
+Spiegazioni:
+A. Errata: BigQuery BI Engine migliora le prestazioni delle query di analisi, ma non fornisce informazioni utili per diagnosticare errori relativi ai limiti di quota.
+B. Corretta: INFORMATION_SCHEMA consente di visualizzare le metriche di utilizzo e le informazioni sulle query che possono aiutare a diagnosticare problemi di quota come l'uso eccessivo di risorse o limiti di query.
+C. Errata: Cloud Trace è utile per tracciare la latenza delle applicazioni, ma non offre dettagli specifici sui problemi di quota in BigQuery.
+D. Corretta: Cloud Audit Logs registra errori di quota per BigQuery e fornisce dettagli sugli errori, aiutando a identificare e analizzare le cause del superamento della quota.
+E. Errata: Cloud Monitoring monitora le metriche di sistema ma non offre informazioni dirette sugli errori di quota specifici di BigQuery.
+
+
 #### Question 277
 
 Your team has developed a stateless application which requires it to be run directly on virtual machines. The application is expected to receive a fluctuating amount of traffic and needs to scale automatically. You need to deploy the application. What should you do?
@@ -4158,6 +4202,12 @@ C. Deploy the application on Cloud Functions and configure the maximum number in
 D. Deploy the application on Cloud Run and configure autoscaling.
 
 **Answer: A**
+
+Spiegazioni:
+A. Corretta: I managed instance group (MIG) supportano il deployment di applicazioni stateless su VM e permettono di configurare l’autoscaling in base al carico, ideale per gestire traffico variabile.
+B. Errata: Kubernetes Engine supporta l’autoscaling dei nodi, ma non è necessario qui poiché il requisito è per VM dirette, senza l'overhead di un cluster Kubernetes.
+C. Errata: Cloud Functions è progettato per funzioni serverless a breve termine e non offre il controllo completo che un’applicazione su VM richiede.
+D. Errata: Cloud Run è per container serverless e non per VM, quindi non risponde al requisito di esecuzione diretta su macchine virtuali.
 
 #### Question 278
 
@@ -4170,6 +4220,8 @@ D. Set a minimum concurrent requests environment variable for the application.
 
 **Answer: A**
 
+Spiegazioni: Ecco perché A è la soluzione più efficace per mitigare gli errori di quota API durante i picchi di traffico. Avvii a freddo e chiamate API: i servizi Cloud Run si ridimensionano a zero quando non sono in uso. Quando arriva una nuova richiesta, viene avviata una nuova istanza, che determina un avvio a freddo. Durante questo avvio a freddo, potrebbero essere effettuate più chiamate API per inizializzare l'applicazione e connettersi al database Cloud SQL. Se si verifica un picco improvviso di traffico, può verificarsi contemporaneamente un gran numero di avvii a freddo, superando la quota API Cloud SQL. Istanze minime: impostando un numero minimo di istanze Cloud Run, puoi assicurarti che alcune istanze siano sempre in esecuzione, anche durante i periodi di traffico basso. Ciò elimina gli avvii a freddo durante i picchi di traffico e riduce il numero di chiamate API simultanee effettuate a Cloud SQL, aiutandoti a rimanere entro i limiti di quota.
+
 #### Question 279
 
 You need to deploy a single stateless web application with a web interface and multiple endpoints. For security reasons, the web application must be reachable from an internal IP address from your company's private VPC and on-premises network. You also need to update the web application multiple times per day with minimal effort and want to manage a minimal amount of cloud infrastructure. What should you do?
@@ -4181,6 +4233,13 @@ D. Deploy the web application to GKE Autopilot with Private Google Access config
 
 **Answer: C (B)**
 
+Spiegazioni:
+A. Errata: Google Kubernetes Engine standard richiede più gestione infrastrutturale rispetto a Cloud Run, il che va contro il requisito di gestire una quantità minima di infrastruttura cloud.
+B. Errata: Anche con Private Google Access, Cloud Run non soddisfa il requisito di raggiungere l'applicazione tramite un IP interno dalla VPC e dalla rete on-premises, poiché non offre un IP interno direttamente accessibile.
+C. Corretta: Cloud Run con Private Service Connect permette di esporre l'applicazione su un indirizzo IP interno della VPC, soddisfacendo i requisiti di accesso interno e di minima gestione infrastrutturale.
+D. Errata: Sebbene GKE Autopilot con Private Google Access possa supportare una configurazione simile, richiederebbe comunque maggiore complessità infrastrutturale rispetto a Cloud Run con Private Service Connect.
+
+
 #### Question 0173
 
 You are developing a financial trading application that will be used globally. Data is stored and queried using a relational structure, and clients from all over the world should get the exact identical state of the data. The application will be deployed in multiple regions to provide the lowest latency to end users. You need to select a storage option for the application data while minimizing latency. What should you do?
@@ -4191,3 +4250,21 @@ C. Use Cloud Spanner for data storage.
 D. Use Firestore for data storage.
 
 **Answer: C**
+
+
+#### Question 0120
+
+You need to manage multiple Google Cloud projects in the fewest steps possible. You want to configure the Google Cloud SDK command line interface (CLI) so that you can easily manage multiple projects. What should you do?
+
+A. 1. Create a configuration for each project you need to manage. 2. Activate the appropriate configuration when you work with each of your assigned Google Cloud projects.
+B. 1. Create a configuration for each project you need to manage. 2. Use gcloud init to update the configuration values when you need to work with a non-default project
+C. 1. Use the default configuration for one project you need to manage. 2. Activate the appropriate configuration when you work with each of your assigned Google Cloud projects.
+D. 1. Use the default configuration for one project you need to manage. 2. Use gcloud init to update the configuration values when you need to work with a non-default project.
+
+**Answer: A**
+
+Spiegazioni:
+A. Corretta: Creare una configurazione separata per ogni progetto e attivare la configurazione appropriata quando si lavora su un progetto specifico consente di gestire facilmente più progetti in pochi passaggi, ottimizzando il cambio tra progetti.
+B. Errata: Utilizzare `gcloud init` per aggiornare i valori della configurazione richiede più passaggi rispetto all'attivazione diretta della configurazione creata per ciascun progetto, rendendo la gestione dei progetti meno efficiente.
+C. Errata: Utilizzare la configurazione di default per un solo progetto non facilita la gestione di più progetti, poiché non consente di passare rapidamente tra le configurazioni.
+D. Errata: `gcloud init` per aggiornare i valori della configurazione ogni volta che si lavora su un progetto diverso non è la soluzione più efficace per gestire più progetti in modo rapido e semplice.
