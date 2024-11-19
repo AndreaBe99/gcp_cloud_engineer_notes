@@ -2622,7 +2622,7 @@
         ]
     },
     "219": {
-        "question": "You are planning to migrate the following on-premises data management solutions to Google Cloud:",
+        "question": "You are planning to migrate the following on-premises data management solutions to Google Cloud: - One MySQL cluster for your main database; - Apache Kafka for your event streaming platform; - One Cloud SQL for PostgreSQL database for your analytical and reporting needs. You want to implement Google-recommended solutions for the migration. You need to ensure that the new solutions provide global scalability and require minimal operational and infrastructure management. What should you do?",
         "choices": {
             "A": "Migrate from MySQL to Cloud SQL, from Kafka to Pub/Sub, and from Cloud SQL for PostgreSQL to BigQuery.",
             "B": "Migrate from MySQL to Cloud Spanner, from Kafka to Pub/Sub, and from Cloud SQL for PostgreSQL to BigQuery.",
@@ -3367,6 +3367,18 @@
         },
         "answers": [
             "C"
+        ]
+    },
+    "0120": {
+        "question": "You need to manage multiple Google Cloud projects in the fewest steps possible. You want to configure the Google Cloud SDK command line interface (CLI) so that you can easily manage multiple projects. What should you do?",
+        "choices": {
+            "A": "1. Create a configuration for each project you need to manage. 2. Activate the appropriate configuration when you work with each of your assigned Google Cloud projects.",
+            "B": "1. Create a configuration for each project you need to manage. 2. Use gcloud init to update the configuration values when you need to work with a non-default project",
+            "C": "1. Use the default configuration for one project you need to manage. 2. Activate the appropriate configuration when you work with each of your assigned Google Cloud projects.",
+            "D": "1. Use the default configuration for one project you need to manage. 2. Use gcloud init to update the configuration values when you need to work with a non-default project."
+        },
+        "answers": [
+            "A"
         ]
     }
 }

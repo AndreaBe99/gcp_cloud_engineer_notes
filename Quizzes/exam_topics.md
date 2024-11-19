@@ -2534,13 +2534,7 @@ D. Migrate the workload to a Compute Engine Spot VM.
 
 #### Question 219
 
-You are planning to migrate the following on-premises data management solutions to Google Cloud:
-
-- One MySQL cluster for your main database
-- Apache Kafka for your event streaming platform
-- One Cloud SQL for PostgreSQL database for your analytical and reporting needs
-
-You want to implement Google-recommended solutions for the migration. You need to ensure that the new solutions provide global scalability and require minimal operational and infrastructure management. What should you do?
+You are planning to migrate the following on-premises data management solutions to Google Cloud: - One MySQL cluster for your main database; - Apache Kafka for your event streaming platform; - One Cloud SQL for PostgreSQL database for your analytical and reporting needs. You want to implement Google-recommended solutions for the migration. You need to ensure that the new solutions provide global scalability and require minimal operational and infrastructure management. What should you do?
 
 A. Migrate from MySQL to Cloud SQL, from Kafka to Pub/Sub, and from Cloud SQL for PostgreSQL to BigQuery.
 B. Migrate from MySQL to Cloud Spanner, from Kafka to Pub/Sub, and from Cloud SQL for PostgreSQL to BigQuery.
