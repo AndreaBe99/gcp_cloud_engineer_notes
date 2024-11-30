@@ -843,11 +843,8 @@ D. Configure the ACLs on each image in Cloud Storage to give read-only access to
 
 #### Question 72
 
-You deployed a new application inside your Google Kubernetes Engine cluster using the YAML file specified below.
-![image](images/exam_topics_72_a.png)
-You check the status of the deployed pods and notice that one of them is still in PENDING status:
-![image](images/exam_topics_72_b.png)
-You want to find out why the pod is stuck in pending status. What should you do?
+You deployed a new application inside your Google Kubernetes Engine cluster using the YAML file specified below. ![image](images/exam_topics_72_a.png) You check the status of the deployed pods and notice that one of them is still in PENDING status:
+![image](images/exam_topics_72_b.png) You want to find out why the pod is stuck in pending status. What should you do?
 
 A. Review details of the myapp-service Service object and check for error messages.
 B. Review details of the myapp-deployment Deployment object and check for error messages.
@@ -871,8 +868,7 @@ D. After the VM has been created, download the JSON private key for the default 
 
 #### Question 74
 
-You want to configure an SSH connection to a single Compute Engine instance for users in the dev1 group. This instance is the only resource in this particular
-Google Cloud Platform project that the dev1 users should be able to connect to. What should you do?
+You want to configure an SSH connection to a single Compute Engine instance for users in the dev1 group. This instance is the only resource in this particular Google Cloud Platform project that the dev1 users should be able to connect to. What should you do?
 
 A. Set metadata to enable-oslogin=true for the instance. Grant the dev1 group the compute.osLogin role. Direct them to use the Cloud Shell to ssh to that instance.
 B. Set metadata to enable-oslogin=true for the instance. Set the service account to no service account for that instance. Direct them to use the Cloud Shell to ssh to that instance.

@@ -27,6 +27,20 @@ choice_colors = [
     "magenta",
 ]
 
+errors_list = [
+    "1", "4", "5", "8", "11", "24", "27", "30",
+    "32", "35", "37", "46", "47", "48", "50", "51",
+    "64", "67", "69", "70", "72", "75", "78", "80", "82", "84", "85", "88", "89",
+    "92", "97", "98", "102", "104", "105", "106", "108", "117", "120",
+    "121", "122", "124", "125", "127", "129", "130","131", "134", "140", "151",
+    "158", "161", "163", "170", "171", "182",
+    "191", "194", "197", "202", "204", "206", "208",
+    "211", "216", "219", "220", "221", "222", "223", "225", "234", "236", "240",
+    "244", "245", "246", "247", "248", "249", "250", "254", "261", "263", "266",
+    "273", "276", "278", "279",
+    "0120",
+]
+
 
 def load_questions_from_json(path: str) -> Dict[str, Dict[str, str]]:
     """
@@ -167,7 +181,11 @@ def run_exam(exam_json: Dict[str, Dict[str, str]], num_questions: int = 50):
         num_questions (int): The number of questions for the exam (default 50).
     """
     # Select random questions
-    selected_questions = select_random_questions(exam_json, num_questions)
+    # selected_questions = select_random_questions(exam_json, num_questions)
+
+    # Test 
+    print("Domande sbagliate:", len(errors_list))
+    selected_questions = random.sample(errors_list, num_questions)
 
     console.print("Welcome to the Exam Simulator!", style="bold")
     console.print(
